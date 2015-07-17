@@ -1,0 +1,24 @@
+
+The TGS will run if the server is running MySQL.
+You may use WAMP, XAMPP, MAMP, LAMP or any other server.
+
+Copy the TGS datafiles and TGS results folders into your local disk/drive D:
+You may replace the kyulogoEdit.jpg with a preferred Kyambogo University Logo.
+The database must be named bitc and the tables within must be as defined in the TGS data dictionary PDF document.
+
+Run the bitc.sql file
+
+The datafiles are named in the format:
+Course Code + Year of Entry + Current Year of Study + Current Semester
+That is; bitc + 2012 + 1 + 2 for file bitc2012_1_2
+Do likewise for files you hope to upload,
+
+To run the program from the command line, change directory to the folder containing the TGS executable jar file and type the following:
+
+java -jar "TGS.jar"
+
+Alternatively, double click to execute the TGS executable jar file.
+
+For further inquires, contact
+Mobile	:	+256 702 246 015
+Email	:	rwothoromoelijah@gmail.com
