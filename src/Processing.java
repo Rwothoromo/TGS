@@ -52,9 +52,15 @@ public class Processing extends javax.swing.JFrame {
         txtSem1 = new javax.swing.JTextField();
         btnBack = new javax.swing.JButton();
         txtRegNo = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Generate a Testimonial");
+        setTitle("Testimonial Generating System - Generate a Testimonial");
 
         btnGenerateTestimonial.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnGenerateTestimonial.setText("Generate Testimonial");
@@ -77,7 +83,7 @@ public class Processing extends javax.swing.JFrame {
 
         txtYrOfEntry.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
         jLabel4.setText("Get results up to:");
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -100,47 +106,81 @@ public class Processing extends javax.swing.JFrame {
 
         txtRegNo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TGS logo 50 x 50.jpg"))); // NOI18N
+        jLabel10.setPreferredSize(new java.awt.Dimension(393, 196));
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 42)); // NOI18N
+        jLabel9.setText("KYAMBOGO ");
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 42)); // NOI18N
+        jLabel12.setText("UNIVERSITY");
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kyulogo 40x40.jpg"))); // NOI18N
+        jLabel11.setText("jLabel9");
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
+        jLabel13.setText("Testimonial Generating System");
+
+        jLabel14.setText("Type the details as required to add the user.");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel14)
+                    .addComponent(jLabel3)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(jLabel7))
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtYr1, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtYrOfEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(70, 70, 70)
-                                .addComponent(txtYr1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel12))
+                            .addComponent(txtRegNo, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCourseCode, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                     .addComponent(btnGenerateTestimonial)
-                                    .addComponent(jLabel8))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtSem1)
-                                    .addComponent(btnBack, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addGap(46, 46, 46)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtCourseCode)
-                                    .addComponent(txtYrOfEntry)
-                                    .addComponent(txtRegNo))))
-                        .addGap(22, 22, 22))))
+                                    .addGap(18, 18, 18)
+                                    .addComponent(btnBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(txtSem1, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jLabel8))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel12)))
+                            .addComponent(jLabel11))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel13))
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(67, 67, 67)
+                .addComponent(jLabel14)
+                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtRegNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
@@ -162,11 +202,11 @@ public class Processing extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(txtSem1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
+                .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGenerateTestimonial, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(61, Short.MAX_VALUE))
+                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGenerateTestimonial, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         pack();
@@ -376,8 +416,8 @@ public class Processing extends javax.swing.JFrame {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         dispose();
-        Login L = new Login();
-        L.setVisible(true);
+        SuperUser SU = new SuperUser();
+        SU.setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
     
     public void do11(String CourseCode, String Database, String RegNo, Document document, ResultSet rsDB, Font bold) throws SQLException, DocumentException{
@@ -402,9 +442,6 @@ public class Processing extends javax.swing.JFrame {
         }
         else if ("DCS".equals(CourseCode)){
             DCS11(document, rsDB11, bold);
-        }
-        else if ("CCS".equals(CourseCode)){
-            CCS11(document, rsDB11, bold);
         }
         else {
             JOptionPane.showMessageDialog(null, "Invalid details!");
@@ -440,8 +477,8 @@ public class Processing extends javax.swing.JFrame {
         else if ("DCS".equals(CourseCode)){
             DCS12(document, rsDB12, bold);
         }
-        else if ("CCS".equals(CourseCode)){
-            CCS12(document, rsDB12, bold);
+        else {
+            JOptionPane.showMessageDialog(null, "Invalid Details!");
         }
 
         PdfPTable e = new PdfPTable(1);
@@ -455,6 +492,7 @@ public class Processing extends javax.swing.JFrame {
         String sqlQueryDB21 = "select * from " + (Database + "_2_1") + " where RegNo='" + RegNo + "'";
         PreparedStatement psDB21 = x.prepareStatement(sqlQueryDB21);
         ResultSet rsDB21 = psDB21.executeQuery();
+        rsDB21.next();
 
         PdfPTable f = new PdfPTable(1);
         f.setWidthPercentage(100);
@@ -472,6 +510,9 @@ public class Processing extends javax.swing.JFrame {
         }
         else if ("DCS".equals(CourseCode)){
             //DCS21(document, rsDB21, bold);
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Invalid Details!");
         }
 
         PdfPTable g = new PdfPTable(1);
@@ -504,8 +545,8 @@ public class Processing extends javax.swing.JFrame {
         else if ("DCS".equals(CourseCode)){
             //DCS22(document, rsDB22, bold);
         }
-        else if ("CCS".equals(CourseCode)){
-            //CCS22(document, rsDB22, bold);
+        else {
+            JOptionPane.showMessageDialog(null, "Invalid Details!");
         }
 
         PdfPTable e = new PdfPTable(1);
@@ -519,6 +560,7 @@ public class Processing extends javax.swing.JFrame {
         String sqlQueryDB31 = "select * from " + (Database + "_3_1") + " where RegNo='" + RegNo + "'";
         PreparedStatement psDB31 = x.prepareStatement(sqlQueryDB31);
         ResultSet rsDB31 = psDB31.executeQuery();
+        rsDB31.next();
 
         PdfPTable f = new PdfPTable(1);
         f.setWidthPercentage(100);
@@ -536,6 +578,9 @@ public class Processing extends javax.swing.JFrame {
         }
         else if ("DCS".equals(CourseCode)){
             //DCS31(document, rsDB31, bold);
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Invalid Details!");
         }
 
         PdfPTable g = new PdfPTable(1);
@@ -568,8 +613,8 @@ public class Processing extends javax.swing.JFrame {
         else if ("DCS".equals(CourseCode)){
             //DCS32(document, rsDB32, bold);
         }
-        else if ("CCS".equals(CourseCode)){
-            //CCS32(document, rsDB32, bold);
+        else {
+            JOptionPane.showMessageDialog(null, "Invalid Details!");
         }
 
         PdfPTable e = new PdfPTable(1);
@@ -746,63 +791,7 @@ public class Processing extends javax.swing.JFrame {
         GPA11.addCell(GPA11a);
         document.add(GPA11);
     }
-    
-    public void CCS11(Document document, ResultSet rsDB11, Font bold) throws DocumentException, SQLException{
-        PdfPTable CCS111 = new PdfPTable(3);
-        float[] CCS111_columnWidths = {7f, 1f, 1f};
-        CCS111.setWidths(CCS111_columnWidths);
-        PdfPCell CCS111a = new PdfPCell(new Paragraph("CCS 111 Introduction to Information Technology & Computing"));
-        PdfPCell CCS111b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB11.getString(8)))));
-        PdfPCell CCS111c = new PdfPCell(new Paragraph(GPtoGrade(rsDB11.getString(8))));
-        Add3cells(document, CCS111, CCS111a, CCS111b, CCS111c);
-
-        PdfPTable CCS112 = new PdfPTable(3);
-        float[] CCS112_columnWidths = {7f, 1f, 1f};
-        CCS112.setWidths(CCS112_columnWidths);
-        PdfPCell CCS112a = new PdfPCell(new Paragraph("CCS 112 Micro-Computer Applications"));
-        PdfPCell CCS112b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB11.getString(11)))));
-        PdfPCell CCS112c = new PdfPCell(new Paragraph(GPtoGrade(rsDB11.getString(11))));
-        Add3cells(document, CCS112, CCS112a, CCS112b, CCS112c);
-
-        PdfPTable CCS113 = new PdfPTable(3);
-        float[] CCS113_columnWidths = {7f, 1f, 1f};
-        CCS113.setWidths(CCS113_columnWidths);
-        PdfPCell CCS113a = new PdfPCell(new Paragraph("CCS 113 Discrete Mathematical Structures"));
-        PdfPCell CCS113b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB11.getString(14)))));
-        PdfPCell CCS113c = new PdfPCell(new Paragraph(GPtoGrade(rsDB11.getString(14))));
-        Add3cells(document, CCS113, CCS113a, CCS113b, CCS113c);
-
-        PdfPTable CCS114 = new PdfPTable(3);
-        float[] CCS114_columnWidths = {7f, 1f, 1f};
-        CCS114.setWidths(CCS114_columnWidths);
-        PdfPCell CCS114a = new PdfPCell(new Paragraph("CCS 114 Probability and Statistics"));
-        PdfPCell CCS114b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB11.getString(17)))));
-        PdfPCell CCS114c = new PdfPCell(new Paragraph(GPtoGrade(rsDB11.getString(17))));
-        Add3cells(document, CCS114, CCS114a, CCS114b, CCS114c);
-
-        PdfPTable CCS115 = new PdfPTable(3);
-        float[] CCS115_columnWidths = {7f, 1f, 1f};
-        CCS115.setWidths(CCS115_columnWidths);
-        PdfPCell CCS115a = new PdfPCell(new Paragraph("CCS 115 Differential, Integral and Vector Calculus"));
-        PdfPCell CCS115b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB11.getString(20)))));
-        PdfPCell CCS115c = new PdfPCell(new Paragraph(GPtoGrade(rsDB11.getString(20))));
-        Add3cells(document, CCS115, CCS115a, CCS115b, CCS115c);
-
-        PdfPTable HM111 = new PdfPTable(3);
-        float[] HM111_columnWidths = {7f, 1f, 1f};
-        HM111.setWidths(HM111_columnWidths);
-        PdfPCell HM111a = new PdfPCell(new Paragraph("HM 111 Humanities & Communication Skills"));
-        PdfPCell HM111b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB11.getString(5)))));
-        PdfPCell HM111c = new PdfPCell(new Paragraph(GPtoGrade(rsDB11.getString(5))));
-        Add3cells(document, HM111, HM111a, HM111b, HM111c);
-
-        PdfPTable GPA11 = new PdfPTable(1);
-        GPA11.setWidthPercentage(100);
-        PdfPCell GPA11a = new PdfPCell(new Paragraph("GPA : " + rsDB11.getString(24), bold));
-        GPA11.addCell(GPA11a);
-        document.add(GPA11);
-    }
-    
+        
     public void BITC12(Document document, ResultSet rsDB12, Font bold) throws DocumentException, SQLException{
         PdfPTable IT121 = new PdfPTable(3);
         float[] IT121_columnWidths = {7f, 1f, 1f};
@@ -977,64 +966,6 @@ public class Processing extends javax.swing.JFrame {
         document.add(GPA12);
     }
     
-    public void CCS12(Document document, ResultSet rsDB12, Font bold) throws DocumentException, SQLException{
-        PdfPTable CCS121 = new PdfPTable(3);
-        float[] CCS121_columnWidths = {7f, 1f, 1f};
-        CCS121.setWidths(CCS121_columnWidths);
-        PdfPCell CCS121a = new PdfPCell(new Paragraph("CCS 121 Differential Equations"));
-        PdfPCell CCS121b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB12.getString(5)))));
-        PdfPCell CCS121c = new PdfPCell(new Paragraph(GPtoGrade(rsDB12.getString(5))));
-        Add3cells(document, CCS121, CCS121a, CCS121b, CCS121c);
-
-        PdfPTable CCS122 = new PdfPTable(3);
-        float[] CCS122_columnWidths = {7f, 1f, 1f};
-        CCS122.setWidths(CCS122_columnWidths);
-        PdfPCell CCS122a = new PdfPCell(new Paragraph("CCS 122 Programming Language Fundamentals"));
-        PdfPCell CCS122b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB12.getString(8)))));
-        PdfPCell CCS122c = new PdfPCell(new Paragraph(GPtoGrade(rsDB12.getString(8))));
-        Add3cells(document, CCS122, CCS122a, CCS122b, CCS122c);
-
-        PdfPTable CCS123 = new PdfPTable(3);
-        float[] CCS123_columnWidths = {7f, 1f, 1f};
-        CCS123.setWidths(CCS123_columnWidths);
-        PdfPCell CCS123a = new PdfPCell(new Paragraph("CCS 123 Linear Algebra"));
-        PdfPCell CCS123b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB12.getString(11)))));
-        PdfPCell CCS123c = new PdfPCell(new Paragraph(GPtoGrade(rsDB12.getString(11))));
-        Add3cells(document, CCS123, CCS123a, CCS123b, CCS123c);
-
-        PdfPTable CCS124 = new PdfPTable(3);
-        float[] CCS124_columnWidths = {7f, 1f, 1f};
-        CCS124.setWidths(CCS124_columnWidths);
-        PdfPCell CCS124a = new PdfPCell(new Paragraph("CCS 124 Computer Architecture"));
-        PdfPCell CCS124b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB12.getString(14)))));
-        PdfPCell CCS124c = new PdfPCell(new Paragraph(GPtoGrade(rsDB12.getString(14))));
-        Add3cells(document, CCS124, CCS124a, CCS124b, CCS124c);
-
-        PdfPTable CCS125 = new PdfPTable(3);
-        float[] CCS125_columnWidths = {7f, 1f, 1f};
-        CCS125.setWidths(CCS125_columnWidths);
-        PdfPCell CCS125a = new PdfPCell(new Paragraph("CCS 125 Operating System Concepts"));
-        PdfPCell CCS125b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB12.getString(17)))));
-        PdfPCell CCS125c = new PdfPCell(new Paragraph(GPtoGrade(rsDB12.getString(17))));
-        Add3cells(document, CCS125, CCS125a, CCS125b, CCS125c);
-
-        PdfPTable CCS126 = new PdfPTable(3);
-        float[] CCS126_columnWidths = {7f, 1f, 1f};
-        CCS126.setWidths(CCS126_columnWidths);
-        PdfPCell CCS126a = new PdfPCell(new Paragraph("CCS 126 Computer Management and Maintenance"));
-        PdfPCell CCS126b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB12.getString(20)))));
-        PdfPCell CCS126c = new PdfPCell(new Paragraph(GPtoGrade(rsDB12.getString(20))));
-        Add3cells(document, CCS126, CCS126a, CCS126b, CCS126c);
-
-        PdfPTable GPA12 = new PdfPTable(2);
-        GPA12.setWidthPercentage(100);
-        PdfPCell GPA12a = new PdfPCell(new Paragraph("GPA : " + rsDB12.getString(24), bold));
-        GPA12.addCell(GPA12a);
-        PdfPCell GPA12b = new PdfPCell(new Paragraph("CGPA : " + rsDB12.getString(30), bold));
-        GPA12.addCell(GPA12b);
-        document.add(GPA12);
-    }
-    
     public String GPtoGrade(String x){
         if ("5".equals(x))      { return "   A";   }
         if ("4.5".equals(x))    { return "   B+";  }
@@ -1112,11 +1043,17 @@ public class Processing extends javax.swing.JFrame {
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnGenerateTestimonial;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField txtCourseCode;
     private javax.swing.JTextField txtRegNo;
     private javax.swing.JTextField txtSem1;
