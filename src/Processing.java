@@ -22,6 +22,8 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Processing extends javax.swing.JFrame {
     Connection x = null;
@@ -317,7 +319,7 @@ public class Processing extends javax.swing.JFrame {
                 cmt11.next();
                 Phrase Remark = new Phrase();
                 Remark.add(new Chunk("\nHe/She is on "));
-                Remark.add(new Chunk(Comment(cmt11.getString(25)), bold));
+                Remark.add(new Chunk((Comment(cmt11.getString(25))), bold));
                 Remark.add(new Chunk("These are the provisional Results."));
                 document.add(new Paragraph(Remark));
             }
@@ -330,7 +332,7 @@ public class Processing extends javax.swing.JFrame {
                 cmt12.next();
                 Phrase Remark = new Phrase();
                 Remark.add(new Chunk("\nHe/She is on "));
-                Remark.add(new Chunk(Comment(cmt12.getString(31)), bold));
+                Remark.add(new Chunk((Comment(cmt12.getString(31))), bold));
                 Remark.add(new Chunk("These are the provisional Results."));
                 document.add(new Paragraph(Remark));
             }
@@ -344,7 +346,7 @@ public class Processing extends javax.swing.JFrame {
                 cmt21.next();
                 Phrase Remark = new Phrase();
                 Remark.add(new Chunk("\nHe/She is on "));
-                Remark.add(new Chunk(Comment(cmt21.getString(25)), bold));
+                Remark.add(new Chunk((Comment(cmt21.getString(25))), bold));
                 Remark.add(new Chunk("These are the provisional Results."));
                 document.add(new Paragraph(Remark));
             }
@@ -359,7 +361,7 @@ public class Processing extends javax.swing.JFrame {
                 cmt22.next();
                 Phrase Remark = new Phrase();
                 Remark.add(new Chunk("\nHe/She is on "));
-                Remark.add(new Chunk(Comment(cmt22.getString(31)), bold));
+                Remark.add(new Chunk((Comment(cmt22.getString(31))), bold));
                 Remark.add(new Chunk("These are the provisional Results."));
                 document.add(new Paragraph(Remark));
             }
@@ -375,7 +377,7 @@ public class Processing extends javax.swing.JFrame {
                 cmt31.next();
                 Phrase Remark = new Phrase();
                 Remark.add(new Chunk("\nHe/She is on "));
-                Remark.add(new Chunk(Comment(cmt31.getString(25)), bold));
+                Remark.add(new Chunk((Comment(cmt31.getString(25))), bold));
                 Remark.add(new Chunk("These are the provisional Results."));
                 document.add(new Paragraph(Remark));
             }
@@ -392,7 +394,7 @@ public class Processing extends javax.swing.JFrame {
                 cmt32.next();
                 Phrase Remark = new Phrase();
                 Remark.add(new Chunk("\nHe/She is on "));
-                Remark.add(new Chunk(Comment(cmt32.getString(31)), bold));
+                Remark.add(new Chunk((Comment(cmt32.getString(31))), bold));
                 Remark.add(new Chunk("These are the provisional Results."));
                 document.add(new Paragraph(Remark));
             }
@@ -983,16 +985,28 @@ public class Processing extends javax.swing.JFrame {
     }
     
     public String Comment(String x){
-        if (("NP(DL)").equals(x)){
-            return "Normal Progress (Dean's List). ";
+        //Create String Array
+        String[]Remarks = {"NP", "NP(DL)", "NP (DL)", "VCL"};
+        //Instantiate an implementation object
+        Set<String>set=new HashSet<String>();
+        //Add the elements of the array to the collection
+        for (int i = 0; i < Remarks.length; i++){
+            set.add(Remarks[i]);
+            //Invoke the add method of the collection.
         }
-        if ((("NP").toUpperCase()).equals(x)){
-            return "Normal Progress. ";
+        
+        for (Object o : set){
+            if (o == "NP"){
+                x = "Normal Progress. ";
+            }
+            else if (o == "NP(DL)" || o == "NP (DL)"){
+                x = "Normal Progress (Dean's List). ";
+            }
+            else if (o == "VCL"){
+                x = "Vice Chancellor's List. ";
+            }
         }
-        if ((("VCL").toUpperCase()).equals(x)){
-            return "Vice Chancellor's List. ";
-        }
-        return x + ". ";
+        return x;
     }
     
     public void Add3cells(Document x, PdfPTable row, PdfPCell cellA, PdfPCell cellB, PdfPCell cellC) throws DocumentException{
