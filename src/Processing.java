@@ -20,6 +20,7 @@ import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import java.sql.DatabaseMetaData;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.HashSet;
@@ -319,7 +320,7 @@ public class Processing extends javax.swing.JFrame {
                 cmt11.next();
                 Phrase Remark = new Phrase();
                 Remark.add(new Chunk("\nHe/She is on "));
-                Remark.add(new Chunk((Comment(cmt11.getString(25))), bold));
+                Remark.add(new Chunk((Comment(cmt11.getString("REMARKS"))), bold));
                 Remark.add(new Chunk("These are the provisional Results."));
                 document.add(new Paragraph(Remark));
             }
@@ -332,7 +333,7 @@ public class Processing extends javax.swing.JFrame {
                 cmt12.next();
                 Phrase Remark = new Phrase();
                 Remark.add(new Chunk("\nHe/She is on "));
-                Remark.add(new Chunk((Comment(cmt12.getString(31))), bold));
+                Remark.add(new Chunk((Comment(cmt12.getString("REMARKS"))), bold));
                 Remark.add(new Chunk("These are the provisional Results."));
                 document.add(new Paragraph(Remark));
             }
@@ -346,7 +347,7 @@ public class Processing extends javax.swing.JFrame {
                 cmt21.next();
                 Phrase Remark = new Phrase();
                 Remark.add(new Chunk("\nHe/She is on "));
-                Remark.add(new Chunk((Comment(cmt21.getString(25))), bold));
+                Remark.add(new Chunk((Comment(cmt21.getString("REMARKS"))), bold));
                 Remark.add(new Chunk("These are the provisional Results."));
                 document.add(new Paragraph(Remark));
             }
@@ -361,7 +362,7 @@ public class Processing extends javax.swing.JFrame {
                 cmt22.next();
                 Phrase Remark = new Phrase();
                 Remark.add(new Chunk("\nHe/She is on "));
-                Remark.add(new Chunk((Comment(cmt22.getString(31))), bold));
+                Remark.add(new Chunk((Comment(cmt22.getString("REMARKS"))), bold));
                 Remark.add(new Chunk("These are the provisional Results."));
                 document.add(new Paragraph(Remark));
             }
@@ -377,7 +378,7 @@ public class Processing extends javax.swing.JFrame {
                 cmt31.next();
                 Phrase Remark = new Phrase();
                 Remark.add(new Chunk("\nHe/She is on "));
-                Remark.add(new Chunk((Comment(cmt31.getString(25))), bold));
+                Remark.add(new Chunk((Comment(cmt31.getString("REMARKS"))), bold));
                 Remark.add(new Chunk("These are the provisional Results."));
                 document.add(new Paragraph(Remark));
             }
@@ -394,7 +395,7 @@ public class Processing extends javax.swing.JFrame {
                 cmt32.next();
                 Phrase Remark = new Phrase();
                 Remark.add(new Chunk("\nHe/She is on "));
-                Remark.add(new Chunk((Comment(cmt32.getString(31))), bold));
+                Remark.add(new Chunk((Comment(cmt32.getString("REMARKS"))), bold));
                 Remark.add(new Chunk("These are the provisional Results."));
                 document.add(new Paragraph(Remark));
             }
@@ -654,7 +655,7 @@ public class Processing extends javax.swing.JFrame {
         PdfPTable IT114 = new PdfPTable(3);
         float[] IT114_columnWidths = {7f, 1f, 1f};
         IT114.setWidths(IT114_columnWidths);
-        PdfPCell IT114a = new PdfPCell(new Paragraph("IT 114 Probability and Statistics"));
+        PdfPCell IT114a = new PdfPCell(new Paragraph("IT 114 Probability & Statistics"));
         PdfPCell IT114b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB11.getString(17)))));
         PdfPCell IT114c = new PdfPCell(new Paragraph(GPtoGrade(rsDB11.getString(17))));
         Add3cells(document, IT114, IT114a, IT114b, IT114c);
@@ -662,7 +663,7 @@ public class Processing extends javax.swing.JFrame {
         PdfPTable IT115 = new PdfPTable(3);
         float[] IT115_columnWidths = {7f, 1f, 1f};
         IT115.setWidths(IT115_columnWidths);
-        PdfPCell IT115a = new PdfPCell(new Paragraph("IT 115 Differential, Integral and Vector Calculus"));
+        PdfPCell IT115a = new PdfPCell(new Paragraph("IT 115 Differential, Integral & Vector Calculus"));
         PdfPCell IT115b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB11.getString(20)))));
         PdfPCell IT115c = new PdfPCell(new Paragraph(GPtoGrade(rsDB11.getString(20))));
         Add3cells(document, IT115, IT115a, IT115b, IT115c);
@@ -683,57 +684,49 @@ public class Processing extends javax.swing.JFrame {
     }
     
     public void BIS11(Document document, ResultSet rsDB11, Font bold) throws DocumentException, SQLException{
-        PdfPTable IS111 = new PdfPTable(3);
-        float[] IS111_columnWidths = {7f, 1f, 1f};
-        IS111.setWidths(IS111_columnWidths);
-        PdfPCell IS111a = new PdfPCell(new Paragraph("IS 111 Introduction to Information Technology & Computing"));
-        PdfPCell IS111b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB11.getString(8)))));
-        PdfPCell IS111c = new PdfPCell(new Paragraph(GPtoGrade(rsDB11.getString(8))));
-        Add3cells(document, IS111, IS111a, IS111b, IS111c);
+        PdfPTable SIS1101 = new PdfPTable(3);
+        float[] SIS1101_columnWidths = {7f, 1f, 1f};
+        SIS1101.setWidths(SIS1101_columnWidths);
+        PdfPCell SIS1101a = new PdfPCell(new Paragraph("SIS1 101 Introduction to Computers & Information Systems"));
+        PdfPCell SIS1101b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB11.getString(8)))));
+        PdfPCell SIS1101c = new PdfPCell(new Paragraph(GPtoGrade(rsDB11.getString(8))));
+        Add3cells(document, SIS1101, SIS1101a, SIS1101b, SIS1101c);
 
-        PdfPTable IS112 = new PdfPTable(3);
-        float[] IS112_columnWidths = {7f, 1f, 1f};
-        IS112.setWidths(IS112_columnWidths);
-        PdfPCell IS112a = new PdfPCell(new Paragraph("IS 112 Micro-Computer Applications"));
-        PdfPCell IS112b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB11.getString(11)))));
-        PdfPCell IS112c = new PdfPCell(new Paragraph(GPtoGrade(rsDB11.getString(11))));
-        Add3cells(document, IS112, IS112a, IS112b, IS112c);
+        PdfPTable SIS1102 = new PdfPTable(3);
+        float[] SIS1102_columnWidths = {7f, 1f, 1f};
+        SIS1102.setWidths(SIS1102_columnWidths);
+        PdfPCell SIS1102a = new PdfPCell(new Paragraph("SIS1 102 Computer Applications"));
+        PdfPCell SIS1102b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB11.getString(11)))));
+        PdfPCell SIS1102c = new PdfPCell(new Paragraph(GPtoGrade(rsDB11.getString(11))));
+        Add3cells(document, SIS1102, SIS1102a, SIS1102b, SIS1102c);
 
-        PdfPTable IS113 = new PdfPTable(3);
-        float[] IS113_columnWidths = {7f, 1f, 1f};
-        IS113.setWidths(IS113_columnWidths);
-        PdfPCell IS113a = new PdfPCell(new Paragraph("IS 113 Discrete Mathematical Structures"));
-        PdfPCell IS113b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB11.getString(14)))));
-        PdfPCell IS113c = new PdfPCell(new Paragraph(GPtoGrade(rsDB11.getString(14))));
-        Add3cells(document, IS113, IS113a, IS113b, IS113c);
+        PdfPTable SIS1103 = new PdfPTable(3);
+        float[] SIS1103_columnWidths = {7f, 1f, 1f};
+        SIS1103.setWidths(SIS1103_columnWidths);
+        PdfPCell SIS1103a = new PdfPCell(new Paragraph("SIS1 103 Business Statistics"));
+        PdfPCell SIS1103b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB11.getString(14)))));
+        PdfPCell SIS1103c = new PdfPCell(new Paragraph(GPtoGrade(rsDB11.getString(14))));
+        Add3cells(document, SIS1103, SIS1103a, SIS1103b, SIS1103c);
 
-        PdfPTable IS114 = new PdfPTable(3);
-        float[] IS114_columnWidths = {7f, 1f, 1f};
-        IS114.setWidths(IS114_columnWidths);
-        PdfPCell IS114a = new PdfPCell(new Paragraph("IS 114 Probability and Statistics"));
-        PdfPCell IS114b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB11.getString(17)))));
-        PdfPCell IS114c = new PdfPCell(new Paragraph(GPtoGrade(rsDB11.getString(17))));
-        Add3cells(document, IS114, IS114a, IS114b, IS114c);
+        PdfPTable SIS1104 = new PdfPTable(3);
+        float[] SIS1104_columnWidths = {7f, 1f, 1f};
+        SIS1104.setWidths(SIS1104_columnWidths);
+        PdfPCell SIS1104a = new PdfPCell(new Paragraph("SIS1 104 Discrete Mathematics"));
+        PdfPCell SIS1104b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB11.getString(17)))));
+        PdfPCell SIS1104c = new PdfPCell(new Paragraph(GPtoGrade(rsDB11.getString(17))));
+        Add3cells(document, SIS1104, SIS1104a, SIS1104b, SIS1104c);
 
-        PdfPTable IS115 = new PdfPTable(3);
-        float[] IS115_columnWidths = {7f, 1f, 1f};
-        IS115.setWidths(IS115_columnWidths);
-        PdfPCell IS115a = new PdfPCell(new Paragraph("IS 115 Differential, Integral and Vector Calculus"));
-        PdfPCell IS115b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB11.getString(20)))));
-        PdfPCell IS115c = new PdfPCell(new Paragraph(GPtoGrade(rsDB11.getString(20))));
-        Add3cells(document, IS115, IS115a, IS115b, IS115c);
-
-        PdfPTable HM111 = new PdfPTable(3);
-        float[] HM111_columnWidths = {7f, 1f, 1f};
-        HM111.setWidths(HM111_columnWidths);
-        PdfPCell HM111a = new PdfPCell(new Paragraph("HM 111 Humanities & Communication Skills"));
-        PdfPCell HM111b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB11.getString(5)))));
-        PdfPCell HM111c = new PdfPCell(new Paragraph(GPtoGrade(rsDB11.getString(5))));
-        Add3cells(document, HM111, HM111a, HM111b, HM111c);
+        PdfPTable SHM1101 = new PdfPTable(3);
+        float[] SHM1101_columnWidths = {7f, 1f, 1f};
+        SHM1101.setWidths(SHM1101_columnWidths);
+        PdfPCell SHM1101a = new PdfPCell(new Paragraph("SHM1 101 Humanities & Communication Skills"));
+        PdfPCell SHM1101b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB11.getString(5)))));
+        PdfPCell SHM1101c = new PdfPCell(new Paragraph(GPtoGrade(rsDB11.getString(5))));
+        Add3cells(document, SHM1101, SHM1101a, SHM1101b, SHM1101c);
 
         PdfPTable GPA11 = new PdfPTable(1);
         GPA11.setWidthPercentage(100);
-        PdfPCell GPA11a = new PdfPCell(new Paragraph("GPA : " + rsDB11.getString(24), bold));
+        PdfPCell GPA11a = new PdfPCell(new Paragraph("GPA : " + rsDB11.getString(21), bold));
         GPA11.addCell(GPA11a);
         document.add(GPA11);
     }
@@ -742,7 +735,7 @@ public class Processing extends javax.swing.JFrame {
         PdfPTable DCS111 = new PdfPTable(3);
         float[] DCS111_columnWidths = {7f, 1f, 1f};
         DCS111.setWidths(DCS111_columnWidths);
-        PdfPCell DCS111a = new PdfPCell(new Paragraph("DCS 111 Introduction to Information Technology & Computing"));
+        PdfPCell DCS111a = new PdfPCell(new Paragraph("DCS 111 Introduction to Computer science"));
         PdfPCell DCS111b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB11.getString(8)))));
         PdfPCell DCS111c = new PdfPCell(new Paragraph(GPtoGrade(rsDB11.getString(8))));
         Add3cells(document, DCS111, DCS111a, DCS111b, DCS111c);
@@ -750,7 +743,7 @@ public class Processing extends javax.swing.JFrame {
         PdfPTable DCS112 = new PdfPTable(3);
         float[] DCS112_columnWidths = {7f, 1f, 1f};
         DCS112.setWidths(DCS112_columnWidths);
-        PdfPCell DCS112a = new PdfPCell(new Paragraph("DCS 112 Micro-Computer Applications"));
+        PdfPCell DCS112a = new PdfPCell(new Paragraph("DCS 112 Computer Science Mathematics - Introduction"));
         PdfPCell DCS112b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB11.getString(11)))));
         PdfPCell DCS112c = new PdfPCell(new Paragraph(GPtoGrade(rsDB11.getString(11))));
         Add3cells(document, DCS112, DCS112a, DCS112b, DCS112c);
@@ -758,7 +751,7 @@ public class Processing extends javax.swing.JFrame {
         PdfPTable DCS113 = new PdfPTable(3);
         float[] DCS113_columnWidths = {7f, 1f, 1f};
         DCS113.setWidths(DCS113_columnWidths);
-        PdfPCell DCS113a = new PdfPCell(new Paragraph("DCS 113 Discrete Mathematical Structures"));
+        PdfPCell DCS113a = new PdfPCell(new Paragraph("DCS 113 Computer applications"));
         PdfPCell DCS113b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB11.getString(14)))));
         PdfPCell DCS113c = new PdfPCell(new Paragraph(GPtoGrade(rsDB11.getString(14))));
         Add3cells(document, DCS113, DCS113a, DCS113b, DCS113c);
@@ -766,18 +759,10 @@ public class Processing extends javax.swing.JFrame {
         PdfPTable DCS114 = new PdfPTable(3);
         float[] DCS114_columnWidths = {7f, 1f, 1f};
         DCS114.setWidths(DCS114_columnWidths);
-        PdfPCell DCS114a = new PdfPCell(new Paragraph("DCS 114 Probability and Statistics"));
+        PdfPCell DCS114a = new PdfPCell(new Paragraph("DCS 114 Computer Architecture"));
         PdfPCell DCS114b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB11.getString(17)))));
         PdfPCell DCS114c = new PdfPCell(new Paragraph(GPtoGrade(rsDB11.getString(17))));
         Add3cells(document, DCS114, DCS114a, DCS114b, DCS114c);
-
-        PdfPTable DCS115 = new PdfPTable(3);
-        float[] DCS115_columnWidths = {7f, 1f, 1f};
-        DCS115.setWidths(DCS115_columnWidths);
-        PdfPCell DCS115a = new PdfPCell(new Paragraph("DCS 115 Differential, Integral and Vector Calculus"));
-        PdfPCell DCS115b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB11.getString(20)))));
-        PdfPCell DCS115c = new PdfPCell(new Paragraph(GPtoGrade(rsDB11.getString(20))));
-        Add3cells(document, DCS115, DCS115a, DCS115b, DCS115c);
 
         PdfPTable HM111 = new PdfPTable(3);
         float[] HM111_columnWidths = {7f, 1f, 1f};
@@ -789,7 +774,7 @@ public class Processing extends javax.swing.JFrame {
 
         PdfPTable GPA11 = new PdfPTable(1);
         GPA11.setWidthPercentage(100);
-        PdfPCell GPA11a = new PdfPCell(new Paragraph("GPA : " + rsDB11.getString(24), bold));
+        PdfPCell GPA11a = new PdfPCell(new Paragraph("GPA : " + rsDB11.getString(21), bold));
         GPA11.addCell(GPA11a);
         document.add(GPA11);
     }
@@ -838,7 +823,7 @@ public class Processing extends javax.swing.JFrame {
         PdfPTable IT126 = new PdfPTable(3);
         float[] IT126_columnWidths = {7f, 1f, 1f};
         IT126.setWidths(IT126_columnWidths);
-        PdfPCell IT126a = new PdfPCell(new Paragraph("IT 126 Computer Management and Maintenance"));
+        PdfPCell IT126a = new PdfPCell(new Paragraph("IT 126 Computer Management & Maintenance"));
         PdfPCell IT126b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB12.getString(20)))));
         PdfPCell IT126c = new PdfPCell(new Paragraph(GPtoGrade(rsDB12.getString(20))));
         Add3cells(document, IT126, IT126a, IT126b, IT126c);
@@ -853,53 +838,53 @@ public class Processing extends javax.swing.JFrame {
     }
     
     public void BIS12(Document document, ResultSet rsDB12, Font bold) throws DocumentException, SQLException{
-        PdfPTable IS121 = new PdfPTable(3);
-        float[] IS121_columnWidths = {7f, 1f, 1f};
-        IS121.setWidths(IS121_columnWidths);
-        PdfPCell IS121a = new PdfPCell(new Paragraph("IS 121 Differential Equations"));
-        PdfPCell IS121b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB12.getString(5)))));
-        PdfPCell IS121c = new PdfPCell(new Paragraph(GPtoGrade(rsDB12.getString(5))));
-        Add3cells(document, IS121, IS121a, IS121b, IS121c);
+        PdfPTable SIS1201 = new PdfPTable(3);
+        float[] SIS1201_columnWidths = {7f, 1f, 1f};
+        SIS1201.setWidths(SIS1201_columnWidths);
+        PdfPCell SIS1201a = new PdfPCell(new Paragraph("SIS1 201 Management Information Systems"));
+        PdfPCell SIS1201b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB12.getString(5)))));
+        PdfPCell SIS1201c = new PdfPCell(new Paragraph(GPtoGrade(rsDB12.getString(5))));
+        Add3cells(document, SIS1201, SIS1201a, SIS1201b, SIS1201c);
 
-        PdfPTable IS122 = new PdfPTable(3);
-        float[] IS122_columnWidths = {7f, 1f, 1f};
-        IS122.setWidths(IS122_columnWidths);
-        PdfPCell IS122a = new PdfPCell(new Paragraph("IS 122 Programming Language Fundamentals"));
-        PdfPCell IS122b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB12.getString(8)))));
-        PdfPCell IS122c = new PdfPCell(new Paragraph(GPtoGrade(rsDB12.getString(8))));
-        Add3cells(document, IS122, IS122a, IS122b, IS122c);
+        PdfPTable SIS1202 = new PdfPTable(3);
+        float[] SIS1202_columnWidths = {7f, 1f, 1f};
+        SIS1202.setWidths(SIS1202_columnWidths);
+        PdfPCell SIS1202a = new PdfPCell(new Paragraph("SIS1 202 Introduction to Programming"));
+        PdfPCell SIS1202b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB12.getString(8)))));
+        PdfPCell SIS1202c = new PdfPCell(new Paragraph(GPtoGrade(rsDB12.getString(8))));
+        Add3cells(document, SIS1202, SIS1202a, SIS1202b, SIS1202c);
 
-        PdfPTable IS123 = new PdfPTable(3);
-        float[] IS123_columnWidths = {7f, 1f, 1f};
-        IS123.setWidths(IS123_columnWidths);
-        PdfPCell IS123a = new PdfPCell(new Paragraph("IS 123 Linear Algebra"));
-        PdfPCell IS123b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB12.getString(11)))));
-        PdfPCell IS123c = new PdfPCell(new Paragraph(GPtoGrade(rsDB12.getString(11))));
-        Add3cells(document, IS123, IS123a, IS123b, IS123c);
+        PdfPTable SIS1203 = new PdfPTable(3);
+        float[] SIS1203_columnWidths = {7f, 1f, 1f};
+        SIS1203.setWidths(SIS1203_columnWidths);
+        PdfPCell SIS1203a = new PdfPCell(new Paragraph("SIS1 203 Business Computing"));
+        PdfPCell SIS1203b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB12.getString(11)))));
+        PdfPCell SIS1203c = new PdfPCell(new Paragraph(GPtoGrade(rsDB12.getString(11))));
+        Add3cells(document, SIS1203, SIS1203a, SIS1203b, SIS1203c);
 
-        PdfPTable IS124 = new PdfPTable(3);
-        float[] IS124_columnWidths = {7f, 1f, 1f};
-        IS124.setWidths(IS124_columnWidths);
-        PdfPCell IS124a = new PdfPCell(new Paragraph("IS 124 Computer Architecture"));
-        PdfPCell IS124b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB12.getString(14)))));
-        PdfPCell IS124c = new PdfPCell(new Paragraph(GPtoGrade(rsDB12.getString(14))));
-        Add3cells(document, IS124, IS124a, IS124b, IS124c);
+        PdfPTable SIS1204 = new PdfPTable(3);
+        float[] SIS1204_columnWidths = {7f, 1f, 1f};
+        SIS1204.setWidths(SIS1204_columnWidths);
+        PdfPCell SIS1204a = new PdfPCell(new Paragraph("SIS1 204 Computer Maintenance & management"));
+        PdfPCell SIS1204b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB12.getString(14)))));
+        PdfPCell SIS1204c = new PdfPCell(new Paragraph(GPtoGrade(rsDB12.getString(14))));
+        Add3cells(document, SIS1204, SIS1204a, SIS1204b, SIS1204c);
 
-        PdfPTable IS125 = new PdfPTable(3);
-        float[] IS125_columnWidths = {7f, 1f, 1f};
-        IS125.setWidths(IS125_columnWidths);
-        PdfPCell IS125a = new PdfPCell(new Paragraph("IS 125 Operating System Concepts"));
-        PdfPCell IS125b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB12.getString(17)))));
-        PdfPCell IS125c = new PdfPCell(new Paragraph(GPtoGrade(rsDB12.getString(17))));
-        Add3cells(document, IS125, IS125a, IS125b, IS125c);
+        PdfPTable SIS1205 = new PdfPTable(3);
+        float[] SIS1205_columnWidths = {7f, 1f, 1f};
+        SIS1205.setWidths(SIS1205_columnWidths);
+        PdfPCell SIS1205a = new PdfPCell(new Paragraph("SIS1 205 Internet Technologies & Webpage Authoring"));
+        PdfPCell SIS1205b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB12.getString(17)))));
+        PdfPCell SIS1205c = new PdfPCell(new Paragraph(GPtoGrade(rsDB12.getString(17))));
+        Add3cells(document, SIS1205, SIS1205a, SIS1205b, SIS1205c);
 
-        PdfPTable IS126 = new PdfPTable(3);
-        float[] IS126_columnWidths = {7f, 1f, 1f};
-        IS126.setWidths(IS126_columnWidths);
-        PdfPCell IS126a = new PdfPCell(new Paragraph("IS 126 Computer Management and Maintenance"));
-        PdfPCell IS126b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB12.getString(20)))));
-        PdfPCell IS126c = new PdfPCell(new Paragraph(GPtoGrade(rsDB12.getString(20))));
-        Add3cells(document, IS126, IS126a, IS126b, IS126c);
+        PdfPTable SIA1206 = new PdfPTable(3);
+        float[] SIA1206_columnWidths = {7f, 1f, 1f};
+        SIA1206.setWidths(SIA1206_columnWidths);
+        PdfPCell SIA1206a = new PdfPCell(new Paragraph("SIA1 206 Industrial Attachment I"));
+        PdfPCell SIA1206b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB12.getString(20)))));
+        PdfPCell SIA1206c = new PdfPCell(new Paragraph(GPtoGrade(rsDB12.getString(20))));
+        Add3cells(document, SIA1206, SIA1206a, SIA1206b, SIA1206c);
 
         PdfPTable GPA12 = new PdfPTable(2);
         GPA12.setWidthPercentage(100);
@@ -914,7 +899,7 @@ public class Processing extends javax.swing.JFrame {
         PdfPTable DCS121 = new PdfPTable(3);
         float[] DCS121_columnWidths = {7f, 1f, 1f};
         DCS121.setWidths(DCS121_columnWidths);
-        PdfPCell DCS121a = new PdfPCell(new Paragraph("DCS 121 Differential Equations"));
+        PdfPCell DCS121a = new PdfPCell(new Paragraph("DCS 121 Management Information Systems"));
         PdfPCell DCS121b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB12.getString(5)))));
         PdfPCell DCS121c = new PdfPCell(new Paragraph(GPtoGrade(rsDB12.getString(5))));
         Add3cells(document, DCS121, DCS121a, DCS121b, DCS121c);
@@ -922,7 +907,7 @@ public class Processing extends javax.swing.JFrame {
         PdfPTable DCS122 = new PdfPTable(3);
         float[] DCS122_columnWidths = {7f, 1f, 1f};
         DCS122.setWidths(DCS122_columnWidths);
-        PdfPCell DCS122a = new PdfPCell(new Paragraph("DCS 122 Programming Language Fundamentals"));
+        PdfPCell DCS122a = new PdfPCell(new Paragraph("DCS 122 Mathematics - Intermediate"));
         PdfPCell DCS122b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB12.getString(8)))));
         PdfPCell DCS122c = new PdfPCell(new Paragraph(GPtoGrade(rsDB12.getString(8))));
         Add3cells(document, DCS122, DCS122a, DCS122b, DCS122c);
@@ -930,7 +915,7 @@ public class Processing extends javax.swing.JFrame {
         PdfPTable DCS123 = new PdfPTable(3);
         float[] DCS123_columnWidths = {7f, 1f, 1f};
         DCS123.setWidths(DCS123_columnWidths);
-        PdfPCell DCS123a = new PdfPCell(new Paragraph("DCS 123 Linear Algebra"));
+        PdfPCell DCS123a = new PdfPCell(new Paragraph("DCS 123 Database Management Systems - Introduction"));
         PdfPCell DCS123b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB12.getString(11)))));
         PdfPCell DCS123c = new PdfPCell(new Paragraph(GPtoGrade(rsDB12.getString(11))));
         Add3cells(document, DCS123, DCS123a, DCS123b, DCS123c);
@@ -938,7 +923,7 @@ public class Processing extends javax.swing.JFrame {
         PdfPTable DCS124 = new PdfPTable(3);
         float[] DCS124_columnWidths = {7f, 1f, 1f};
         DCS124.setWidths(DCS124_columnWidths);
-        PdfPCell DCS124a = new PdfPCell(new Paragraph("DCS 124 Computer Architecture"));
+        PdfPCell DCS124a = new PdfPCell(new Paragraph("DCS 124 Programming & Programming Methodology - Introduction"));
         PdfPCell DCS124b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB12.getString(14)))));
         PdfPCell DCS124c = new PdfPCell(new Paragraph(GPtoGrade(rsDB12.getString(14))));
         Add3cells(document, DCS124, DCS124a, DCS124b, DCS124c);
@@ -946,7 +931,7 @@ public class Processing extends javax.swing.JFrame {
         PdfPTable DCS125 = new PdfPTable(3);
         float[] DCS125_columnWidths = {7f, 1f, 1f};
         DCS125.setWidths(DCS125_columnWidths);
-        PdfPCell DCS125a = new PdfPCell(new Paragraph("DCS 125 Operating System Concepts"));
+        PdfPCell DCS125a = new PdfPCell(new Paragraph("DCS 125 Systems Analysis & Design"));
         PdfPCell DCS125b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB12.getString(17)))));
         PdfPCell DCS125c = new PdfPCell(new Paragraph(GPtoGrade(rsDB12.getString(17))));
         Add3cells(document, DCS125, DCS125a, DCS125b, DCS125c);
@@ -954,7 +939,7 @@ public class Processing extends javax.swing.JFrame {
         PdfPTable DCS126 = new PdfPTable(3);
         float[] DCS126_columnWidths = {7f, 1f, 1f};
         DCS126.setWidths(DCS126_columnWidths);
-        PdfPCell DCS126a = new PdfPCell(new Paragraph("DCS 126 Computer Management and Maintenance"));
+        PdfPCell DCS126a = new PdfPCell(new Paragraph("DCS 126 Industrial Attachment"));
         PdfPCell DCS126b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB12.getString(20)))));
         PdfPCell DCS126c = new PdfPCell(new Paragraph(GPtoGrade(rsDB12.getString(20))));
         Add3cells(document, DCS126, DCS126a, DCS126b, DCS126c);
@@ -966,6 +951,530 @@ public class Processing extends javax.swing.JFrame {
         PdfPCell GPA12b = new PdfPCell(new Paragraph("CGPA : " + rsDB12.getString(30), bold));
         GPA12.addCell(GPA12b);
         document.add(GPA12);
+    }
+    
+    public void BITC21(Document document, ResultSet rsDB21, Font bold) throws DocumentException, SQLException{
+        PdfPTable IT211 = new PdfPTable(3);
+        float[] IT211_columnWidths = {7f, 1f, 1f};
+        IT211.setWidths(IT211_columnWidths);
+        PdfPCell IT211a = new PdfPCell(new Paragraph("IT 211 Information Systems & Design"));
+        PdfPCell IT211b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB21.getString(5)))));
+        PdfPCell IT211c = new PdfPCell(new Paragraph(GPtoGrade(rsDB21.getString(5))));
+        Add3cells(document, IT211, IT211a, IT211b, IT211c);
+
+        PdfPTable IT212 = new PdfPTable(3);
+        float[] IT212_columnWidths = {7f, 1f, 1f};
+        IT212.setWidths(IT212_columnWidths);
+        PdfPCell IT212a = new PdfPCell(new Paragraph("IT 212 Numerical Analysis & Computation"));
+        PdfPCell IT212b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB21.getString(8)))));
+        PdfPCell IT212c = new PdfPCell(new Paragraph(GPtoGrade(rsDB21.getString(8))));
+        Add3cells(document, IT212, IT212a, IT212b, IT212c);
+
+        PdfPTable IT213 = new PdfPTable(3);
+        float[] IT213_columnWidths = {7f, 1f, 1f};
+        IT213.setWidths(IT213_columnWidths);
+        PdfPCell IT213a = new PdfPCell(new Paragraph("IT 213 Data Communication & Networking I"));
+        PdfPCell IT213b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB21.getString(11)))));
+        PdfPCell IT213c = new PdfPCell(new Paragraph(GPtoGrade(rsDB21.getString(11))));
+        Add3cells(document, IT213, IT213a, IT213b, IT213c);
+
+        PdfPTable IT214 = new PdfPTable(3);
+        float[] IT214_columnWidths = {7f, 1f, 1f};
+        IT214.setWidths(IT214_columnWidths);
+        PdfPCell IT214a = new PdfPCell(new Paragraph("IT 214 Programming & Programming Methodology"));
+        PdfPCell IT214b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB21.getString(14)))));
+        PdfPCell IT214c = new PdfPCell(new Paragraph(GPtoGrade(rsDB21.getString(14))));
+        Add3cells(document, IT214, IT214a, IT214b, IT214c);
+
+        PdfPTable IT215 = new PdfPTable(3);
+        float[] IT215_columnWidths = {7f, 1f, 1f};
+        IT215.setWidths(IT215_columnWidths);
+        PdfPCell IT215a = new PdfPCell(new Paragraph("IT 215 Data Structures & Algorithms"));
+        PdfPCell IT215b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB21.getString(17)))));
+        PdfPCell IT215c = new PdfPCell(new Paragraph(GPtoGrade(rsDB21.getString(17))));
+        Add3cells(document, IT215, IT215a, IT215b, IT215c);
+
+        PdfPTable GPA21 = new PdfPTable(1);
+        GPA21.setWidthPercentage(100);
+        PdfPCell GPA21a = new PdfPCell(new Paragraph("GPA : " + rsDB21.getString(21), bold));
+        GPA21.addCell(GPA21a);
+        PdfPCell GPA21b = new PdfPCell(new Paragraph("GPA : " + rsDB21.getString(27), bold));
+        GPA21.addCell(GPA21b);
+        document.add(GPA21);
+    }
+    
+    public void BIS21(Document document, ResultSet rsDB21, Font bold) throws DocumentException, SQLException{
+        PdfPTable SIS2101 = new PdfPTable(3);
+        float[] SIS2101_columnWidths = {7f, 1f, 1f};
+        SIS2101.setWidths(SIS2101_columnWidths);
+        PdfPCell SIS2101a = new PdfPCell(new Paragraph("SIS2 101 E-Commerce"));
+        PdfPCell SIS2101b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB21.getString(5)))));
+        PdfPCell SIS2101c = new PdfPCell(new Paragraph(GPtoGrade(rsDB21.getString(5))));
+        Add3cells(document, SIS2101, SIS2101a, SIS2101b, SIS2101c);
+
+        PdfPTable SIS2102 = new PdfPTable(3);
+        float[] SIS2102_columnWidths = {7f, 1f, 1f};
+        SIS2102.setWidths(SIS2102_columnWidths);
+        PdfPCell SIS2102a = new PdfPCell(new Paragraph("SIS2 102 Information Systems Analysis & Design"));
+        PdfPCell SIS2102b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB21.getString(8)))));
+        PdfPCell SIS2102c = new PdfPCell(new Paragraph(GPtoGrade(rsDB21.getString(8))));
+        Add3cells(document, SIS2102, SIS2102a, SIS2102b, SIS2102c);
+
+        PdfPTable SIS2103 = new PdfPTable(3);
+        float[] SIS2103_columnWidths = {7f, 1f, 1f};
+        SIS2103.setWidths(SIS2103_columnWidths);
+        PdfPCell SIS2103a = new PdfPCell(new Paragraph("SIS2 103 Database Systems Design & Development"));
+        PdfPCell SIS2103b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB21.getString(11)))));
+        PdfPCell SIS2103c = new PdfPCell(new Paragraph(GPtoGrade(rsDB21.getString(11))));
+        Add3cells(document, SIS2103, SIS2103a, SIS2103b, SIS2103c);
+
+        PdfPTable SIS2104 = new PdfPTable(3);
+        float[] SIS2104_columnWidths = {7f, 1f, 1f};
+        SIS2104.setWidths(SIS2104_columnWidths);
+        PdfPCell SIS2104a = new PdfPCell(new Paragraph("SIS2 104 Object-oriented Programming"));
+        PdfPCell SIS2104b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB21.getString(14)))));
+        PdfPCell SIS2104c = new PdfPCell(new Paragraph(GPtoGrade(rsDB21.getString(14))));
+        Add3cells(document, SIS2104, SIS2104a, SIS2104b, SIS2104c);
+
+        PdfPTable SHM2105 = new PdfPTable(3);
+        float[] SHM2105_columnWidths = {7f, 1f, 1f};
+        SHM2105.setWidths(SHM2105_columnWidths);
+        PdfPCell SHM2105a = new PdfPCell(new Paragraph("SHM2 105 Multimedia systems"));
+        PdfPCell SHM2105b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB21.getString(17)))));
+        PdfPCell SHM2105c = new PdfPCell(new Paragraph(GPtoGrade(rsDB21.getString(17))));
+        Add3cells(document, SHM2105, SHM2105a, SHM2105b, SHM2105c);
+
+        PdfPTable GPA21 = new PdfPTable(1);
+        GPA21.setWidthPercentage(100);
+        PdfPCell GPA21a = new PdfPCell(new Paragraph("GPA : " + rsDB21.getString(21), bold));
+        GPA21.addCell(GPA21a);
+        PdfPCell GPA21b = new PdfPCell(new Paragraph("GPA : " + rsDB21.getString(27), bold));
+        GPA21.addCell(GPA21b);
+        document.add(GPA21);
+    }
+    
+    public void DCS21(Document document, ResultSet rsDB21, Font bold) throws DocumentException, SQLException{
+        PdfPTable DCS211 = new PdfPTable(3);
+        float[] DCS211_columnWidths = {7f, 1f, 1f};
+        DCS211.setWidths(DCS211_columnWidths);
+        PdfPCell DCS211a = new PdfPCell(new Paragraph("DCS 211 Introduction to Operating Systems Concepts"));
+        PdfPCell DCS211b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB21.getString(8)))));
+        PdfPCell DCS211c = new PdfPCell(new Paragraph(GPtoGrade(rsDB21.getString(8))));
+        Add3cells(document, DCS211, DCS211a, DCS211b, DCS211c);
+
+        PdfPTable DCS212 = new PdfPTable(3);
+        float[] DCS212_columnWidths = {7f, 1f, 1f};
+        DCS212.setWidths(DCS212_columnWidths);
+        PdfPCell DCS212a = new PdfPCell(new Paragraph("DCS 212 Database Management Systems - Intermediate"));
+        PdfPCell DCS212b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB21.getString(11)))));
+        PdfPCell DCS212c = new PdfPCell(new Paragraph(GPtoGrade(rsDB21.getString(11))));
+        Add3cells(document, DCS212, DCS212a, DCS212b, DCS212c);
+
+        PdfPTable DCS213 = new PdfPTable(3);
+        float[] DCS213_columnWidths = {7f, 1f, 1f};
+        DCS213.setWidths(DCS213_columnWidths);
+        PdfPCell DCS213a = new PdfPCell(new Paragraph("DCS 213 Programming & Programming Methodology - Intermediate"));
+        PdfPCell DCS213b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB21.getString(14)))));
+        PdfPCell DCS213c = new PdfPCell(new Paragraph(GPtoGrade(rsDB21.getString(14))));
+        Add3cells(document, DCS213, DCS213a, DCS213b, DCS213c);
+
+        PdfPTable DCS214 = new PdfPTable(3);
+        float[] DCS214_columnWidths = {7f, 1f, 1f};
+        DCS214.setWidths(DCS214_columnWidths);
+        PdfPCell DCS214a = new PdfPCell(new Paragraph("DCS 214 Operating Systems Implementation (UNIX/NT)"));
+        PdfPCell DCS214b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB21.getString(17)))));
+        PdfPCell DCS214c = new PdfPCell(new Paragraph(GPtoGrade(rsDB21.getString(17))));
+        Add3cells(document, DCS214, DCS214a, DCS214b, DCS214c);
+        
+        PdfPTable DCS215 = new PdfPTable(3);
+        float[] DCS215_columnWidths = {7f, 1f, 1f};
+        DCS215.setWidths(DCS215_columnWidths);
+        PdfPCell DCS215a = new PdfPCell(new Paragraph("DCS 215 Research Methodology"));
+        PdfPCell DCS215b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB21.getString(17)))));
+        PdfPCell DCS215c = new PdfPCell(new Paragraph(GPtoGrade(rsDB21.getString(20))));
+        Add3cells(document, DCS215, DCS215a, DCS215b, DCS215c);
+
+        PdfPTable HM211 = new PdfPTable(3);
+        float[] HM211_columnWidths = {7f, 1f, 1f};
+        HM211.setWidths(HM211_columnWidths);
+        PdfPCell HM211a = new PdfPCell(new Paragraph("HM 211 Entrepreneurship Skills"));
+        PdfPCell HM211b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB21.getString(5)))));
+        PdfPCell HM211c = new PdfPCell(new Paragraph(GPtoGrade(rsDB21.getString(5))));
+        Add3cells(document, HM211, HM211a, HM211b, HM211c);
+
+        PdfPTable GPA21 = new PdfPTable(1);
+        GPA21.setWidthPercentage(100);
+        PdfPCell GPA21a = new PdfPCell(new Paragraph("GPA : " + rsDB21.getString(24), bold));
+        GPA21.addCell(GPA21a);
+        PdfPCell GPA21b = new PdfPCell(new Paragraph("GPA : " + rsDB21.getString(30), bold));
+        GPA21.addCell(GPA21b);
+        document.add(GPA21);
+    }
+        
+    public void BITC22(Document document, ResultSet rsDB22, Font bold) throws DocumentException, SQLException{
+        PdfPTable IT221 = new PdfPTable(3);
+        float[] IT221_columnWidths = {7f, 1f, 1f};
+        IT221.setWidths(IT221_columnWidths);
+        PdfPCell IT221a = new PdfPCell(new Paragraph("IT 221 Operating System Implementation"));
+        PdfPCell IT221b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB22.getString(5)))));
+        PdfPCell IT221c = new PdfPCell(new Paragraph(GPtoGrade(rsDB22.getString(5))));
+        Add3cells(document, IT221, IT221a, IT221b, IT221c);
+
+        PdfPTable IT222 = new PdfPTable(3);
+        float[] IT222_columnWidths = {7f, 1f, 1f};
+        IT222.setWidths(IT222_columnWidths);
+        PdfPCell IT222a = new PdfPCell(new Paragraph("IT 222 Programming & Programming Methodology II"));
+        PdfPCell IT222b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB22.getString(8)))));
+        PdfPCell IT222c = new PdfPCell(new Paragraph(GPtoGrade(rsDB22.getString(8))));
+        Add3cells(document, IT222, IT222a, IT222b, IT222c);
+
+        PdfPTable IT223 = new PdfPTable(3);
+        float[] IT223_columnWidths = {7f, 1f, 1f};
+        IT223.setWidths(IT223_columnWidths);
+        PdfPCell IT223a = new PdfPCell(new Paragraph("IT 223 Database Management Systems"));
+        PdfPCell IT223b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB22.getString(11)))));
+        PdfPCell IT223c = new PdfPCell(new Paragraph(GPtoGrade(rsDB22.getString(11))));
+        Add3cells(document, IT223, IT223a, IT223b, IT223c);
+
+        PdfPTable IT224 = new PdfPTable(3);
+        float[] IT224_columnWidths = {7f, 1f, 1f};
+        IT224.setWidths(IT224_columnWidths);
+        PdfPCell IT224a = new PdfPCell(new Paragraph("IT 224 Software Engineering"));
+        PdfPCell IT224b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB22.getString(14)))));
+        PdfPCell IT224c = new PdfPCell(new Paragraph(GPtoGrade(rsDB22.getString(14))));
+        Add3cells(document, IT224, IT224a, IT224b, IT224c);
+
+        PdfPTable IT225 = new PdfPTable(3);
+        float[] IT225_columnWidths = {7f, 1f, 1f};
+        IT225.setWidths(IT225_columnWidths);
+        PdfPCell IT225a = new PdfPCell(new Paragraph("IT 225 Internet Technologies"));
+        PdfPCell IT225b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB22.getString(17)))));
+        PdfPCell IT225c = new PdfPCell(new Paragraph(GPtoGrade(rsDB22.getString(17))));
+        Add3cells(document, IT225, IT225a, IT225b, IT225c);
+
+        PdfPTable GPA22 = new PdfPTable(2);
+        GPA22.setWidthPercentage(100);
+        PdfPCell GPA22a = new PdfPCell(new Paragraph("GPA : " + rsDB22.getString(21), bold));
+        GPA22.addCell(GPA22a);
+        PdfPCell GPA22b = new PdfPCell(new Paragraph("CGPA : " + rsDB22.getString(27), bold));
+        GPA22.addCell(GPA22b);
+        document.add(GPA22);
+    }
+    
+    public void BIS22(Document document, ResultSet rsDB22, Font bold) throws DocumentException, SQLException{
+        PdfPTable SIS2201 = new PdfPTable(3);
+        float[] SIS2201_columnWidths = {7f, 1f, 1f};
+        SIS2201.setWidths(SIS2201_columnWidths);
+        PdfPCell SIS2201a = new PdfPCell(new Paragraph("SIS2 201 Computer Networks & Data communications"));
+        PdfPCell SIS2201b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB22.getString(5)))));
+        PdfPCell SIS2201c = new PdfPCell(new Paragraph(GPtoGrade(rsDB22.getString(5))));
+        Add3cells(document, SIS2201, SIS2201a, SIS2201b, SIS2201c);
+
+        PdfPTable SIS2202 = new PdfPTable(3);
+        float[] SIS2202_columnWidths = {7f, 1f, 1f};
+        SIS2202.setWidths(SIS2202_columnWidths);
+        PdfPCell SIS2202a = new PdfPCell(new Paragraph("SIS2 202 Website Design, Programming & Administration"));
+        PdfPCell SIS2202b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB22.getString(8)))));
+        PdfPCell SIS2202c = new PdfPCell(new Paragraph(GPtoGrade(rsDB22.getString(8))));
+        Add3cells(document, SIS2202, SIS2202a, SIS2202b, SIS2202c);
+
+        PdfPTable SIS2203 = new PdfPTable(3);
+        float[] SIS2203_columnWidths = {7f, 1f, 1f};
+        SIS2203.setWidths(SIS2203_columnWidths);
+        PdfPCell SIS2203a = new PdfPCell(new Paragraph("SIS2 203 Database Systems Implementation"));
+        PdfPCell SIS2203b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB22.getString(11)))));
+        PdfPCell SIS2203c = new PdfPCell(new Paragraph(GPtoGrade(rsDB22.getString(11))));
+        Add3cells(document, SIS2203, SIS2203a, SIS2203b, SIS2203c);
+
+        PdfPTable SIS2204 = new PdfPTable(3);
+        float[] SIS2204_columnWidths = {7f, 1f, 1f};
+        SIS2204.setWidths(SIS2204_columnWidths);
+        PdfPCell SIS2204a = new PdfPCell(new Paragraph("SIS2 204 Research Methods"));
+        PdfPCell SIS2204b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB22.getString(14)))));
+        PdfPCell SIS2204c = new PdfPCell(new Paragraph(GPtoGrade(rsDB22.getString(14))));
+        Add3cells(document, SIS2204, SIS2204a, SIS2204b, SIS2204c);
+
+        PdfPTable SIS2205 = new PdfPTable(3);
+        float[] SIS2205_columnWidths = {7f, 1f, 1f};
+        SIS2205.setWidths(SIS2205_columnWidths);
+        PdfPCell SIS2205a = new PdfPCell(new Paragraph("SIS2 205 Business Process Analysis and Modeling"));
+        PdfPCell SIS2205b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB22.getString(17)))));
+        PdfPCell SIS2205c = new PdfPCell(new Paragraph(GPtoGrade(rsDB22.getString(17))));
+        Add3cells(document, SIS2205, SIS2205a, SIS2205b, SIS2205c);
+
+        PdfPTable SIS2206 = new PdfPTable(3);
+        float[] SIS2206_columnWidths = {7f, 1f, 1f};
+        SIS2206.setWidths(SIS2206_columnWidths);
+        PdfPCell SIS2206a = new PdfPCell(new Paragraph("SIA2 206 Industrial Attachment II"));
+        PdfPCell SIS2206b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB22.getString(20)))));
+        PdfPCell SIS2206c = new PdfPCell(new Paragraph(GPtoGrade(rsDB22.getString(20))));
+        Add3cells(document, SIS2206, SIS2206a, SIS2206b, SIS2206c);
+
+        PdfPTable GPA22 = new PdfPTable(2);
+        GPA22.setWidthPercentage(100);
+        PdfPCell GPA22a = new PdfPCell(new Paragraph("GPA : " + rsDB22.getString(24), bold));
+        GPA22.addCell(GPA22a);
+        PdfPCell GPA22b = new PdfPCell(new Paragraph("CGPA : " + rsDB22.getString(30), bold));
+        GPA22.addCell(GPA22b);
+        document.add(GPA22);
+    }
+    
+    public void DCS22(Document document, ResultSet rsDB22, Font bold) throws DocumentException, SQLException{
+        PdfPTable DCS221 = new PdfPTable(3);
+        float[] DCS221_columnWidths = {7f, 1f, 1f};
+        DCS221.setWidths(DCS221_columnWidths);
+        PdfPCell DCS221a = new PdfPCell(new Paragraph("DCS 221 Computer Management & Maintenance"));
+        PdfPCell DCS221b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB22.getString(5)))));
+        PdfPCell DCS221c = new PdfPCell(new Paragraph(GPtoGrade(rsDB22.getString(5))));
+        Add3cells(document, DCS221, DCS221a, DCS221b, DCS221c);
+
+        PdfPTable DCS222 = new PdfPTable(3);
+        float[] DCS222_columnWidths = {7f, 1f, 1f};
+        DCS222.setWidths(DCS222_columnWidths);
+        PdfPCell DCS222a = new PdfPCell(new Paragraph("DCS 222 Data Communications & Networking"));
+        PdfPCell DCS222b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB22.getString(8)))));
+        PdfPCell DCS222c = new PdfPCell(new Paragraph(GPtoGrade(rsDB22.getString(8))));
+        Add3cells(document, DCS222, DCS222a, DCS222b, DCS222c);
+
+        PdfPTable DCS223 = new PdfPTable(3);
+        float[] DCS223_columnWidths = {7f, 1f, 1f};
+        DCS223.setWidths(DCS223_columnWidths);
+        PdfPCell DCS223a = new PdfPCell(new Paragraph("DCS 223 Visual Basic Programming"));
+        PdfPCell DCS223b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB22.getString(11)))));
+        PdfPCell DCS223c = new PdfPCell(new Paragraph(GPtoGrade(rsDB22.getString(11))));
+        Add3cells(document, DCS223, DCS223a, DCS223b, DCS223c);
+
+        PdfPTable DCS224 = new PdfPTable(3);
+        float[] DCS224_columnWidths = {7f, 1f, 1f};
+        DCS224.setWidths(DCS224_columnWidths);
+        PdfPCell DCS224a = new PdfPCell(new Paragraph("DCS 224 Web Development Technology"));
+        PdfPCell DCS224b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB22.getString(14)))));
+        PdfPCell DCS224c = new PdfPCell(new Paragraph(GPtoGrade(rsDB22.getString(14))));
+        Add3cells(document, DCS224, DCS224a, DCS224b, DCS224c);
+
+        PdfPTable DCS225 = new PdfPTable(3);
+        float[] DCS225_columnWidths = {7f, 1f, 1f};
+        DCS225.setWidths(DCS225_columnWidths);
+        PdfPCell DCS225a = new PdfPCell(new Paragraph("DCS 225 Project"));
+        PdfPCell DCS225b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB22.getString(17)))));
+        PdfPCell DCS225c = new PdfPCell(new Paragraph(GPtoGrade(rsDB22.getString(17))));
+        Add3cells(document, DCS225, DCS225a, DCS225b, DCS225c);
+
+        PdfPTable DCS226 = new PdfPTable(3);
+        float[] DCS226_columnWidths = {7f, 1f, 1f};
+        DCS226.setWidths(DCS226_columnWidths);
+        PdfPCell DCS226a = new PdfPCell(new Paragraph("DCS 226 Industrial Attachment"));
+        PdfPCell DCS226b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB22.getString(20)))));
+        PdfPCell DCS226c = new PdfPCell(new Paragraph(GPtoGrade(rsDB22.getString(20))));
+        Add3cells(document, DCS226, DCS226a, DCS226b, DCS226c);
+
+        PdfPTable GPA22 = new PdfPTable(2);
+        GPA22.setWidthPercentage(100);
+        PdfPCell GPA22a = new PdfPCell(new Paragraph("GPA : " + rsDB22.getString(24), bold));
+        GPA22.addCell(GPA22a);
+        PdfPCell GPA22b = new PdfPCell(new Paragraph("CGPA : " + rsDB22.getString(30), bold));
+        GPA22.addCell(GPA22b);
+        document.add(GPA22);
+    }
+    
+    public void BITC31(Document document, ResultSet rsDB31, Font bold) throws DocumentException, SQLException{
+        PdfPTable IT311 = new PdfPTable(3);
+        float[] IT311_columnWidths = {7f, 1f, 1f};
+        IT311.setWidths(IT311_columnWidths);
+        PdfPCell IT311a = new PdfPCell(new Paragraph("IT 311 Introduction to Graph Theory"));
+        PdfPCell IT311b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB31.getString(5)))));
+        PdfPCell IT311c = new PdfPCell(new Paragraph(GPtoGrade(rsDB31.getString(5))));
+        Add3cells(document, IT311, IT311a, IT311b, IT311c);
+
+        PdfPTable IT312 = new PdfPTable(3);
+        float[] IT312_columnWidths = {7f, 1f, 1f};
+        IT312.setWidths(IT312_columnWidths);
+        PdfPCell IT312a = new PdfPCell(new Paragraph("IT 312 Network Management & Security"));
+        PdfPCell IT312b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB31.getString(8)))));
+        PdfPCell IT312c = new PdfPCell(new Paragraph(GPtoGrade(rsDB31.getString(8))));
+        Add3cells(document, IT312, IT312a, IT312b, IT312c);
+
+        PdfPTable IT313 = new PdfPTable(3);
+        float[] IT313_columnWidths = {7f, 1f, 1f};
+        IT313.setWidths(IT313_columnWidths);
+        PdfPCell IT313a = new PdfPCell(new Paragraph("IT 313 Computer Graphics"));
+        PdfPCell IT313b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB31.getString(11)))));
+        PdfPCell IT313c = new PdfPCell(new Paragraph(GPtoGrade(rsDB31.getString(11))));
+        Add3cells(document, IT313, IT313a, IT313b, IT313c);
+
+        PdfPTable IT314 = new PdfPTable(3);
+        float[] IT314_columnWidths = {7f, 1f, 1f};
+        IT314.setWidths(IT314_columnWidths);
+        PdfPCell IT314a = new PdfPCell(new Paragraph("IT 314 Distributed Computer Systems"));
+        PdfPCell IT314b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB31.getString(14)))));
+        PdfPCell IT314c = new PdfPCell(new Paragraph(GPtoGrade(rsDB31.getString(14))));
+        Add3cells(document, IT314, IT314a, IT314b, IT314c);
+
+        PdfPTable IT315 = new PdfPTable(3);
+        float[] IT315_columnWidths = {7f, 1f, 1f};
+        IT315.setWidths(IT315_columnWidths);
+        PdfPCell IT315a = new PdfPCell(new Paragraph("IT 315 Data Communications & Networking II"));
+        PdfPCell IT315b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB31.getString(17)))));
+        PdfPCell IT315c = new PdfPCell(new Paragraph(GPtoGrade(rsDB31.getString(17))));
+        Add3cells(document, IT315, IT315a, IT315b, IT315c);
+
+        PdfPTable GPA31 = new PdfPTable(1);
+        GPA31.setWidthPercentage(100);
+        PdfPCell GPA31a = new PdfPCell(new Paragraph("GPA : " + rsDB31.getString(21), bold));
+        GPA31.addCell(GPA31a);
+        PdfPCell GPA31b = new PdfPCell(new Paragraph("GPA : " + rsDB31.getString(27), bold));
+        GPA31.addCell(GPA31b);
+        document.add(GPA31);
+    }
+    
+    public void BIS31(Document document, ResultSet rsDB31, Font bold) throws DocumentException, SQLException{
+        PdfPTable SIS3101 = new PdfPTable(3);
+        float[] SIS3101_columnWidths = {7f, 1f, 1f};
+        SIS3101.setWidths(SIS3101_columnWidths);
+        PdfPCell SIS3101a = new PdfPCell(new Paragraph("SIS3 101 Systems Administration"));
+        PdfPCell SIS3101b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB31.getString(8)))));
+        PdfPCell SIS3101c = new PdfPCell(new Paragraph(GPtoGrade(rsDB31.getString(8))));
+        Add3cells(document, SIS3101, SIS3101a, SIS3101b, SIS3101c);
+
+        PdfPTable SIS3102 = new PdfPTable(3);
+        float[] SIS3102_columnWidths = {7f, 1f, 1f};
+        SIS3102.setWidths(SIS3102_columnWidths);
+        PdfPCell SIS3102a = new PdfPCell(new Paragraph("SIS3 102 Information Systems Project Management"));
+        PdfPCell SIS3102b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB31.getString(11)))));
+        PdfPCell SIS3102c = new PdfPCell(new Paragraph(GPtoGrade(rsDB31.getString(11))));
+        Add3cells(document, SIS3102, SIS3102a, SIS3102b, SIS3102c);
+
+        PdfPTable SIS3103 = new PdfPTable(3);
+        float[] SIS3103_columnWidths = {7f, 1f, 1f};
+        SIS3103.setWidths(SIS3103_columnWidths);
+        PdfPCell SIS3103a = new PdfPCell(new Paragraph("SIS3 103 Information Systems Security"));
+        PdfPCell SIS3103b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB31.getString(14)))));
+        PdfPCell SIS3103c = new PdfPCell(new Paragraph(GPtoGrade(rsDB31.getString(14))));
+        Add3cells(document, SIS3103, SIS3103a, SIS3103b, SIS3103c);
+
+        PdfPTable SIS3104 = new PdfPTable(3);
+        float[] SIS3104_columnWidths = {7f, 1f, 1f};
+        SIS3104.setWidths(SIS3104_columnWidths);
+        PdfPCell SIS3104a = new PdfPCell(new Paragraph("SIS3 104 Software Engineering Principals"));
+        PdfPCell SIS3104b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB31.getString(17)))));
+        PdfPCell SIS3104c = new PdfPCell(new Paragraph(GPtoGrade(rsDB31.getString(17))));
+        Add3cells(document, SIS3104, SIS3104a, SIS3104b, SIS3104c);
+
+        PdfPTable SHM3101 = new PdfPTable(3);
+        float[] SHM3101_columnWidths = {7f, 1f, 1f};
+        SHM3101.setWidths(SHM3101_columnWidths);
+        PdfPCell SHM3101a = new PdfPCell(new Paragraph("SHM3 101 Entrepreneurship Skills"));
+        PdfPCell SHM3101b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB31.getString(5)))));
+        PdfPCell SHM3101c = new PdfPCell(new Paragraph(GPtoGrade(rsDB31.getString(5))));
+        Add3cells(document, SHM3101, SHM3101a, SHM3101b, SHM3101c);
+
+        PdfPTable GPA31 = new PdfPTable(1);
+        GPA31.setWidthPercentage(100);
+        PdfPCell GPA31a = new PdfPCell(new Paragraph("GPA : " + rsDB31.getString(21), bold));
+        GPA31.addCell(GPA31a);
+        PdfPCell GPA31b = new PdfPCell(new Paragraph("GPA : " + rsDB31.getString(27), bold));
+        GPA31.addCell(GPA31b);
+        document.add(GPA31);
+    }
+    
+    public void BITC32(Document document, ResultSet rsDB32, Font bold) throws DocumentException, SQLException{
+        PdfPTable IT321 = new PdfPTable(3);
+        float[] IT321_columnWidths = {7f, 1f, 1f};
+        IT321.setWidths(IT321_columnWidths);
+        PdfPCell IT321a = new PdfPCell(new Paragraph("IT 321 Oracle Database Management System"));
+        PdfPCell IT321b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB32.getString(5)))));
+        PdfPCell IT321c = new PdfPCell(new Paragraph(GPtoGrade(rsDB32.getString(5))));
+        Add3cells(document, IT321, IT321a, IT321b, IT321c);
+
+        PdfPTable IT322 = new PdfPTable(3);
+        float[] IT322_columnWidths = {7f, 1f, 1f};
+        IT322.setWidths(IT322_columnWidths);
+        PdfPCell IT322a = new PdfPCell(new Paragraph("IT 322 Microprocessor Based Design"));
+        PdfPCell IT322b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB32.getString(8)))));
+        PdfPCell IT322c = new PdfPCell(new Paragraph(GPtoGrade(rsDB32.getString(8))));
+        Add3cells(document, IT322, IT322a, IT322b, IT322c);
+
+        PdfPTable IT323 = new PdfPTable(3);
+        float[] IT323_columnWidths = {7f, 1f, 1f};
+        IT323.setWidths(IT323_columnWidths);
+        PdfPCell IT323a = new PdfPCell(new Paragraph("IT 323 Analysis & Design of Algorithms"));
+        PdfPCell IT323b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB32.getString(11)))));
+        PdfPCell IT323c = new PdfPCell(new Paragraph(GPtoGrade(rsDB32.getString(11))));
+        Add3cells(document, IT323, IT323a, IT323b, IT323c);
+
+        PdfPTable IT324 = new PdfPTable(3);
+        float[] IT324_columnWidths = {7f, 1f, 1f};
+        IT324.setWidths(IT324_columnWidths);
+        PdfPCell IT324a = new PdfPCell(new Paragraph("IT 324 Geographic Information Systems & Processing"));
+        PdfPCell IT324b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB32.getString(14)))));
+        PdfPCell IT324c = new PdfPCell(new Paragraph(GPtoGrade(rsDB32.getString(14))));
+        Add3cells(document, IT324, IT324a, IT324b, IT324c);
+
+        PdfPTable IT325 = new PdfPTable(3);
+        float[] IT325_columnWidths = {7f, 1f, 1f};
+        IT325.setWidths(IT325_columnWidths);
+        PdfPCell IT325a = new PdfPCell(new Paragraph("IT 325 Research Project Work"));
+        PdfPCell IT325b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB32.getString(17)))));
+        PdfPCell IT325c = new PdfPCell(new Paragraph(GPtoGrade(rsDB32.getString(17))));
+        Add3cells(document, IT325, IT325a, IT325b, IT325c);
+
+        PdfPTable GPA32 = new PdfPTable(2);
+        GPA32.setWidthPercentage(100);
+        PdfPCell GPA32a = new PdfPCell(new Paragraph("GPA : " + rsDB32.getString(21), bold));
+        GPA32.addCell(GPA32a);
+        PdfPCell GPA32b = new PdfPCell(new Paragraph("CGPA : " + rsDB32.getString(27), bold));
+        GPA32.addCell(GPA32b);
+        document.add(GPA32);
+    }
+    
+    public void BIS32(Document document, ResultSet rsDB32, Font bold) throws DocumentException, SQLException{
+        PdfPTable SIS3201 = new PdfPTable(3);
+        float[] SIS3201_columnWidths = {7f, 1f, 1f};
+        SIS3201.setWidths(SIS3201_columnWidths);
+        PdfPCell SIS3201a = new PdfPCell(new Paragraph("SIS3 201 Decision Support Systems"));
+        PdfPCell SIS3201b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB32.getString(5)))));
+        PdfPCell SIS3201c = new PdfPCell(new Paragraph(GPtoGrade(rsDB32.getString(5))));
+        Add3cells(document, SIS3201, SIS3201a, SIS3201b, SIS3201c);
+
+        PdfPTable SIS3202 = new PdfPTable(3);
+        float[] SIS3202_columnWidths = {7f, 1f, 1f};
+        SIS3202.setWidths(SIS3202_columnWidths);
+        PdfPCell SIS3202a = new PdfPCell(new Paragraph("SIS3 202 Social Issues in Computing"));
+        PdfPCell SIS3202b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB32.getString(8)))));
+        PdfPCell SIS3202c = new PdfPCell(new Paragraph(GPtoGrade(rsDB32.getString(8))));
+        Add3cells(document, SIS3202, SIS3202a, SIS3202b, SIS3202c);
+
+        PdfPTable SIS3203 = new PdfPTable(3);
+        float[] SIS3203_columnWidths = {7f, 1f, 1f};
+        SIS3203.setWidths(SIS3203_columnWidths);
+        PdfPCell SIS3203a = new PdfPCell(new Paragraph("SIS3 203 Organizational Behaviour"));
+        PdfPCell SIS3203b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB32.getString(11)))));
+        PdfPCell SIS3203c = new PdfPCell(new Paragraph(GPtoGrade(rsDB32.getString(11))));
+        Add3cells(document, SIS3203, SIS3203a, SIS3203b, SIS3203c);
+
+        PdfPTable SIS3204 = new PdfPTable(3);
+        float[] SIS3204_columnWidths = {7f, 1f, 1f};
+        SIS3204.setWidths(SIS3204_columnWidths);
+        PdfPCell SIS3204a = new PdfPCell(new Paragraph("SIS3 204 Business Intelligence & Data Warehousing"));
+        PdfPCell SIS3204b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB32.getString(14)))));
+        PdfPCell SIS3204c = new PdfPCell(new Paragraph(GPtoGrade(rsDB32.getString(14))));
+        Add3cells(document, SIS3204, SIS3204a, SIS3204b, SIS3204c);
+
+        PdfPTable SIS3205 = new PdfPTable(3);
+        float[] SIS3205_columnWidths = {7f, 1f, 1f};
+        SIS3205.setWidths(SIS3205_columnWidths);
+        PdfPCell SIS3205a = new PdfPCell(new Paragraph("SIS3 205 BIS Project"));
+        PdfPCell SIS3205b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB32.getString(17)))));
+        PdfPCell SIS3205c = new PdfPCell(new Paragraph(GPtoGrade(rsDB32.getString(17))));
+        Add3cells(document, SIS3205, SIS3205a, SIS3205b, SIS3205c);
+
+        PdfPTable GPA32 = new PdfPTable(2);
+        GPA32.setWidthPercentage(100);
+        PdfPCell GPA32a = new PdfPCell(new Paragraph("GPA : " + rsDB32.getString(21), bold));
+        GPA32.addCell(GPA32a);
+        PdfPCell GPA32b = new PdfPCell(new Paragraph("CGPA : " + rsDB32.getString(27), bold));
+        GPA32.addCell(GPA32b);
+        document.add(GPA32);
     }
     
     public String GPtoGrade(String x){
