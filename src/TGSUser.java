@@ -155,7 +155,7 @@ public class TGSUser extends javax.swing.JFrame {
 
     private void btnChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeActionPerformed
         dispose();
-        SUChangePassword CP = new SUChangePassword();
+        TUChangePassword CP = new TUChangePassword();
         CP.setVisible(true);
     }//GEN-LAST:event_btnChangeActionPerformed
 

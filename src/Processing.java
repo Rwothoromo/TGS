@@ -20,7 +20,6 @@ import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import java.sql.DatabaseMetaData;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.HashSet;
@@ -345,7 +344,7 @@ public class Processing extends javax.swing.JFrame {
                 PreparedStatement pscmt21 = x.prepareStatement(sqlcmt21);
                 ResultSet cmt21 = pscmt21.executeQuery();
                 cmt21.next();
-                Phrase Remark = new Phrase();
+                    Phrase Remark = new Phrase();
                 Remark.add(new Chunk("\nHe/She is on "));
                 Remark.add(new Chunk((Comment(cmt21.getString("REMARKS"))), bold));
                 Remark.add(new Chunk("These are the provisional Results."));
@@ -396,7 +395,6 @@ public class Processing extends javax.swing.JFrame {
                 Phrase Remark = new Phrase();
                 Remark.add(new Chunk("\nHe/She is on "));
                 Remark.add(new Chunk((Comment(cmt32.getString("REMARKS"))), bold));
-                Remark.add(new Chunk("These are the provisional Results."));
                 document.add(new Paragraph(Remark));
             }
             
@@ -419,8 +417,8 @@ public class Processing extends javax.swing.JFrame {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         dispose();
-        SuperUser SU = new SuperUser();
-        SU.setVisible(true);
+        Login L = new Login();
+        L.setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
     
     public void do11(String CourseCode, String Database, String RegNo, Document document, ResultSet rsDB, Font bold) throws SQLException, DocumentException{
@@ -506,13 +504,13 @@ public class Processing extends javax.swing.JFrame {
         document.add(f);
 
         if ("BITC".equals(CourseCode)){
-            //BITC21(document, rsDB21, bold);
+            BITC21(document, rsDB21, bold);
         }
         else if ("BIS".equals(CourseCode)){
-            //BIS21(document, rsDB21, bold);
+            BIS21(document, rsDB21, bold);
         }
         else if ("DCS".equals(CourseCode)){
-            //DCS21(document, rsDB21, bold);
+            DCS21(document, rsDB21, bold);
         }
         else {
             JOptionPane.showMessageDialog(null, "Invalid Details!");
@@ -540,13 +538,13 @@ public class Processing extends javax.swing.JFrame {
         document.add(d);
 
         if ("BITC".equals(CourseCode)){
-            //BITC22(document, rsDB22, bold);
+            BITC22(document, rsDB22, bold);
         }
         else if ("BIS".equals(CourseCode)){
-            //BIS22(document, rsDB22, bold);
+            BIS22(document, rsDB22, bold);
         }
         else if ("DCS".equals(CourseCode)){
-            //DCS22(document, rsDB22, bold);
+            DCS22(document, rsDB22, bold);
         }
         else {
             JOptionPane.showMessageDialog(null, "Invalid Details!");
@@ -574,13 +572,10 @@ public class Processing extends javax.swing.JFrame {
         document.add(f);
 
         if ("BITC".equals(CourseCode)){
-            //BITC31(document, rsDB31, bold);
+            BITC31(document, rsDB31, bold);
         }
         else if ("BIS".equals(CourseCode)){
-            //BIS31(document, rsDB31, bold);
-        }
-        else if ("DCS".equals(CourseCode)){
-            //DCS31(document, rsDB31, bold);
+            BIS31(document, rsDB31, bold);
         }
         else {
             JOptionPane.showMessageDialog(null, "Invalid Details!");
@@ -608,13 +603,10 @@ public class Processing extends javax.swing.JFrame {
         document.add(d);
 
         if ("BITC".equals(CourseCode)){
-            //BITC32(document, rsDB32, bold);
+            BITC32(document, rsDB32, bold);
         }
         else if ("BIS".equals(CourseCode)){
-            //BIS32(document, rsDB32, bold);
-        }
-        else if ("DCS".equals(CourseCode)){
-            //DCS32(document, rsDB32, bold);
+            BIS32(document, rsDB32, bold);
         }
         else {
             JOptionPane.showMessageDialog(null, "Invalid Details!");
@@ -1252,13 +1244,13 @@ public class Processing extends javax.swing.JFrame {
         PdfPCell DCS224c = new PdfPCell(new Paragraph(GPtoGrade(rsDB22.getString(14))));
         Add3cells(document, DCS224, DCS224a, DCS224b, DCS224c);
 
-        PdfPTable DCS225 = new PdfPTable(3);
-        float[] DCS225_columnWidths = {7f, 1f, 1f};
-        DCS225.setWidths(DCS225_columnWidths);
-        PdfPCell DCS225a = new PdfPCell(new Paragraph("DCS 225 Project"));
-        PdfPCell DCS225b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB22.getString(17)))));
-        PdfPCell DCS225c = new PdfPCell(new Paragraph(GPtoGrade(rsDB22.getString(17))));
-        Add3cells(document, DCS225, DCS225a, DCS225b, DCS225c);
+        PdfPTable DCS228 = new PdfPTable(3);
+        float[] DCS228_columnWidths = {7f, 1f, 1f};
+        DCS228.setWidths(DCS228_columnWidths);
+        PdfPCell DCS228a = new PdfPCell(new Paragraph("DCS 228 Project"));
+        PdfPCell DCS228b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB22.getString(17)))));
+        PdfPCell DCS228c = new PdfPCell(new Paragraph(GPtoGrade(rsDB22.getString(17))));
+        Add3cells(document, DCS228, DCS228a, DCS228b, DCS228c);
 
         PdfPTable DCS226 = new PdfPTable(3);
         float[] DCS226_columnWidths = {7f, 1f, 1f};
@@ -1494,28 +1486,21 @@ public class Processing extends javax.swing.JFrame {
     }
     
     public String Comment(String x){
-        //Create String Array
-        String[]Remarks = {"NP", "NP(DL)", "NP (DL)", "VCL"};
-        //Instantiate an implementation object
-        Set<String>set=new HashSet<String>();
-        //Add the elements of the array to the collection
-        for (int i = 0; i < Remarks.length; i++){
-            set.add(Remarks[i]);
-            //Invoke the add method of the collection.
+        if ("NP(VCL)".equals(x) || "NP (VCL)".equals(x) || x.contains("VCL")){
+            return "Vice Chancellor's List. ";
         }
-        
-        for (Object o : set){
-            if (o == "NP"){
-                x = "Normal Progress. ";
-            }
-            else if (o == "NP(DL)" || o == "NP (DL)"){
-                x = "Normal Progress (Dean's List). ";
-            }
-            else if (o == "VCL"){
-                x = "Vice Chancellor's List. ";
-            }
+        else if ("NP(DL)".equals(x) || "NP (DL)".equals(x) || (x.contains("NP") && x.contains("DL"))){
+            return "Normal Progress (Dean's List). ";
         }
-        return x;
+        else if ("NP".equals(x) || x.contains("NP")){
+            return "Normal Progress. ";
+        }
+        else if ("PP".equals(x) || x.contains("PP") == true){
+            return "Probationary Progress. ";
+        }
+        else {
+            return x;
+        }
     }
     
     public void Add3cells(Document x, PdfPTable row, PdfPCell cellA, PdfPCell cellB, PdfPCell cellC) throws DocumentException{
