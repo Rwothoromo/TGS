@@ -1,23 +1,41 @@
 
-The TGS will run if the server is running MySQL.
+The TGS will run if the server is running MySQL and Apache.
 You may use WAMP, XAMPP, MAMP, LAMP or any other server.
+You may also configure Apache and MySQL to run as services on start up
+i.e. via services.msc for Windows OS.
 
-Copy the TGS datafiles and TGS results folders into your local disk/drive D:
-You may replace the kyulogoEdit.jpg with a preferred Kyambogo University Logo.
-The database must be named bitc and the tables within must be as defined in the TGS data dictionary PDF document.
+Copy the TGS datafiles and TGS results folders into localdisk/drive D:
+(This is how the TGS will recognise them).
+You will find a sample result in the folder TGS results/BIS2012.
+The database must be named bitc and the tables within
+must be as defined in the TGS data dictionary PDF document.
 
-Run the bitc.sql file
+Run the bitc.sql file or import it into your bitc database.
 
 The datafiles are named in the format:
+Course Code + Year of Entry
+That is; bitc + 2012 for file bitc2012
 Course Code + Year of Entry + Current Year of Study + Current Semester
 That is; bitc + 2012 + 1 + 2 for file bitc2012_1_2
 Do likewise for files you hope to upload,
 
-To run the program from the command line, change directory to the folder containing the TGS executable jar file and type the following:
+To run the program from the command line, change directory to the folder
+containing the TGS executable jar file and type the following:
 
 java -jar "TGS.jar"
 
 Alternatively, double click to execute the TGS executable jar file.
+
+Default Admin ID is FS1 and password admin.
+Default User IDs are:
+CS1 and CS2
+With passwords:
+admin and ironman respectively.
+Login to change passwords.
+
+Default/available results are for
+RegNo: 12/U/310/ITD/GV for years 1 to 3 (BITC & BIS), 1 to 2 (DCS)
+and semesters 1 to 2.
 
 For further inquires, contact
 Mobile	:	+256 702 246 015
