@@ -1,6 +1,6 @@
-Testimonial Generating System
+# Testimonial Generating System
 
-To use this demo:
+## Steps:
 1. Go to the dist folder (Extract dist.zip) and locate tgs.jar and tgs.sql
 2. Import the sql queries to your server or phpmyadmin (No root password)
 3. Ensure you have Java installed
