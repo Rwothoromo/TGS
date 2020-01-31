@@ -1,6 +1,6 @@
 package utils;
 
-import user.Login;
+import auth.Login;
 import database.Connect;
 import com.itextpdf.text.Chunk;
 import java.sql.Connection;
@@ -28,10 +28,10 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 
 public class Processing extends javax.swing.JFrame {
-    Connection x = null;
+    Connection conn = null;
     public Processing() {
         initComponents();
-        x = Connect.dbConnector();
+        conn = Connect.dbConnector();
     }
 
     /**
@@ -239,8 +239,8 @@ public class Processing extends javax.swing.JFrame {
         
         
         try {
-            PreparedStatement psCSD = x.prepareStatement(sqlQueryCSD);
-            PreparedStatement psDB = x.prepareStatement(sqlQueryDB);
+            PreparedStatement psCSD = conn.prepareStatement(sqlQueryCSD);
+            PreparedStatement psDB = conn.prepareStatement(sqlQueryDB);
             psCSD.setString(1, CourseCode);
             ResultSet rsCSD = psCSD.executeQuery();
             ResultSet rsDB = psDB.executeQuery();
@@ -314,7 +314,7 @@ public class Processing extends javax.swing.JFrame {
             if ("1".equals(EndYr) && "1".equals(EndSem)){
                 do11(CourseCode, Database, RegNo, document, rsDB, bold);
                 String sqlcmt11 = "select * from " + (Database + "_1_1") + " where RegNo='" + RegNo + "'";
-                PreparedStatement pscmt11 = x.prepareStatement(sqlcmt11);
+                PreparedStatement pscmt11 = conn.prepareStatement(sqlcmt11);
                 ResultSet cmt11 = pscmt11.executeQuery();
                 cmt11.next();
                 Phrase Remark = new Phrase();
@@ -327,7 +327,7 @@ public class Processing extends javax.swing.JFrame {
                 do11(CourseCode, Database, RegNo, document, rsDB, bold);
                 do12(CourseCode, Database, RegNo, document, rsDB, bold);
                 String sqlcmt12 = "select * from " + (Database + "_1_2") + " where RegNo='" + RegNo + "'";
-                PreparedStatement pscmt12 = x.prepareStatement(sqlcmt12);
+                PreparedStatement pscmt12 = conn.prepareStatement(sqlcmt12);
                 ResultSet cmt12 = pscmt12.executeQuery();
                 cmt12.next();
                 Phrase Remark = new Phrase();
@@ -341,7 +341,7 @@ public class Processing extends javax.swing.JFrame {
                 do12(CourseCode, Database, RegNo, document, rsDB, bold);
                 do21(CourseCode, Database, RegNo, document, rsDB, bold);
                 String sqlcmt21 = "select * from " + (Database + "_2_1") + " where RegNo='" + RegNo + "'";
-                PreparedStatement pscmt21 = x.prepareStatement(sqlcmt21);
+                PreparedStatement pscmt21 = conn.prepareStatement(sqlcmt21);
                 ResultSet cmt21 = pscmt21.executeQuery();
                 cmt21.next();
                     Phrase Remark = new Phrase();
@@ -356,7 +356,7 @@ public class Processing extends javax.swing.JFrame {
                 do21(CourseCode, Database, RegNo, document, rsDB, bold);
                 do22(CourseCode, Database, RegNo, document, rsDB, bold);
                 String sqlcmt22 = "select * from " + (Database + "_2_2") + " where RegNo='" + RegNo + "'";
-                PreparedStatement pscmt22 = x.prepareStatement(sqlcmt22);
+                PreparedStatement pscmt22 = conn.prepareStatement(sqlcmt22);
                 ResultSet cmt22 = pscmt22.executeQuery();
                 cmt22.next();
                 Phrase Remark = new Phrase();
@@ -372,7 +372,7 @@ public class Processing extends javax.swing.JFrame {
                 do22(CourseCode, Database, RegNo, document, rsDB, bold);
                 do31(CourseCode, Database, RegNo, document, rsDB, bold);
                 String sqlcmt31 = "select * from " + (Database + "_3_1") + " where RegNo='" + RegNo + "'";
-                PreparedStatement pscmt31 = x.prepareStatement(sqlcmt31);
+                PreparedStatement pscmt31 = conn.prepareStatement(sqlcmt31);
                 ResultSet cmt31 = pscmt31.executeQuery();
                 cmt31.next();
                 Phrase Remark = new Phrase();
@@ -389,7 +389,7 @@ public class Processing extends javax.swing.JFrame {
                 do31(CourseCode, Database, RegNo, document, rsDB, bold);
                 do32(CourseCode, Database, RegNo, document, rsDB, bold);
                 String sqlcmt32 = "select * from " + (Database + "_3_2") + " where RegNo='" + RegNo + "'";
-                PreparedStatement pscmt32 = x.prepareStatement(sqlcmt32);
+                PreparedStatement pscmt32 = conn.prepareStatement(sqlcmt32);
                 ResultSet cmt32 = pscmt32.executeQuery();
                 cmt32.next();
                 Phrase Remark = new Phrase();
@@ -423,7 +423,7 @@ public class Processing extends javax.swing.JFrame {
     
     public void do11(String CourseCode, String Database, String RegNo, Document document, ResultSet rsDB, Font bold) throws SQLException, DocumentException{
         String sqlQueryDB11 = "select * from " + (Database + "_1_1") + " where RegNo='" + RegNo + "'";
-        PreparedStatement psDB11 = x.prepareStatement(sqlQueryDB11);
+        PreparedStatement psDB11 = conn.prepareStatement(sqlQueryDB11);
         ResultSet rsDB11 = psDB11.executeQuery();
         rsDB11.next();
 
@@ -457,7 +457,7 @@ public class Processing extends javax.swing.JFrame {
     
     public void do12(String CourseCode, String Database, String RegNo, Document document, ResultSet rsDB, Font bold) throws SQLException, DocumentException{
         String sqlQueryDB12 = "select * from " + (Database + "_1_2") + " where RegNo='" + RegNo + "'";
-        PreparedStatement psDB12 = x.prepareStatement(sqlQueryDB12);
+        PreparedStatement psDB12 = conn.prepareStatement(sqlQueryDB12);
         ResultSet rsDB12 = psDB12.executeQuery();
         rsDB12.next();
 
@@ -491,7 +491,7 @@ public class Processing extends javax.swing.JFrame {
     
     public void do21(String CourseCode, String Database, String RegNo, Document document, ResultSet rsDB, Font bold) throws SQLException, DocumentException{
         String sqlQueryDB21 = "select * from " + (Database + "_2_1") + " where RegNo='" + RegNo + "'";
-        PreparedStatement psDB21 = x.prepareStatement(sqlQueryDB21);
+        PreparedStatement psDB21 = conn.prepareStatement(sqlQueryDB21);
         ResultSet rsDB21 = psDB21.executeQuery();
         rsDB21.next();
 
@@ -525,7 +525,7 @@ public class Processing extends javax.swing.JFrame {
     
     public void do22(String CourseCode, String Database, String RegNo, Document document, ResultSet rsDB, Font bold) throws SQLException, DocumentException{
         String sqlQueryDB22 = "select * from " + (Database + "_2_2") + " where RegNo='" + RegNo + "'";
-        PreparedStatement psDB22 = x.prepareStatement(sqlQueryDB22);
+        PreparedStatement psDB22 = conn.prepareStatement(sqlQueryDB22);
         ResultSet rsDB22 = psDB22.executeQuery();
         rsDB22.next();
 
@@ -559,7 +559,7 @@ public class Processing extends javax.swing.JFrame {
     
     public void do31(String CourseCode, String Database, String RegNo, Document document, ResultSet rsDB, Font bold) throws SQLException, DocumentException{
         String sqlQueryDB31 = "select * from " + (Database + "_3_1") + " where RegNo='" + RegNo + "'";
-        PreparedStatement psDB31 = x.prepareStatement(sqlQueryDB31);
+        PreparedStatement psDB31 = conn.prepareStatement(sqlQueryDB31);
         ResultSet rsDB31 = psDB31.executeQuery();
         rsDB31.next();
 
@@ -590,7 +590,7 @@ public class Processing extends javax.swing.JFrame {
         
     public void do32(String CourseCode, String Database, String RegNo, Document document, ResultSet rsDB, Font bold) throws SQLException, DocumentException{
         String sqlQueryDB32 = "select * from " + (Database + "_3_2") + " where RegNo='" + RegNo + "'";
-        PreparedStatement psDB32 = x.prepareStatement(sqlQueryDB32);
+        PreparedStatement psDB32 = conn.prepareStatement(sqlQueryDB32);
         ResultSet rsDB32 = psDB32.executeQuery();
         rsDB32.next();
 
@@ -1469,47 +1469,47 @@ public class Processing extends javax.swing.JFrame {
         document.add(GPA32);
     }
     
-    public String GPtoGrade(String x){
-        if ("5".equals(x))      { return "   A";   }
-        if ("4.5".equals(x))    { return "   B+";  }
-        if ("4".equals(x))      { return "   B";   }
-        if ("3.5".equals(x))    { return "   B-";  }
-        if ("3".equals(x))      { return "   C+";  }
-        if ("2.5".equals(x))    { return "   C";   }
-        if ("2".equals(x))      { return "   C-";  }
-        if ("1.5".equals(x))    { return "   D+";  }
-        if ("1".equals(x))      { return "   D";   }
-        if ("0.5".equals(x))    { return "   D-";  }
-        if ("0".equals(x))      { return "   E";   }
-        return x;
+    public String GPtoGrade(String conn){
+        if ("5".equals(conn))      { return "   A";   }
+        if ("4.5".equals(conn))    { return "   B+";  }
+        if ("4".equals(conn))      { return "   B";   }
+        if ("3.5".equals(conn))    { return "   B-";  }
+        if ("3".equals(conn))      { return "   C+";  }
+        if ("2.5".equals(conn))    { return "   C";   }
+        if ("2".equals(conn))      { return "   C-";  }
+        if ("1.5".equals(conn))    { return "   D+";  }
+        if ("1".equals(conn))      { return "   D";   }
+        if ("0.5".equals(conn))    { return "   D-";  }
+        if ("0".equals(conn))      { return "   E";   }
+        return conn;
         
     }
     
-    public String Comment(String x){
-        if ("NP(VCL)".equals(x) || "NP (VCL)".equals(x) || x.contains("VCL")){
+    public String Comment(String conn){
+        if ("NP(VCL)".equals(conn) || "NP (VCL)".equals(conn) || conn.contains("VCL")){
             return "Vice Chancellor's List. ";
         }
-        else if ("NP(DL)".equals(x) || "NP (DL)".equals(x) || (x.contains("NP") && x.contains("DL"))){
+        else if ("NP(DL)".equals(conn) || "NP (DL)".equals(conn) || (conn.contains("NP") && conn.contains("DL"))){
             return "Normal Progress (Dean's List). ";
         }
-        else if ("NP".equals(x) || x.contains("NP")){
+        else if ("NP".equals(conn) || conn.contains("NP")){
             return "Normal Progress. ";
         }
-        else if ("PP".equals(x) || x.contains("PP") == true){
+        else if ("PP".equals(conn) || conn.contains("PP") == true){
             return "Probationary Progress. ";
         }
         else {
-            return x;
+            return conn;
         }
     }
     
-    public void Add3cells(Document x, PdfPTable row, PdfPCell cellA, PdfPCell cellB, PdfPCell cellC) throws DocumentException{
+    public void Add3cells(Document conn, PdfPTable row, PdfPCell cellA, PdfPCell cellB, PdfPCell cellC) throws DocumentException{
         row.setWidthPercentage(100);
         cellB.setHorizontalAlignment(Element.ALIGN_CENTER);
         row.addCell(cellA);
         row.addCell(cellB);
         row.addCell(cellC);
-        x.add(row);
+        conn.add(row);
     }
     
     /**

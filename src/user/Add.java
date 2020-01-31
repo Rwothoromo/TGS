@@ -1,17 +1,18 @@
 package user;
 
 
+import admin.Dashboard;
 import database.Connect;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
 
-public class AddUser extends javax.swing.JFrame {
-    Connection x = null;
+public class Add extends javax.swing.JFrame {
+    Connection conn = null;
 
-    public AddUser() {
+    public Add() {
         initComponents();
-        x = Connect.dbConnector();
+        conn = Connect.dbConnector();
     }
 
     /**
@@ -214,7 +215,7 @@ public class AddUser extends javax.swing.JFrame {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         dispose();
-        SuperUser SU = new SuperUser();
+        Dashboard SU = new Dashboard();
         SU.setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
 
@@ -230,7 +231,7 @@ public class AddUser extends javax.swing.JFrame {
                 + " values ('" + IDNO + "', '" + FName + "', '"
                 + OName + "', '" + Position + "', '" + Password + "');";
         try {
-            PreparedStatement ps = x.prepareStatement(sqlAddUser);
+            PreparedStatement ps = conn.prepareStatement(sqlAddUser);
             if (Password.equals(ConfirmPassword)){
                 ps.execute(sqlAddUser);
                 JOptionPane.showMessageDialog(null, "User " + FName + " " + Position + " successfully Added!");
@@ -261,20 +262,20 @@ public class AddUser extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DeleteUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Delete.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DeleteUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Delete.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DeleteUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Delete.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DeleteUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Delete.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DeleteUser().setVisible(true);
+                new Delete().setVisible(true);
             }
         });
     }

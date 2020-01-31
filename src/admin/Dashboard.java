@@ -1,14 +1,17 @@
-package user;
+package admin;
 
 
 import student.Upload;
 import utils.Processing;
-import student.AddStudentDetails;
-import database.DeleteDatabase;
+import student.AddDetails;
+import database.DeleteTable;
+import user.Add;
+import user.Delete;
+import auth.Login;
 
 
-public class SuperUser extends javax.swing.JFrame {
-    public SuperUser() {
+public class Dashboard extends javax.swing.JFrame {
+    public Dashboard() {
         initComponents();
     }
 
@@ -218,13 +221,13 @@ public class SuperUser extends javax.swing.JFrame {
 
     private void btnDeleteUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteUserActionPerformed
         dispose();
-        DeleteUser DU = new DeleteUser();
+        Delete DU = new Delete();
         DU.setVisible(true);
     }//GEN-LAST:event_btnDeleteUserActionPerformed
 
     private void btnAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddUserActionPerformed
         dispose();
-        AddUser AU = new AddUser();
+        Add AU = new Add();
         AU.setVisible(true);
     }//GEN-LAST:event_btnAddUserActionPerformed
 
@@ -240,13 +243,13 @@ public class SuperUser extends javax.swing.JFrame {
 
     private void btnChangePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangePasswordActionPerformed
         dispose();
-        SUChangePassword CP = new SUChangePassword();
+        EditPassword CP = new EditPassword();
         CP.setVisible(true);
     }//GEN-LAST:event_btnChangePasswordActionPerformed
 
     private void btnDeleteDBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteDBActionPerformed
         dispose();
-        DeleteDatabase D = new DeleteDatabase();
+        DeleteTable D = new DeleteTable();
         D.setVisible(true);
     }//GEN-LAST:event_btnDeleteDBActionPerformed
 
@@ -264,7 +267,7 @@ public class SuperUser extends javax.swing.JFrame {
 
     private void btnAddStudentDentailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddStudentDentailsActionPerformed
         dispose();
-        AddStudentDetails ASD = new AddStudentDetails();
+        AddDetails ASD = new AddDetails();
         ASD.setVisible(true);
     }//GEN-LAST:event_btnAddStudentDentailsActionPerformed
 
@@ -285,20 +288,27 @@ public class SuperUser extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SuperUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SuperUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SuperUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SuperUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SuperUser().setVisible(true);
+                new Dashboard().setVisible(true);
             }
         });
     }

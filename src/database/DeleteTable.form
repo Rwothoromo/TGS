@@ -238,7 +238,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel8">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Type the details as required to match the name of the database you will delete."/>
+        <Property name="text" type="java.lang.String" value="Type the details as required to match the name of the records you will delete."/>
       </Properties>
     </Component>
   </SubComponents>

@@ -1,10 +1,11 @@
 package user;
 
+import auth.Login;
 import utils.Processing;
 
 
-public class TGSUser extends javax.swing.JFrame {
-    public TGSUser() {
+public class Dashboard extends javax.swing.JFrame {
+    public Dashboard() {
         initComponents();
     }
 
@@ -157,7 +158,7 @@ public class TGSUser extends javax.swing.JFrame {
 
     private void btnChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeActionPerformed
         dispose();
-        TUChangePassword CP = new TUChangePassword();
+        EditPassword CP = new EditPassword();
         CP.setVisible(true);
     }//GEN-LAST:event_btnChangeActionPerformed
 
@@ -184,20 +185,21 @@ public class TGSUser extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TGSUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TGSUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TGSUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TGSUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TGSUser().setVisible(true);
+                new Dashboard().setVisible(true);
             }
         });
     }

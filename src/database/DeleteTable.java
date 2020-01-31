@@ -1,17 +1,20 @@
 package database;
 
-import database.Connect;
-import user.SuperUser;
+import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import admin.Dashboard;
 
-public class DeleteDatabase extends javax.swing.JFrame {
-    Connection x = null;
-    public DeleteDatabase() {
+public class DeleteTable extends javax.swing.JFrame {
+
+    Connection conn = null;
+
+    public DeleteTable() {
         initComponents();
-        x = Connect.dbConnector();
+        conn = Connect.dbConnector();
     }
 
     /**
@@ -92,7 +95,7 @@ public class DeleteDatabase extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
         jLabel7.setText("Testimonial Generating System");
 
-        jLabel8.setText("Type the details as required to match the name of the database you will delete.");
+        jLabel8.setText("Type the details as required to match the name of the records you will delete.");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -176,7 +179,7 @@ public class DeleteDatabase extends javax.swing.JFrame {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         dispose();
-        SuperUser SU = new SuperUser();
+        Dashboard SU = new Dashboard();
         SU.setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
 
@@ -187,27 +190,26 @@ public class DeleteDatabase extends javax.swing.JFrame {
         String CurrentSem = txtCurrentSem.getText();
         String db = Coursecode + EntryYr + "_" + CurrentYr + "_" + CurrentSem;
         String sqlCheck = "Select * from " + db + ";";
-        //String sqlDelete = "DeleteDatabase from " + db + ";";
+        //String sqlDelete = "DeleteTable from " + db + ";";
         String sqlDelete = "Delete from " + db + " where No not in (0);";
         //String fillEmptyDB = "insert into " + db + " (No, RegNo, Sex) values (0, '12/U/310/ITD/GV', 'M');";
         /*
         String fillEmptyDB = "LOAD DATA INFILE 'd:/TGS datafiles/fillEmptyDB.csv' "
                 + "INTO TABLE " + db + " FIELDS TERMINATED BY ','"
                 + " ENCLOSED BY '\"' LINES TERMINATED BY '\\n' IGNORE 1 ROWS;;";
-        */
+         */
         try {
-            PreparedStatement ps = x.prepareStatement(sqlDelete);
-            PreparedStatement ps1 = x.prepareStatement(sqlCheck);
-            //PreparedStatement ps2 = x.prepareStatement(fillEmptyDB);
+            PreparedStatement ps = conn.prepareStatement(sqlDelete);
+            PreparedStatement ps1 = conn.prepareStatement(sqlCheck);
+            //PreparedStatement ps2 = conn.prepareStatement(fillEmptyDB);
             ResultSet rs1 = ps1.executeQuery();
 
-            if (rs1.next()){
+            if (rs1.next()) {
                 ps.execute(sqlDelete);
                 //ps2.execute(fillEmptyDB);
                 JOptionPane.showMessageDialog(null, "Done");
             }
-        }
-        catch (Exception e){
+        } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_btnDeleteNowActionPerformed
@@ -219,7 +221,7 @@ public class DeleteDatabase extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -229,24 +231,31 @@ public class DeleteDatabase extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DeleteDatabase.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeleteTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DeleteDatabase.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeleteTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DeleteDatabase.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeleteTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DeleteDatabase.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeleteTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DeleteDatabase().setVisible(true);
+                new DeleteTable().setVisible(true);
             }
         });
     }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnDeleteNow;

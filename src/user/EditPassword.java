@@ -1,5 +1,6 @@
 package user;
 
+import auth.Login;
 import database.Connect;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,14 +11,14 @@ import javax.swing.JOptionPane;
  *
  * @author arota
  */
-public class TUChangePassword extends javax.swing.JFrame {
-    Connection x = null;
+public class EditPassword extends javax.swing.JFrame {
+    Connection conn = null;
     /**
      * Creates new form TUChangePassword
      */
-    public TUChangePassword() {
+    public EditPassword() {
         initComponents();
-        x = Connect.dbConnector();
+        conn = Connect.dbConnector();
     }
 
     /**
@@ -191,8 +192,8 @@ public class TUChangePassword extends javax.swing.JFrame {
                 + ConfirmPassword1 + "' where IDNO='" + IDNO1 + "'";
         
         try {
-            PreparedStatement ps = x.prepareStatement(sqlQueryPwd1);
-            PreparedStatement ps1 = x.prepareStatement(sqlQueryP1);
+            PreparedStatement ps = conn.prepareStatement(sqlQueryPwd1);
+            PreparedStatement ps1 = conn.prepareStatement(sqlQueryP1);
             ps.setString(1, IDNO1);
             ps.setString(2, OldPassword1);
             ResultSet rs = ps.executeQuery();
@@ -237,20 +238,21 @@ public class TUChangePassword extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TUChangePassword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditPassword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TUChangePassword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditPassword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TUChangePassword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditPassword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TUChangePassword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditPassword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TUChangePassword().setVisible(true);
+                new EditPassword().setVisible(true);
             }
         });
     }

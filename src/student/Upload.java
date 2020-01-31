@@ -1,18 +1,18 @@
 package student;
 
 import database.Connect;
-import user.SuperUser;
+import admin.Dashboard;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 public class Upload extends javax.swing.JFrame {
-    Connection x = null;
+    Connection conn = null;
 
     public Upload() {
         initComponents();
-        x = Connect.dbConnector();
+        conn = Connect.dbConnector();
     }
 
     /**
@@ -184,7 +184,7 @@ public class Upload extends javax.swing.JFrame {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         dispose();
-        SuperUser SU = new SuperUser();
+        Dashboard SU = new Dashboard();
         SU.setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
 
@@ -200,8 +200,8 @@ public class Upload extends javax.swing.JFrame {
         //ignores the title row
         String checkDB = "select * from " + db;
         try {
-            PreparedStatement ps = x.prepareStatement(checkDB);
-            PreparedStatement ps1 = x.prepareStatement(sqlUpload);
+            PreparedStatement ps = conn.prepareStatement(checkDB);
+            PreparedStatement ps1 = conn.prepareStatement(sqlUpload);
             ResultSet rs = ps.executeQuery();
             if (rs.next()){
                 ps1.executeQuery(sqlUpload);

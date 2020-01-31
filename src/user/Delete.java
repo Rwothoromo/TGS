@@ -1,18 +1,19 @@
-package student;
+package user;
 
 
 import database.Connect;
-import user.SuperUser;
+import admin.Dashboard;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
-public class AddStudentDetails extends javax.swing.JFrame {
-    Connection x = null;
-    public AddStudentDetails() {
+public class Delete extends javax.swing.JFrame {
+    Connection conn = null;
+
+    public Delete() {
         initComponents();
-        x = Connect.dbConnector();
+        conn = Connect.dbConnector();
     }
 
     /**
@@ -26,37 +27,40 @@ public class AddStudentDetails extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtYrOfEntry = new javax.swing.JTextField();
-        btnUpload = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        btnDeleteUser = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
-        txtCourseCode = new javax.swing.JTextField();
+        txtIDNO = new javax.swing.JTextField();
+        txtOtherNames = new javax.swing.JTextField();
+        txtFName = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Testimonial Generating System - Add Student Details");
+        setTitle("Testimonial Generating System - Delete a User");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Course Code :");
+        jLabel1.setText("User's IDNO :");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setText("Year of Entry :");
+        jLabel2.setText("User's First Name :");
 
-        txtYrOfEntry.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setText("User's Other Name(s) :");
 
-        btnUpload.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnUpload.setText("Upload");
-        btnUpload.addActionListener(new java.awt.event.ActionListener() {
+        btnDeleteUser.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnDeleteUser.setText("Delete User");
+        btnDeleteUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUploadActionPerformed(evt);
+                btnDeleteUserActionPerformed(evt);
             }
         });
 
-        btnBack.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnBack.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,9 +68,18 @@ public class AddStudentDetails extends javax.swing.JFrame {
             }
         });
 
-        txtCourseCode.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtIDNO.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+
+        txtOtherNames.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+
+        txtFName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         jLabel10.setPreferredSize(new java.awt.Dimension(393, 196));
+
+        jLabel8.setText("Type the details as required to match the name of the user you will delete.");
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
+        jLabel7.setText("Testimonial Generating System");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 42)); // NOI18N
         jLabel6.setText("KYAMBOGO ");
@@ -76,24 +89,20 @@ public class AddStudentDetails extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 42)); // NOI18N
         jLabel12.setText("UNIVERSITY");
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
-        jLabel7.setText("Testimonial Generating System");
-
-        jLabel8.setText("Type the details as required to match the name of the file you will upload.");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel3))
                         .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -103,15 +112,16 @@ public class AddStudentDetails extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel12))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(btnDeleteUser, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jLabel7)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnUpload, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnBack, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
-                                    .addComponent(txtYrOfEntry, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtCourseCode, javax.swing.GroupLayout.Alignment.TRAILING))))))
-                .addContainerGap(42, Short.MAX_VALUE))
+                                    .addComponent(txtOtherNames, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
+                                    .addComponent(txtFName, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtIDNO, javax.swing.GroupLayout.Alignment.TRAILING))))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,21 +139,29 @@ public class AddStudentDetails extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel7))
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(67, 67, 67)
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addComponent(jLabel8)
+                        .addGap(91, 139, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtIDNO, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtFName, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addGap(18, 18, 18)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCourseCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(27, 27, 27)
+                    .addComponent(jLabel3)
+                    .addComponent(txtOtherNames, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtYrOfEntry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnUpload, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48))
+                    .addComponent(btnDeleteUser, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40))
         );
 
         pack();
@@ -152,32 +170,40 @@ public class AddStudentDetails extends javax.swing.JFrame {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         dispose();
-        SuperUser SU = new SuperUser();
+        Dashboard SU = new Dashboard();
         SU.setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
 
-    private void btnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadActionPerformed
-        String Coursecode = txtCourseCode.getText();
-        String EntryYr = txtYrOfEntry.getText();
-        String db = Coursecode + EntryYr;
-        String sqlUpload = "LOAD DATA INFILE 'd:/TGS datafiles/" + db + ".csv'"
-                + "INTO TABLE " + db + " FIELDS TERMINATED BY ','"
-                + " ENCLOSED BY '\"' LINES TERMINATED BY '\\n' IGNORE 1 ROWS;";
-        //ignores the title row
-        String checkDB = "select * from " + db;
+    private void btnDeleteUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteUserActionPerformed
+        String IDNO = txtIDNO.getText();
+        String FName = txtFName.getText();
+        String OName = txtOtherNames.getText();
+        String sqlDeleteUser = "Delete from user_table where IDNO='" + IDNO
+                + "' and Fname='" + FName + "' and OName='" + OName + "'";
+        String sqlPosition = "Select * from user_table"
+                + " where IDNO=? and FName=? and OName=?";
         try {
-            PreparedStatement ps = x.prepareStatement(checkDB);
-            PreparedStatement ps1 = x.prepareStatement(sqlUpload);
+            PreparedStatement ps = conn.prepareStatement(sqlPosition);
+            PreparedStatement ps1 = conn.prepareStatement(sqlDeleteUser);
+            ps.setString(1, IDNO);
+            ps.setString(2, FName);
+            ps.setString(3, OName);
             ResultSet rs = ps.executeQuery();
+
             if (rs.next()){
-                ps1.executeQuery(sqlUpload);
-                JOptionPane.showMessageDialog(null, db + ".csv has been uploaded!");
+                ps1.execute(sqlDeleteUser);
+                JOptionPane.showMessageDialog(null, "User " + FName
+                        + "\n" + rs.getString(4) + "\nSuccessfully Deleted!");
             }
+            else {
+                JOptionPane.showMessageDialog(null, "You have an error!");
+            }
+            rs.close();
         }
         catch (Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
-    }//GEN-LAST:event_btnUploadActionPerformed
+    }//GEN-LAST:event_btnDeleteUserActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,35 +222,38 @@ public class AddStudentDetails extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddStudentDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Delete.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddStudentDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Delete.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddStudentDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Delete.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddStudentDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Delete.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddStudentDetails().setVisible(true);
+                new Delete().setVisible(true);
             }
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnUpload;
+    private javax.swing.JButton btnDeleteUser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JTextField txtCourseCode;
-    private javax.swing.JTextField txtYrOfEntry;
+    private javax.swing.JTextField txtFName;
+    private javax.swing.JTextField txtIDNO;
+    private javax.swing.JTextField txtOtherNames;
     // End of variables declaration//GEN-END:variables
 }
