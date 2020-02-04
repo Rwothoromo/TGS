@@ -3,8 +3,8 @@
 TGS helps with generating students' testimonials on demand at a university.
 
 ## Set Up
-1. Go to the dist folder (Extract dist.zip) and locate `bitc.sql`
-2. Create a database `bitc` and run the `bitc.sql` queries therein
+1. Go to the dist folder (Extract dist.zip) and locate `psql_bitc.sql`
+2. Create a database `bitc` and run the `psql_bitc.sql` queries therein
 3. Ensure you have Java installed.
 4. Run the app and test it out.
 5. Send in your feedback

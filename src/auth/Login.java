@@ -161,9 +161,9 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        String Id = txtId.getText();
+        String Id = txtId.getText().toUpperCase();
         String Password = txtPassword.getText();
-        String sqlQuery = "SELECT * FROM user_table WHERE \"Id\"=? AND \"Password\"=?";
+        String sqlQuery = "SELECT * FROM user_table WHERE Id=? AND Password=?";
 
         try {
             // For alternative way, see ChangePassword.java
@@ -187,7 +187,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnLoginAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginAdminActionPerformed
-        String Id = txtId.getText();
+        String Id = txtId.getText().toUpperCase();
         String Password = txtPassword.getText();
         String sqlQuery = "SELECT * FROM super_user WHERE 'Id'=? AND 'Password'=?";
         try {
