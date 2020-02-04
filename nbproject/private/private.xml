@@ -5,7 +5,9 @@
         <group>
             <file>file:/Users/rwothoromo/apps/general/TGS/src/constants/Constants.java</file>
             <file>file:/Users/rwothoromo/apps/general/TGS/src/auth/Login.java</file>
+            <file>file:/Users/rwothoromo/apps/general/TGS/src/utils/Processing.java</file>
             <file>file:/Users/rwothoromo/apps/general/TGS/src/database/Connect.java</file>
+            <file>file:/Users/rwothoromo/apps/general/TGS/src/database/DeleteTable.java</file>
         </group>
     </open-files>
 </project-private>
