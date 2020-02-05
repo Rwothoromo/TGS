@@ -19,15 +19,12 @@ public class Dashboard extends javax.swing.JFrame {
     private void initComponents() {
 
         btnProcess = new javax.swing.JButton();
-        btnChange = new javax.swing.JButton();
+        btnChangePassword = new javax.swing.JButton();
         btnSignOut = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        jLabelLogo = new javax.swing.JLabel();
+        jLabelSystemName = new javax.swing.JLabel();
+        jLabelInstructions1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Testimonial Generating System - Logged in as TGSUser");
@@ -40,11 +37,11 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
-        btnChange.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnChange.setText("Change Password");
-        btnChange.addActionListener(new java.awt.event.ActionListener() {
+        btnChangePassword.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnChangePassword.setText("Change Password");
+        btnChangePassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnChangeActionPerformed(evt);
+                btnChangePasswordActionPerformed(evt);
             }
         });
 
@@ -64,82 +61,57 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setText("Select accordingly to perform your desired action.");
+        jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/kyuLogo.png"))); // NOI18N
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
-        jLabel7.setText("Testimonial Generating System");
+        jLabelSystemName.setFont(new java.awt.Font("Calibri", 1, 36)); // NOI18N
+        jLabelSystemName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelSystemName.setText("TESTIMONIAL GENERATING SYSTEM");
+        jLabelSystemName.setToolTipText("TGS");
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 42)); // NOI18N
-        jLabel6.setText("KYAMBOGO ");
-
-        jLabel11.setText("jLabel9");
-
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 42)); // NOI18N
-        jLabel12.setText("UNIVERSITY");
-
-        jLabel10.setPreferredSize(new java.awt.Dimension(393, 196));
+        jLabelInstructions1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabelInstructions1.setText("Select accordingly to perform your desired action.");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(99, 99, 99)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(btnSignOut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnChange, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnProcess, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel12))
-                                    .addComponent(jLabel7))))))
-                .addContainerGap(33, Short.MAX_VALUE))
+                        .addComponent(btnSignOut, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnChangePassword, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelInstructions1)
+                    .addComponent(btnProcess, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(50, Short.MAX_VALUE)
+                .addComponent(jLabelSystemName, javax.swing.GroupLayout.PREFERRED_SIZE, 755, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel12)))
-                            .addComponent(jLabel11))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel7))
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(67, 67, 67)
-                .addComponent(jLabel8)
-                .addGap(65, 65, 65)
+                .addGap(50, 50, 50)
+                .addComponent(jLabelLogo)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelSystemName, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelInstructions1)
+                .addGap(18, 18, 18)
                 .addComponent(btnProcess, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnChange, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnChangePassword, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnSignOut, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnExit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(3, 3, 3)))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         pack();
@@ -156,11 +128,11 @@ public class Dashboard extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnExitActionPerformed
 
-    private void btnChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeActionPerformed
+    private void btnChangePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangePasswordActionPerformed
         dispose();
         EditPassword CP = new EditPassword();
         CP.setVisible(true);
-    }//GEN-LAST:event_btnChangeActionPerformed
+    }//GEN-LAST:event_btnChangePasswordActionPerformed
 
     private void btnSignOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignOutActionPerformed
         dispose();
@@ -204,15 +176,12 @@ public class Dashboard extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnChange;
+    private javax.swing.JButton btnChangePassword;
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnProcess;
     private javax.swing.JButton btnSignOut;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabelInstructions1;
+    private javax.swing.JLabel jLabelLogo;
+    private javax.swing.JLabel jLabelSystemName;
     // End of variables declaration//GEN-END:variables
 }

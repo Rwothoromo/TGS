@@ -1,18 +1,7 @@
 package utils;
 
 import auth.Login;
-import database.Connect;
 import com.itextpdf.text.Chunk;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import javax.swing.JOptionPane;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
-import java.util.Date;
-
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
@@ -24,11 +13,22 @@ import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import database.Connect;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
 
 public class Processing extends javax.swing.JFrame {
+
     Connection conn = null;
+
     public Processing() {
         initComponents();
         conn = Connect.dbConnector();
@@ -43,28 +43,62 @@ public class Processing extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnGenerateTestimonial = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        txtCourseCode = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        txtYrOfEntry = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        txtYr1 = new javax.swing.JTextField();
-        txtSem1 = new javax.swing.JTextField();
-        btnBack = new javax.swing.JButton();
+        jLabelLogo = new javax.swing.JLabel();
+        jLabelSystemName = new javax.swing.JLabel();
+        jLabelInstructions = new javax.swing.JLabel();
+        jLabelRegno = new javax.swing.JLabel();
         txtRegNo = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
+        jLabelCourseCode = new javax.swing.JLabel();
+        txtCourseCode = new javax.swing.JTextField();
+        jLabelYrOfEntry = new javax.swing.JLabel();
+        txtYrOfEntry = new javax.swing.JTextField();
+        jLabelYrsTitle = new javax.swing.JLabel();
+        jLabelYrStart = new javax.swing.JLabel();
+        txtYrStart = new javax.swing.JTextField();
+        jLabelSemEnd = new javax.swing.JLabel();
+        txtSemEnd = new javax.swing.JTextField();
+        btnGenerateTestimonial = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Testimonial Generating System - Generate a Testimonial");
+
+        jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/kyuLogo.png"))); // NOI18N
+
+        jLabelSystemName.setFont(new java.awt.Font("Calibri", 1, 36)); // NOI18N
+        jLabelSystemName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelSystemName.setText("TESTIMONIAL GENERATING SYSTEM");
+        jLabelSystemName.setToolTipText("TGS");
+
+        jLabelInstructions.setText("Type the details as required to add the user.");
+
+        jLabelRegno.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabelRegno.setText("Registration number :");
+
+        txtRegNo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+
+        jLabelCourseCode.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabelCourseCode.setText("Course Code :");
+
+        txtCourseCode.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+
+        jLabelYrOfEntry.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabelYrOfEntry.setText("Year of Entry :");
+
+        txtYrOfEntry.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+
+        jLabelYrsTitle.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+        jLabelYrsTitle.setText("Get results up to:");
+
+        jLabelYrStart.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabelYrStart.setText("Year  (1, 2 or 3) : ");
+
+        txtYrStart.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+
+        jLabelSemEnd.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabelSemEnd.setText("Semester (1 or 2) :");
+
+        txtSemEnd.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         btnGenerateTestimonial.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnGenerateTestimonial.setText("Generate Testimonial");
@@ -74,32 +108,6 @@ public class Processing extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setText("Course Code :");
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel3.setText("Registration number :");
-
-        txtCourseCode.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Year of Entry :");
-
-        txtYrOfEntry.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
-        jLabel4.setText("Get results up to:");
-
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel7.setText("Year  (1, 2 or 3) : ");
-
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel8.setText("Semester (1 or 2) :");
-
-        txtYr1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
-        txtSem1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
         btnBack.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -108,124 +116,95 @@ public class Processing extends javax.swing.JFrame {
             }
         });
 
-        txtRegNo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
-        jLabel10.setPreferredSize(new java.awt.Dimension(393, 196));
-
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 42)); // NOI18N
-        jLabel9.setText("KYAMBOGO ");
-
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 42)); // NOI18N
-        jLabel12.setText("UNIVERSITY");
-
-        jLabel11.setText("jLabel9");
-
-        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
-        jLabel13.setText("Testimonial Generating System");
-
-        jLabel14.setText("Type the details as required to add the user.");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addContainerGap(50, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel14)
-                    .addComponent(jLabel3)
+                    .addComponent(jLabelSystemName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 755, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelYrsTitle)
+                    .addComponent(jLabelInstructions)
+                    .addComponent(jLabelRegno)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(jLabel7))
-                        .addGap(27, 27, 27)
+                                .addComponent(jLabelCourseCode, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabelYrOfEntry, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(jLabelYrStart))
+                        .addGap(50, 50, 50)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtYr1, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtYrStart, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtYrOfEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel13)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel12))
                             .addComponent(txtRegNo, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtCourseCode, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                     .addComponent(btnGenerateTestimonial)
-                                    .addGap(18, 18, 18)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addComponent(txtSem1, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jLabel8))
-                .addContainerGap(36, Short.MAX_VALUE))
+                                .addComponent(txtSemEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jLabelSemEnd))
+                .addContainerGap(50, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel12)))
-                            .addComponent(jLabel11))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel13))
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(67, 67, 67)
-                .addComponent(jLabel14)
-                .addGap(47, 47, 47)
+                .addGap(50, 50, 50)
+                .addComponent(jLabelLogo)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelSystemName, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelInstructions)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtRegNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(24, 24, 24)
+                    .addComponent(jLabelRegno))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCourseCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(27, 27, 27)
+                    .addComponent(jLabelCourseCode))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtYrOfEntry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(13, 13, 13)
-                .addComponent(jLabel4)
+                    .addComponent(jLabelYrOfEntry))
                 .addGap(18, 18, 18)
+                .addComponent(jLabelYrsTitle)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(txtYr1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelYrStart)
+                    .addComponent(txtYrStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelSemEnd)
+                    .addComponent(txtSemEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(txtSem1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGenerateTestimonial, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addGap(100, 100, 100))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    public void btnGenerateTestimonialActionPerformed(java.awt.event.ActionEvent evt) {                                                       
+    public void btnGenerateTestimonialActionPerformed(java.awt.event.ActionEvent evt) {
 //GEN-FIRST:event_btnGenerateTestimonialActionPerformed
         String RegNo = txtRegNo.getText();
         String CourseCode = (txtCourseCode.getText()).toUpperCase();
         String YrOfEntry = txtYrOfEntry.getText();
-        String EndYr = txtYr1.getText();
-        String EndSem = txtSem1.getText();
+        String EndYr = txtYrStart.getText();
+        String EndSem = txtSemEnd.getText();
         String Database = CourseCode + YrOfEntry;
         String sqlQueryCSD = "select * from CompSciDept where CourseCode=?";
         String sqlQueryDB = "select * from " + Database + " where RegNo='" + RegNo + "'";
-        
+
         Font bold = new Font();
         bold.setStyle("bold");
         Font bold28 = new Font();
@@ -236,18 +215,17 @@ public class Processing extends javax.swing.JFrame {
         Font italic18 = new Font();
         italic18.setStyle("italic");
         italic18.setSize(18);
-        
-        
+
         try {
             PreparedStatement psCSD = conn.prepareStatement(sqlQueryCSD);
             PreparedStatement psDB = conn.prepareStatement(sqlQueryDB);
             psCSD.setString(1, CourseCode);
             ResultSet rsCSD = psCSD.executeQuery();
             ResultSet rsDB = psDB.executeQuery();
-            
+
             rsCSD.next();
             rsDB.next();
-            
+
             OutputStream file = new FileOutputStream(new File("D:\\TGS results\\"
                     + Database + "\\" + (rsDB.getString(1) + "_"
                     + rsDB.getString(2) + "_" + rsDB.getString(3)) + ".pdf"));
@@ -257,10 +235,10 @@ public class Processing extends javax.swing.JFrame {
             PdfPTable table = new PdfPTable(3);
             table.setWidthPercentage(100);
             float[] columnWidths = {3f, 1f, 3f};
-            table.setWidths(columnWidths); 
+            table.setWidths(columnWidths);
             Paragraph KY = new Paragraph("KYAMBOGO", bold28);
             PdfPCell KYU1 = new PdfPCell(KY);
-            Image image = Image.getInstance("/static/images/kyulogoEdit.jpg");
+            Image image = Image.getInstance("/Users/rwothoromo/apps/general/TGS/src/images/kyulogoEdit.jpg");
             PdfPCell img = new PdfPCell(image, true);
             Paragraph U = new Paragraph("UNIVERSITY", bold28);
             PdfPCell KYU2 = new PdfPCell(U);
@@ -272,7 +250,7 @@ public class Processing extends javax.swing.JFrame {
             KYU2.setHorizontalAlignment(Element.ALIGN_LEFT);
             KYU1.setBorder(Rectangle.NO_BORDER);
             img.setBorder(Rectangle.NO_BORDER);
-            KYU2.setBorder(Rectangle.NO_BORDER); 
+            KYU2.setBorder(Rectangle.NO_BORDER);
 
             Paragraph Contacts = new Paragraph("P.O. BOX 1 KYAMBOGO\n"
                     + "Tel: 256-414-287347, 285001/2, Fax: 256-414-288492\n"
@@ -282,11 +260,11 @@ public class Processing extends javax.swing.JFrame {
             DEAN.setAlignment(Element.ALIGN_CENTER);
             Paragraph testimonial = new Paragraph("PARTIAL TESTIMONIAL\n\n", bold);
             testimonial.setAlignment(Element.ALIGN_CENTER);
-            
+
             Date now = new Date();
             SimpleDateFormat fmt = new SimpleDateFormat("dd MMMM, yyyy");
             String date = fmt.format(now);
-            
+
             document.open();
             document.add(table);
             Add3cells(document, table, KYU1, img, KYU2);
@@ -310,8 +288,8 @@ public class Processing extends javax.swing.JFrame {
             PdfPCell a2 = new PdfPCell(new Paragraph("GP", bold));
             PdfPCell a3 = new PdfPCell(new Paragraph("  Grade", bold));
             Add3cells(document, a, a1, a2, a3);
-            
-            if ("1".equals(EndYr) && "1".equals(EndSem)){
+
+            if ("1".equals(EndYr) && "1".equals(EndSem)) {
                 do11(CourseCode, Database, RegNo, document, rsDB, bold);
                 String sqlcmt11 = "select * from " + (Database + "_1_1") + " where RegNo='" + RegNo + "'";
                 PreparedStatement pscmt11 = conn.prepareStatement(sqlcmt11);
@@ -322,8 +300,7 @@ public class Processing extends javax.swing.JFrame {
                 Remark.add(new Chunk((Comment(cmt11.getString("REMARKS"))), bold));
                 Remark.add(new Chunk("These are the provisional Results."));
                 document.add(new Paragraph(Remark));
-            }
-            else if ("1".equals(EndYr) && "2".equals(EndSem)){
+            } else if ("1".equals(EndYr) && "2".equals(EndSem)) {
                 do11(CourseCode, Database, RegNo, document, rsDB, bold);
                 do12(CourseCode, Database, RegNo, document, rsDB, bold);
                 String sqlcmt12 = "select * from " + (Database + "_1_2") + " where RegNo='" + RegNo + "'";
@@ -335,8 +312,7 @@ public class Processing extends javax.swing.JFrame {
                 Remark.add(new Chunk((Comment(cmt12.getString("REMARKS"))), bold));
                 Remark.add(new Chunk("These are the provisional Results."));
                 document.add(new Paragraph(Remark));
-            }
-            else if ("2".equals(EndYr) && "1".equals(EndSem)){
+            } else if ("2".equals(EndYr) && "1".equals(EndSem)) {
                 do11(CourseCode, Database, RegNo, document, rsDB, bold);
                 do12(CourseCode, Database, RegNo, document, rsDB, bold);
                 do21(CourseCode, Database, RegNo, document, rsDB, bold);
@@ -344,13 +320,12 @@ public class Processing extends javax.swing.JFrame {
                 PreparedStatement pscmt21 = conn.prepareStatement(sqlcmt21);
                 ResultSet cmt21 = pscmt21.executeQuery();
                 cmt21.next();
-                    Phrase Remark = new Phrase();
+                Phrase Remark = new Phrase();
                 Remark.add(new Chunk("\nHe/She is on "));
                 Remark.add(new Chunk((Comment(cmt21.getString("REMARKS"))), bold));
                 Remark.add(new Chunk("These are the provisional Results."));
                 document.add(new Paragraph(Remark));
-            }
-            else if ("2".equals(EndYr) && "2".equals(EndSem)){
+            } else if ("2".equals(EndYr) && "2".equals(EndSem)) {
                 do11(CourseCode, Database, RegNo, document, rsDB, bold);
                 do12(CourseCode, Database, RegNo, document, rsDB, bold);
                 do21(CourseCode, Database, RegNo, document, rsDB, bold);
@@ -364,8 +339,7 @@ public class Processing extends javax.swing.JFrame {
                 Remark.add(new Chunk((Comment(cmt22.getString("REMARKS"))), bold));
                 Remark.add(new Chunk("These are the provisional Results."));
                 document.add(new Paragraph(Remark));
-            }
-            else if ("3".equals(EndYr) && "1".equals(EndSem)){
+            } else if ("3".equals(EndYr) && "1".equals(EndSem)) {
                 do11(CourseCode, Database, RegNo, document, rsDB, bold);
                 do12(CourseCode, Database, RegNo, document, rsDB, bold);
                 do21(CourseCode, Database, RegNo, document, rsDB, bold);
@@ -380,8 +354,7 @@ public class Processing extends javax.swing.JFrame {
                 Remark.add(new Chunk((Comment(cmt31.getString("REMARKS"))), bold));
                 Remark.add(new Chunk("These are the provisional Results."));
                 document.add(new Paragraph(Remark));
-            }
-            else if ("3".equals(EndYr) && "2".equals(EndSem)){
+            } else if ("3".equals(EndYr) && "2".equals(EndSem)) {
                 do11(CourseCode, Database, RegNo, document, rsDB, bold);
                 do12(CourseCode, Database, RegNo, document, rsDB, bold);
                 do21(CourseCode, Database, RegNo, document, rsDB, bold);
@@ -397,7 +370,7 @@ public class Processing extends javax.swing.JFrame {
                 Remark.add(new Chunk((Comment(cmt32.getString("REMARKS"))), bold));
                 document.add(new Paragraph(Remark));
             }
-            
+
             document.add(new Paragraph("Any assistance rendered to him/her will be highly appreciated."
                     + "\n\n\n\n\n\n\nAssoc. Prof. G. W. Byarugaba-Bazirake                         "
                     + "Date...................................................."));
@@ -409,8 +382,7 @@ public class Processing extends javax.swing.JFrame {
                     + (rsDB.getString(1) + "_" + rsDB.getString(2)
                     + "_" + rsDB.getString(3)) + ".pdf");
             //Pops the generated pdf
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_btnGenerateTestimonialActionPerformed
@@ -420,8 +392,8 @@ public class Processing extends javax.swing.JFrame {
         Login L = new Login();
         L.setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
-    
-    public void do11(String CourseCode, String Database, String RegNo, Document document, ResultSet rsDB, Font bold) throws SQLException, DocumentException{
+
+    public void do11(String CourseCode, String Database, String RegNo, Document document, ResultSet rsDB, Font bold) throws SQLException, DocumentException {
         String sqlQueryDB11 = "select * from " + (Database + "_1_1") + " where RegNo='" + RegNo + "'";
         PreparedStatement psDB11 = conn.prepareStatement(sqlQueryDB11);
         ResultSet rsDB11 = psDB11.executeQuery();
@@ -430,21 +402,18 @@ public class Processing extends javax.swing.JFrame {
         PdfPTable b = new PdfPTable(1);
         b.setWidthPercentage(100);
         PdfPCell b1 = new PdfPCell(new Paragraph(rsDB.getString(7)
-                + "/" + (Integer.parseInt(rsDB.getString(7))+1)
+                + "/" + (Integer.parseInt(rsDB.getString(7)) + 1)
                 + " Year One Semester One\n", bold));
         b.addCell(b1);
         document.add(b);
 
-        if ("BITC".equals(CourseCode)){
+        if ("BITC".equals(CourseCode)) {
             BITC11(document, rsDB11, bold);
-        }
-        else if ("BIS".equals(CourseCode)){
+        } else if ("BIS".equals(CourseCode)) {
             BIS11(document, rsDB11, bold);
-        }
-        else if ("DCS".equals(CourseCode)){
+        } else if ("DCS".equals(CourseCode)) {
             DCS11(document, rsDB11, bold);
-        }
-        else {
+        } else {
             JOptionPane.showMessageDialog(null, "Invalid details!");
         }
 
@@ -454,8 +423,8 @@ public class Processing extends javax.swing.JFrame {
         c.addCell(c1);
         document.add(c);
     }
-    
-    public void do12(String CourseCode, String Database, String RegNo, Document document, ResultSet rsDB, Font bold) throws SQLException, DocumentException{
+
+    public void do12(String CourseCode, String Database, String RegNo, Document document, ResultSet rsDB, Font bold) throws SQLException, DocumentException {
         String sqlQueryDB12 = "select * from " + (Database + "_1_2") + " where RegNo='" + RegNo + "'";
         PreparedStatement psDB12 = conn.prepareStatement(sqlQueryDB12);
         ResultSet rsDB12 = psDB12.executeQuery();
@@ -464,21 +433,18 @@ public class Processing extends javax.swing.JFrame {
         PdfPTable d = new PdfPTable(1);
         d.setWidthPercentage(100);
         PdfPCell d1 = new PdfPCell(new Paragraph(rsDB.getString(7)
-                + "/" + (Integer.parseInt(rsDB.getString(7))+1)
+                + "/" + (Integer.parseInt(rsDB.getString(7)) + 1)
                 + " Year One Semester Two\n", bold));
         d.addCell(d1);
         document.add(d);
 
-        if ("BITC".equals(CourseCode)){
+        if ("BITC".equals(CourseCode)) {
             BITC12(document, rsDB12, bold);
-        }
-        else if ("BIS".equals(CourseCode)){
+        } else if ("BIS".equals(CourseCode)) {
             BIS12(document, rsDB12, bold);
-        }
-        else if ("DCS".equals(CourseCode)){
+        } else if ("DCS".equals(CourseCode)) {
             DCS12(document, rsDB12, bold);
-        }
-        else {
+        } else {
             JOptionPane.showMessageDialog(null, "Invalid Details!");
         }
 
@@ -488,8 +454,8 @@ public class Processing extends javax.swing.JFrame {
         e.addCell(e1);
         document.add(e);
     }
-    
-    public void do21(String CourseCode, String Database, String RegNo, Document document, ResultSet rsDB, Font bold) throws SQLException, DocumentException{
+
+    public void do21(String CourseCode, String Database, String RegNo, Document document, ResultSet rsDB, Font bold) throws SQLException, DocumentException {
         String sqlQueryDB21 = "select * from " + (Database + "_2_1") + " where RegNo='" + RegNo + "'";
         PreparedStatement psDB21 = conn.prepareStatement(sqlQueryDB21);
         ResultSet rsDB21 = psDB21.executeQuery();
@@ -498,21 +464,18 @@ public class Processing extends javax.swing.JFrame {
         PdfPTable f = new PdfPTable(1);
         f.setWidthPercentage(100);
         PdfPCell f1 = new PdfPCell(new Paragraph(rsDB.getString(7)
-                + "/" + (Integer.parseInt(rsDB.getString(7))+1)
+                + "/" + (Integer.parseInt(rsDB.getString(7)) + 1)
                 + " Year Two Semester One\n", bold));
         f.addCell(f1);
         document.add(f);
 
-        if ("BITC".equals(CourseCode)){
+        if ("BITC".equals(CourseCode)) {
             BITC21(document, rsDB21, bold);
-        }
-        else if ("BIS".equals(CourseCode)){
+        } else if ("BIS".equals(CourseCode)) {
             BIS21(document, rsDB21, bold);
-        }
-        else if ("DCS".equals(CourseCode)){
+        } else if ("DCS".equals(CourseCode)) {
             DCS21(document, rsDB21, bold);
-        }
-        else {
+        } else {
             JOptionPane.showMessageDialog(null, "Invalid Details!");
         }
 
@@ -522,8 +485,8 @@ public class Processing extends javax.swing.JFrame {
         g.addCell(g1);
         document.add(g);
     }
-    
-    public void do22(String CourseCode, String Database, String RegNo, Document document, ResultSet rsDB, Font bold) throws SQLException, DocumentException{
+
+    public void do22(String CourseCode, String Database, String RegNo, Document document, ResultSet rsDB, Font bold) throws SQLException, DocumentException {
         String sqlQueryDB22 = "select * from " + (Database + "_2_2") + " where RegNo='" + RegNo + "'";
         PreparedStatement psDB22 = conn.prepareStatement(sqlQueryDB22);
         ResultSet rsDB22 = psDB22.executeQuery();
@@ -532,21 +495,18 @@ public class Processing extends javax.swing.JFrame {
         PdfPTable d = new PdfPTable(1);
         d.setWidthPercentage(100);
         PdfPCell d1 = new PdfPCell(new Paragraph(rsDB.getString(7)
-                + "/" + (Integer.parseInt(rsDB.getString(7))+1)
+                + "/" + (Integer.parseInt(rsDB.getString(7)) + 1)
                 + " Year One Semester Two\n", bold));
         d.addCell(d1);
         document.add(d);
 
-        if ("BITC".equals(CourseCode)){
+        if ("BITC".equals(CourseCode)) {
             BITC22(document, rsDB22, bold);
-        }
-        else if ("BIS".equals(CourseCode)){
+        } else if ("BIS".equals(CourseCode)) {
             BIS22(document, rsDB22, bold);
-        }
-        else if ("DCS".equals(CourseCode)){
+        } else if ("DCS".equals(CourseCode)) {
             DCS22(document, rsDB22, bold);
-        }
-        else {
+        } else {
             JOptionPane.showMessageDialog(null, "Invalid Details!");
         }
 
@@ -556,8 +516,8 @@ public class Processing extends javax.swing.JFrame {
         e.addCell(e1);
         document.add(e);
     }
-    
-    public void do31(String CourseCode, String Database, String RegNo, Document document, ResultSet rsDB, Font bold) throws SQLException, DocumentException{
+
+    public void do31(String CourseCode, String Database, String RegNo, Document document, ResultSet rsDB, Font bold) throws SQLException, DocumentException {
         String sqlQueryDB31 = "select * from " + (Database + "_3_1") + " where RegNo='" + RegNo + "'";
         PreparedStatement psDB31 = conn.prepareStatement(sqlQueryDB31);
         ResultSet rsDB31 = psDB31.executeQuery();
@@ -566,18 +526,16 @@ public class Processing extends javax.swing.JFrame {
         PdfPTable f = new PdfPTable(1);
         f.setWidthPercentage(100);
         PdfPCell f1 = new PdfPCell(new Paragraph(rsDB.getString(7)
-                + "/" + (Integer.parseInt(rsDB.getString(7))+1)
+                + "/" + (Integer.parseInt(rsDB.getString(7)) + 1)
                 + " Year Two Semester One\n", bold));
         f.addCell(f1);
         document.add(f);
 
-        if ("BITC".equals(CourseCode)){
+        if ("BITC".equals(CourseCode)) {
             BITC31(document, rsDB31, bold);
-        }
-        else if ("BIS".equals(CourseCode)){
+        } else if ("BIS".equals(CourseCode)) {
             BIS31(document, rsDB31, bold);
-        }
-        else {
+        } else {
             JOptionPane.showMessageDialog(null, "Invalid Details!");
         }
 
@@ -587,8 +545,8 @@ public class Processing extends javax.swing.JFrame {
         g.addCell(g1);
         document.add(g);
     }
-        
-    public void do32(String CourseCode, String Database, String RegNo, Document document, ResultSet rsDB, Font bold) throws SQLException, DocumentException{
+
+    public void do32(String CourseCode, String Database, String RegNo, Document document, ResultSet rsDB, Font bold) throws SQLException, DocumentException {
         String sqlQueryDB32 = "select * from " + (Database + "_3_2") + " where RegNo='" + RegNo + "'";
         PreparedStatement psDB32 = conn.prepareStatement(sqlQueryDB32);
         ResultSet rsDB32 = psDB32.executeQuery();
@@ -597,18 +555,16 @@ public class Processing extends javax.swing.JFrame {
         PdfPTable d = new PdfPTable(1);
         d.setWidthPercentage(100);
         PdfPCell d1 = new PdfPCell(new Paragraph(rsDB.getString(7)
-                + "/" + (Integer.parseInt(rsDB.getString(7))+1)
+                + "/" + (Integer.parseInt(rsDB.getString(7)) + 1)
                 + " Year One Semester Two\n", bold));
         d.addCell(d1);
         document.add(d);
 
-        if ("BITC".equals(CourseCode)){
+        if ("BITC".equals(CourseCode)) {
             BITC32(document, rsDB32, bold);
-        }
-        else if ("BIS".equals(CourseCode)){
+        } else if ("BIS".equals(CourseCode)) {
             BIS32(document, rsDB32, bold);
-        }
-        else {
+        } else {
             JOptionPane.showMessageDialog(null, "Invalid Details!");
         }
 
@@ -618,8 +574,8 @@ public class Processing extends javax.swing.JFrame {
         e.addCell(e1);
         document.add(e);
     }
-    
-    public void BITC11(Document document, ResultSet rsDB11, Font bold) throws DocumentException, SQLException{
+
+    public void BITC11(Document document, ResultSet rsDB11, Font bold) throws DocumentException, SQLException {
         PdfPTable IT111 = new PdfPTable(3);
         float[] IT111_columnWidths = {7f, 1f, 1f};
         IT111.setWidths(IT111_columnWidths);
@@ -674,8 +630,8 @@ public class Processing extends javax.swing.JFrame {
         GPA11.addCell(GPA11a);
         document.add(GPA11);
     }
-    
-    public void BIS11(Document document, ResultSet rsDB11, Font bold) throws DocumentException, SQLException{
+
+    public void BIS11(Document document, ResultSet rsDB11, Font bold) throws DocumentException, SQLException {
         PdfPTable SIS1101 = new PdfPTable(3);
         float[] SIS1101_columnWidths = {7f, 1f, 1f};
         SIS1101.setWidths(SIS1101_columnWidths);
@@ -722,8 +678,8 @@ public class Processing extends javax.swing.JFrame {
         GPA11.addCell(GPA11a);
         document.add(GPA11);
     }
-    
-    public void DCS11(Document document, ResultSet rsDB11, Font bold) throws DocumentException, SQLException{
+
+    public void DCS11(Document document, ResultSet rsDB11, Font bold) throws DocumentException, SQLException {
         PdfPTable DCS111 = new PdfPTable(3);
         float[] DCS111_columnWidths = {7f, 1f, 1f};
         DCS111.setWidths(DCS111_columnWidths);
@@ -770,8 +726,8 @@ public class Processing extends javax.swing.JFrame {
         GPA11.addCell(GPA11a);
         document.add(GPA11);
     }
-        
-    public void BITC12(Document document, ResultSet rsDB12, Font bold) throws DocumentException, SQLException{
+
+    public void BITC12(Document document, ResultSet rsDB12, Font bold) throws DocumentException, SQLException {
         PdfPTable IT121 = new PdfPTable(3);
         float[] IT121_columnWidths = {7f, 1f, 1f};
         IT121.setWidths(IT121_columnWidths);
@@ -828,8 +784,8 @@ public class Processing extends javax.swing.JFrame {
         GPA12.addCell(GPA12b);
         document.add(GPA12);
     }
-    
-    public void BIS12(Document document, ResultSet rsDB12, Font bold) throws DocumentException, SQLException{
+
+    public void BIS12(Document document, ResultSet rsDB12, Font bold) throws DocumentException, SQLException {
         PdfPTable SIS1201 = new PdfPTable(3);
         float[] SIS1201_columnWidths = {7f, 1f, 1f};
         SIS1201.setWidths(SIS1201_columnWidths);
@@ -886,8 +842,8 @@ public class Processing extends javax.swing.JFrame {
         GPA12.addCell(GPA12b);
         document.add(GPA12);
     }
-    
-    public void DCS12(Document document, ResultSet rsDB12, Font bold) throws DocumentException, SQLException{
+
+    public void DCS12(Document document, ResultSet rsDB12, Font bold) throws DocumentException, SQLException {
         PdfPTable DCS121 = new PdfPTable(3);
         float[] DCS121_columnWidths = {7f, 1f, 1f};
         DCS121.setWidths(DCS121_columnWidths);
@@ -944,8 +900,8 @@ public class Processing extends javax.swing.JFrame {
         GPA12.addCell(GPA12b);
         document.add(GPA12);
     }
-    
-    public void BITC21(Document document, ResultSet rsDB21, Font bold) throws DocumentException, SQLException{
+
+    public void BITC21(Document document, ResultSet rsDB21, Font bold) throws DocumentException, SQLException {
         PdfPTable IT211 = new PdfPTable(3);
         float[] IT211_columnWidths = {7f, 1f, 1f};
         IT211.setWidths(IT211_columnWidths);
@@ -994,8 +950,8 @@ public class Processing extends javax.swing.JFrame {
         GPA21.addCell(GPA21b);
         document.add(GPA21);
     }
-    
-    public void BIS21(Document document, ResultSet rsDB21, Font bold) throws DocumentException, SQLException{
+
+    public void BIS21(Document document, ResultSet rsDB21, Font bold) throws DocumentException, SQLException {
         PdfPTable SIS2101 = new PdfPTable(3);
         float[] SIS2101_columnWidths = {7f, 1f, 1f};
         SIS2101.setWidths(SIS2101_columnWidths);
@@ -1044,8 +1000,8 @@ public class Processing extends javax.swing.JFrame {
         GPA21.addCell(GPA21b);
         document.add(GPA21);
     }
-    
-    public void DCS21(Document document, ResultSet rsDB21, Font bold) throws DocumentException, SQLException{
+
+    public void DCS21(Document document, ResultSet rsDB21, Font bold) throws DocumentException, SQLException {
         PdfPTable DCS211 = new PdfPTable(3);
         float[] DCS211_columnWidths = {7f, 1f, 1f};
         DCS211.setWidths(DCS211_columnWidths);
@@ -1077,7 +1033,7 @@ public class Processing extends javax.swing.JFrame {
         PdfPCell DCS214b = new PdfPCell(new Paragraph(String.valueOf(Float.valueOf(rsDB21.getString(17)))));
         PdfPCell DCS214c = new PdfPCell(new Paragraph(GPtoGrade(rsDB21.getString(17))));
         Add3cells(document, DCS214, DCS214a, DCS214b, DCS214c);
-        
+
         PdfPTable DCS215 = new PdfPTable(3);
         float[] DCS215_columnWidths = {7f, 1f, 1f};
         DCS215.setWidths(DCS215_columnWidths);
@@ -1102,8 +1058,8 @@ public class Processing extends javax.swing.JFrame {
         GPA21.addCell(GPA21b);
         document.add(GPA21);
     }
-        
-    public void BITC22(Document document, ResultSet rsDB22, Font bold) throws DocumentException, SQLException{
+
+    public void BITC22(Document document, ResultSet rsDB22, Font bold) throws DocumentException, SQLException {
         PdfPTable IT221 = new PdfPTable(3);
         float[] IT221_columnWidths = {7f, 1f, 1f};
         IT221.setWidths(IT221_columnWidths);
@@ -1152,8 +1108,8 @@ public class Processing extends javax.swing.JFrame {
         GPA22.addCell(GPA22b);
         document.add(GPA22);
     }
-    
-    public void BIS22(Document document, ResultSet rsDB22, Font bold) throws DocumentException, SQLException{
+
+    public void BIS22(Document document, ResultSet rsDB22, Font bold) throws DocumentException, SQLException {
         PdfPTable SIS2201 = new PdfPTable(3);
         float[] SIS2201_columnWidths = {7f, 1f, 1f};
         SIS2201.setWidths(SIS2201_columnWidths);
@@ -1210,8 +1166,8 @@ public class Processing extends javax.swing.JFrame {
         GPA22.addCell(GPA22b);
         document.add(GPA22);
     }
-    
-    public void DCS22(Document document, ResultSet rsDB22, Font bold) throws DocumentException, SQLException{
+
+    public void DCS22(Document document, ResultSet rsDB22, Font bold) throws DocumentException, SQLException {
         PdfPTable DCS221 = new PdfPTable(3);
         float[] DCS221_columnWidths = {7f, 1f, 1f};
         DCS221.setWidths(DCS221_columnWidths);
@@ -1268,8 +1224,8 @@ public class Processing extends javax.swing.JFrame {
         GPA22.addCell(GPA22b);
         document.add(GPA22);
     }
-    
-    public void BITC31(Document document, ResultSet rsDB31, Font bold) throws DocumentException, SQLException{
+
+    public void BITC31(Document document, ResultSet rsDB31, Font bold) throws DocumentException, SQLException {
         PdfPTable IT311 = new PdfPTable(3);
         float[] IT311_columnWidths = {7f, 1f, 1f};
         IT311.setWidths(IT311_columnWidths);
@@ -1318,8 +1274,8 @@ public class Processing extends javax.swing.JFrame {
         GPA31.addCell(GPA31b);
         document.add(GPA31);
     }
-    
-    public void BIS31(Document document, ResultSet rsDB31, Font bold) throws DocumentException, SQLException{
+
+    public void BIS31(Document document, ResultSet rsDB31, Font bold) throws DocumentException, SQLException {
         PdfPTable SIS3101 = new PdfPTable(3);
         float[] SIS3101_columnWidths = {7f, 1f, 1f};
         SIS3101.setWidths(SIS3101_columnWidths);
@@ -1368,8 +1324,8 @@ public class Processing extends javax.swing.JFrame {
         GPA31.addCell(GPA31b);
         document.add(GPA31);
     }
-    
-    public void BITC32(Document document, ResultSet rsDB32, Font bold) throws DocumentException, SQLException{
+
+    public void BITC32(Document document, ResultSet rsDB32, Font bold) throws DocumentException, SQLException {
         PdfPTable IT321 = new PdfPTable(3);
         float[] IT321_columnWidths = {7f, 1f, 1f};
         IT321.setWidths(IT321_columnWidths);
@@ -1418,8 +1374,8 @@ public class Processing extends javax.swing.JFrame {
         GPA32.addCell(GPA32b);
         document.add(GPA32);
     }
-    
-    public void BIS32(Document document, ResultSet rsDB32, Font bold) throws DocumentException, SQLException{
+
+    public void BIS32(Document document, ResultSet rsDB32, Font bold) throws DocumentException, SQLException {
         PdfPTable SIS3201 = new PdfPTable(3);
         float[] SIS3201_columnWidths = {7f, 1f, 1f};
         SIS3201.setWidths(SIS3201_columnWidths);
@@ -1468,42 +1424,60 @@ public class Processing extends javax.swing.JFrame {
         GPA32.addCell(GPA32b);
         document.add(GPA32);
     }
-    
-    public String GPtoGrade(String conn){
-        if ("5".equals(conn))      { return "   A";   }
-        if ("4.5".equals(conn))    { return "   B+";  }
-        if ("4".equals(conn))      { return "   B";   }
-        if ("3.5".equals(conn))    { return "   B-";  }
-        if ("3".equals(conn))      { return "   C+";  }
-        if ("2.5".equals(conn))    { return "   C";   }
-        if ("2".equals(conn))      { return "   C-";  }
-        if ("1.5".equals(conn))    { return "   D+";  }
-        if ("1".equals(conn))      { return "   D";   }
-        if ("0.5".equals(conn))    { return "   D-";  }
-        if ("0".equals(conn))      { return "   E";   }
+
+    public String GPtoGrade(String conn) {
+        if ("5".equals(conn)) {
+            return "   A";
+        }
+        if ("4.5".equals(conn)) {
+            return "   B+";
+        }
+        if ("4".equals(conn)) {
+            return "   B";
+        }
+        if ("3.5".equals(conn)) {
+            return "   B-";
+        }
+        if ("3".equals(conn)) {
+            return "   C+";
+        }
+        if ("2.5".equals(conn)) {
+            return "   C";
+        }
+        if ("2".equals(conn)) {
+            return "   C-";
+        }
+        if ("1.5".equals(conn)) {
+            return "   D+";
+        }
+        if ("1".equals(conn)) {
+            return "   D";
+        }
+        if ("0.5".equals(conn)) {
+            return "   D-";
+        }
+        if ("0".equals(conn)) {
+            return "   E";
+        }
         return conn;
-        
+
     }
-    
-    public String Comment(String conn){
-        if ("NP(VCL)".equals(conn) || "NP (VCL)".equals(conn) || conn.contains("VCL")){
+
+    public String Comment(String conn) {
+        if ("NP(VCL)".equals(conn) || "NP (VCL)".equals(conn) || conn.contains("VCL")) {
             return "Vice Chancellor's List. ";
-        }
-        else if ("NP(DL)".equals(conn) || "NP (DL)".equals(conn) || (conn.contains("NP") && conn.contains("DL"))){
+        } else if ("NP(DL)".equals(conn) || "NP (DL)".equals(conn) || (conn.contains("NP") && conn.contains("DL"))) {
             return "Normal Progress (Dean's List). ";
-        }
-        else if ("NP".equals(conn) || conn.contains("NP")){
+        } else if ("NP".equals(conn) || conn.contains("NP")) {
             return "Normal Progress. ";
-        }
-        else if ("PP".equals(conn) || conn.contains("PP") == true){
+        } else if ("PP".equals(conn) || conn.contains("PP") == true) {
             return "Probationary Progress. ";
-        }
-        else {
+        } else {
             return conn;
         }
     }
-    
-    public void Add3cells(Document conn, PdfPTable row, PdfPCell cellA, PdfPCell cellB, PdfPCell cellC) throws DocumentException{
+
+    public void Add3cells(Document conn, PdfPTable row, PdfPCell cellA, PdfPCell cellB, PdfPCell cellC) throws DocumentException {
         row.setWidthPercentage(100);
         cellB.setHorizontalAlignment(Element.ALIGN_CENTER);
         row.addCell(cellA);
@@ -1511,16 +1485,15 @@ public class Processing extends javax.swing.JFrame {
         row.addCell(cellC);
         conn.add(row);
     }
-    
+
     /**
      * @param args the command line arguments
      */
-    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -1550,22 +1523,19 @@ public class Processing extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnGenerateTestimonial;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelCourseCode;
+    private javax.swing.JLabel jLabelInstructions;
+    private javax.swing.JLabel jLabelLogo;
+    private javax.swing.JLabel jLabelRegno;
+    private javax.swing.JLabel jLabelSemEnd;
+    private javax.swing.JLabel jLabelSystemName;
+    private javax.swing.JLabel jLabelYrOfEntry;
+    private javax.swing.JLabel jLabelYrStart;
+    private javax.swing.JLabel jLabelYrsTitle;
     private javax.swing.JTextField txtCourseCode;
     private javax.swing.JTextField txtRegNo;
-    private javax.swing.JTextField txtSem1;
-    private javax.swing.JTextField txtYr1;
+    private javax.swing.JTextField txtSemEnd;
     private javax.swing.JTextField txtYrOfEntry;
+    private javax.swing.JTextField txtYrStart;
     // End of variables declaration//GEN-END:variables
 }
