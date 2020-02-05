@@ -164,7 +164,7 @@ public class AddDetails extends javax.swing.JFrame {
                 + "INTO TABLE " + db + " FIELDS TERMINATED BY ','"
                 + " ENCLOSED BY '\"' LINES TERMINATED BY '\\n' IGNORE 1 ROWS;";
         //ignores the title row
-        String checkDB = "select * from " + db;
+        String checkDB = "SELECT * FROM " + db;
         try {
             PreparedStatement ps = conn.prepareStatement(checkDB);
             PreparedStatement ps1 = conn.prepareStatement(sqlUpload);

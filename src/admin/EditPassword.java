@@ -217,9 +217,9 @@ public class EditPassword extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look AND feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look AND feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look AND feel.
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
@@ -243,7 +243,7 @@ public class EditPassword extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
 
-        /* Create AND display the form */
+        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new EditPassword().setVisible(true);

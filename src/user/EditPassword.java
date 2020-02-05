@@ -2,9 +2,11 @@ package user;
 
 import auth.Login;
 import database.Connect;
+import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -187,9 +189,9 @@ public class EditPassword extends javax.swing.JFrame {
         String OldPassword1 = txtOldPassword1.getText();
         String NewPassword1 = txtNewPassword1.getText();
         String ConfirmPassword1 = txtConfirmPassword1.getText();
-        String sqlQueryPwd1 = "select Password from user_table where IDNO=? and Password=?";
-        String sqlQueryP1 = "update user_table set Password='"
-                + ConfirmPassword1 + "' where IDNO='" + IDNO1 + "'";
+        String sqlQueryPwd1 = "SELECT Password FROM user_table WHERE IDNO=? AND Password=?";
+        String sqlQueryP1 = "UPDATE user_table SET Password='"
+                + ConfirmPassword1 + "' WHERE IDNO='" + IDNO1 + "'";
         
         try {
             PreparedStatement ps = conn.prepareStatement(sqlQueryPwd1);
@@ -210,7 +212,7 @@ public class EditPassword extends javax.swing.JFrame {
             }
             rs.close();
         }
-        catch (Exception e){
+        catch (HeadlessException | SQLException e){
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_btnSubmit1ActionPerformed

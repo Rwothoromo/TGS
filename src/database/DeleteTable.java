@@ -189,15 +189,8 @@ public class DeleteTable extends javax.swing.JFrame {
         String CurrentYr = txtCurrentYr.getText();
         String CurrentSem = txtCurrentSem.getText();
         String db = Coursecode + EntryYr + "_" + CurrentYr + "_" + CurrentSem;
-        String sqlCheck = "Select * from " + db + ";";
-        //String sqlDelete = "DeleteTable from " + db + ";";
-        String sqlDelete = "Delete from " + db + " where No not in (0);";
-        //String fillEmptyDB = "insert into " + db + " (No, RegNo, Sex) values (0, '12/U/310/ITD/GV', 'M');";
-        /*
-        String fillEmptyDB = "LOAD DATA INFILE 'd:/TGS datafiles/fillEmptyDB.csv' "
-                + "INTO TABLE " + db + " FIELDS TERMINATED BY ','"
-                + " ENCLOSED BY '\"' LINES TERMINATED BY '\\n' IGNORE 1 ROWS;;";
-         */
+        String sqlCheck = "SELECT * FROM " + db + ";";
+        String sqlDelete = "DELETE FROM " + db + " WHERE No not in (0);";
         try {
             PreparedStatement ps = conn.prepareStatement(sqlDelete);
             PreparedStatement ps1 = conn.prepareStatement(sqlCheck);

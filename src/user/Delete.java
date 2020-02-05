@@ -3,9 +3,11 @@ package user;
 
 import database.Connect;
 import admin.Dashboard;
+import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 public class Delete extends javax.swing.JFrame {
@@ -178,10 +180,10 @@ public class Delete extends javax.swing.JFrame {
         String IDNO = txtIDNO.getText();
         String FName = txtFName.getText();
         String OName = txtOtherNames.getText();
-        String sqlDeleteUser = "Delete from user_table where IDNO='" + IDNO
-                + "' and Fname='" + FName + "' and OName='" + OName + "'";
-        String sqlPosition = "Select * from user_table"
-                + " where IDNO=? and FName=? and OName=?";
+        String sqlDeleteUser = "DELETE FROM user_table WHERE IDNO='" + IDNO
+                + "' AND Fname='" + FName + "' AND OName='" + OName + "'";
+        String sqlPosition = "SELECT * FROM user_table"
+                + " WHERE IDNO=? AND FName=? AND OName=?";
         try {
             PreparedStatement ps = conn.prepareStatement(sqlPosition);
             PreparedStatement ps1 = conn.prepareStatement(sqlDeleteUser);
@@ -200,7 +202,7 @@ public class Delete extends javax.swing.JFrame {
             }
             rs.close();
         }
-        catch (Exception e){
+        catch (HeadlessException | SQLException e){
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_btnDeleteUserActionPerformed
