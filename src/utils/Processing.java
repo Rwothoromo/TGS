@@ -9,13 +9,14 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
-import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import database.Connect;
+import java.awt.Desktop;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.OutputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -226,163 +227,159 @@ public class Processing extends javax.swing.JFrame {
             rsCSD.next();
             rsDB.next();
 
-            OutputStream file = new FileOutputStream(new File("D:\\TGS results\\"
-                    + Database + "\\" + (rsDB.getString(1) + "_"
-                    + rsDB.getString(2) + "_" + rsDB.getString(3)) + ".pdf"));
-            Document document = new Document();
-            PdfWriter.getInstance(document, file);
+            File fileLocation = new File("results\\" + Database + "\\"
+                    + (rsDB.getString(1) + "_" + rsDB.getString(2) + "_" + rsDB.getString(3))
+                    + ".pdf");
+            try (OutputStream file = new FileOutputStream(fileLocation)) {
+                Document document = new Document();
+                PdfWriter.getInstance(document, file);
 
-            PdfPTable table = new PdfPTable(3);
-            table.setWidthPercentage(100);
-            float[] columnWidths = {3f, 1f, 3f};
-            table.setWidths(columnWidths);
-            Paragraph KY = new Paragraph("KYAMBOGO", bold28);
-            PdfPCell KYU1 = new PdfPCell(KY);
-            Image image = Image.getInstance("/Users/rwothoromo/apps/general/TGS/src/images/kyulogoEdit.jpg");
-            PdfPCell img = new PdfPCell(image, true);
-            Paragraph U = new Paragraph("UNIVERSITY", bold28);
-            PdfPCell KYU2 = new PdfPCell(U);
-            KYU1.setVerticalAlignment(Element.ALIGN_BOTTOM);
-            img.setVerticalAlignment(Element.ALIGN_MIDDLE);
-            KYU2.setVerticalAlignment(Element.ALIGN_BOTTOM);
-            KYU1.setHorizontalAlignment(Element.ALIGN_RIGHT);
-            img.setHorizontalAlignment(Element.ALIGN_CENTER);
-            KYU2.setHorizontalAlignment(Element.ALIGN_LEFT);
-            KYU1.setBorder(Rectangle.NO_BORDER);
-            img.setBorder(Rectangle.NO_BORDER);
-            KYU2.setBorder(Rectangle.NO_BORDER);
+                PdfPTable table = new PdfPTable(3);
+                table.setWidthPercentage(100);
+                float[] columnWidths = {3f, 1f, 3f};
+                table.setWidths(columnWidths);
 
-            Paragraph Contacts = new Paragraph("P.O. BOX 1 KYAMBOGO\n"
-                    + "Tel: 256-414-287347, 285001/2, Fax: 256-414-288492\n"
-                    + "E-mail:deansci@kyu.ac.ug, www.kyu.ac.ug\n", size8);
-            Contacts.setAlignment(Element.ALIGN_CENTER);
-            Paragraph DEAN = new Paragraph("Office of the Dean, Faculty of Science", italic18);
-            DEAN.setAlignment(Element.ALIGN_CENTER);
-            Paragraph testimonial = new Paragraph("PARTIAL TESTIMONIAL\n\n", bold);
-            testimonial.setAlignment(Element.ALIGN_CENTER);
+                Image logo = Image.getInstance("src/images/kyuLogo.png");
 
-            Date now = new Date();
-            SimpleDateFormat fmt = new SimpleDateFormat("dd MMMM, yyyy");
-            String date = fmt.format(now);
+                Paragraph Contacts = new Paragraph("P.O. BOX 1 KYAMBOGO\n"
+                        + "Tel: 256-414-287347, 285001/2, Fax: 256-414-288492\n"
+                        + "E-mail:deansci@kyu.ac.ug, www.kyu.ac.ug\n", size8);
+                Contacts.setAlignment(Element.ALIGN_CENTER);
+                Paragraph DEAN = new Paragraph("Office of the Dean, Faculty of Science", italic18);
+                DEAN.setAlignment(Element.ALIGN_CENTER);
+                Paragraph testimonial = new Paragraph("PARTIAL TESTIMONIAL\n\n", bold);
+                testimonial.setAlignment(Element.ALIGN_CENTER);
 
-            document.open();
-            document.add(table);
-            Add3cells(document, table, KYU1, img, KYU2);
-            document.add(Contacts);
-            document.add(DEAN);
-            document.add(new Paragraph("______________________________________________________________________________\n\n\n", bold));
-            document.add(testimonial);
-            document.add(new Paragraph("Date                     :      " + date, bold));
-            document.add(new Paragraph("Name                   :      " + rsDB.getString(2) + " " + rsDB.getString(3), bold));
-            document.add(new Paragraph("Registration No. :      " + rsDB.getString(4), bold));
-            document.add(new Paragraph("Programme         :      " + rsCSD.getString(2), bold));
-            document.add(new Paragraph("Duration              :      " + rsDB.getString(6) + " years", bold));
-            document.add(new Paragraph("Year of Entry       :      " + rsDB.getString(7), bold));
-            document.add(new Paragraph("Year of Exit         :      " + rsDB.getString(8), bold));
-            document.add(new Paragraph("\n\n"));
+                Date now = new Date();
+                SimpleDateFormat fmt = new SimpleDateFormat("dd MMMM, yyyy");
+                String date = fmt.format(now);
 
-            PdfPTable a = new PdfPTable(3); // 3 columns
-            float[] a_columnWidths = {7f, 1f, 1f};
-            a.setWidths(a_columnWidths);
-            PdfPCell a1 = new PdfPCell(new Paragraph("Course Units and grades:", bold));
-            PdfPCell a2 = new PdfPCell(new Paragraph("GP", bold));
-            PdfPCell a3 = new PdfPCell(new Paragraph("  Grade", bold));
-            Add3cells(document, a, a1, a2, a3);
+                document.open();
+                document.add(table);
+                document.add(logo);
+                document.add(Contacts);
+                document.add(DEAN);
+                document.add(new Paragraph("______________________________________________________________________________\n\n\n", bold));
+                document.add(testimonial);
+                document.add(new Paragraph("Date                     :      " + date, bold));
+                document.add(new Paragraph("Name                   :      " + rsDB.getString(2) + " " + rsDB.getString(3), bold));
+                document.add(new Paragraph("Registration No. :      " + rsDB.getString(4), bold));
+                document.add(new Paragraph("Programme         :      " + rsCSD.getString(2), bold));
+                document.add(new Paragraph("Duration              :      " + rsDB.getString(6) + " years", bold));
+                document.add(new Paragraph("Year of Entry       :      " + rsDB.getString(7), bold));
+                document.add(new Paragraph("Year of Exit         :      " + rsDB.getString(8), bold));
+                document.add(new Paragraph("\n\n"));
 
-            if ("1".equals(EndYr) && "1".equals(EndSem)) {
-                do11(CourseCode, Database, RegNo, document, rsDB, bold);
-                String sqlcmt11 = "SELECT * FROM " + (Database + "_1_1") + " WHERE RegNo='" + RegNo + "'";
-                PreparedStatement pscmt11 = conn.prepareStatement(sqlcmt11);
-                ResultSet cmt11 = pscmt11.executeQuery();
-                cmt11.next();
-                Phrase Remark = new Phrase();
-                Remark.add(new Chunk("\nHe/She is on "));
-                Remark.add(new Chunk((Comment(cmt11.getString("REMARKS"))), bold));
-                Remark.add(new Chunk("These are the provisional Results."));
-                document.add(new Paragraph(Remark));
-            } else if ("1".equals(EndYr) && "2".equals(EndSem)) {
-                do11(CourseCode, Database, RegNo, document, rsDB, bold);
-                do12(CourseCode, Database, RegNo, document, rsDB, bold);
-                String sqlcmt12 = "SELECT * FROM " + (Database + "_1_2") + " WHERE RegNo='" + RegNo + "'";
-                PreparedStatement pscmt12 = conn.prepareStatement(sqlcmt12);
-                ResultSet cmt12 = pscmt12.executeQuery();
-                cmt12.next();
-                Phrase Remark = new Phrase();
-                Remark.add(new Chunk("\nHe/She is on "));
-                Remark.add(new Chunk((Comment(cmt12.getString("REMARKS"))), bold));
-                Remark.add(new Chunk("These are the provisional Results."));
-                document.add(new Paragraph(Remark));
-            } else if ("2".equals(EndYr) && "1".equals(EndSem)) {
-                do11(CourseCode, Database, RegNo, document, rsDB, bold);
-                do12(CourseCode, Database, RegNo, document, rsDB, bold);
-                do21(CourseCode, Database, RegNo, document, rsDB, bold);
-                String sqlcmt21 = "SELECT * FROM " + (Database + "_2_1") + " WHERE RegNo='" + RegNo + "'";
-                PreparedStatement pscmt21 = conn.prepareStatement(sqlcmt21);
-                ResultSet cmt21 = pscmt21.executeQuery();
-                cmt21.next();
-                Phrase Remark = new Phrase();
-                Remark.add(new Chunk("\nHe/She is on "));
-                Remark.add(new Chunk((Comment(cmt21.getString("REMARKS"))), bold));
-                Remark.add(new Chunk("These are the provisional Results."));
-                document.add(new Paragraph(Remark));
-            } else if ("2".equals(EndYr) && "2".equals(EndSem)) {
-                do11(CourseCode, Database, RegNo, document, rsDB, bold);
-                do12(CourseCode, Database, RegNo, document, rsDB, bold);
-                do21(CourseCode, Database, RegNo, document, rsDB, bold);
-                do22(CourseCode, Database, RegNo, document, rsDB, bold);
-                String sqlcmt22 = "SELECT * FROM " + (Database + "_2_2") + " WHERE RegNo='" + RegNo + "'";
-                PreparedStatement pscmt22 = conn.prepareStatement(sqlcmt22);
-                ResultSet cmt22 = pscmt22.executeQuery();
-                cmt22.next();
-                Phrase Remark = new Phrase();
-                Remark.add(new Chunk("\nHe/She is on "));
-                Remark.add(new Chunk((Comment(cmt22.getString("REMARKS"))), bold));
-                Remark.add(new Chunk("These are the provisional Results."));
-                document.add(new Paragraph(Remark));
-            } else if ("3".equals(EndYr) && "1".equals(EndSem)) {
-                do11(CourseCode, Database, RegNo, document, rsDB, bold);
-                do12(CourseCode, Database, RegNo, document, rsDB, bold);
-                do21(CourseCode, Database, RegNo, document, rsDB, bold);
-                do22(CourseCode, Database, RegNo, document, rsDB, bold);
-                do31(CourseCode, Database, RegNo, document, rsDB, bold);
-                String sqlcmt31 = "SELECT * FROM " + (Database + "_3_1") + " WHERE RegNo='" + RegNo + "'";
-                PreparedStatement pscmt31 = conn.prepareStatement(sqlcmt31);
-                ResultSet cmt31 = pscmt31.executeQuery();
-                cmt31.next();
-                Phrase Remark = new Phrase();
-                Remark.add(new Chunk("\nHe/She is on "));
-                Remark.add(new Chunk((Comment(cmt31.getString("REMARKS"))), bold));
-                Remark.add(new Chunk("These are the provisional Results."));
-                document.add(new Paragraph(Remark));
-            } else if ("3".equals(EndYr) && "2".equals(EndSem)) {
-                do11(CourseCode, Database, RegNo, document, rsDB, bold);
-                do12(CourseCode, Database, RegNo, document, rsDB, bold);
-                do21(CourseCode, Database, RegNo, document, rsDB, bold);
-                do22(CourseCode, Database, RegNo, document, rsDB, bold);
-                do31(CourseCode, Database, RegNo, document, rsDB, bold);
-                do32(CourseCode, Database, RegNo, document, rsDB, bold);
-                String sqlcmt32 = "SELECT * FROM " + (Database + "_3_2") + " WHERE RegNo='" + RegNo + "'";
-                PreparedStatement pscmt32 = conn.prepareStatement(sqlcmt32);
-                ResultSet cmt32 = pscmt32.executeQuery();
-                cmt32.next();
-                Phrase Remark = new Phrase();
-                Remark.add(new Chunk("\nHe/She is on "));
-                Remark.add(new Chunk((Comment(cmt32.getString("REMARKS"))), bold));
-                document.add(new Paragraph(Remark));
+                PdfPTable a = new PdfPTable(3); // 3 columns
+                float[] a_columnWidths = {7f, 1f, 1f};
+                a.setWidths(a_columnWidths);
+                PdfPCell a1 = new PdfPCell(new Paragraph("Course Units and grades:", bold));
+                PdfPCell a2 = new PdfPCell(new Paragraph("GP", bold));
+                PdfPCell a3 = new PdfPCell(new Paragraph("  Grade", bold));
+                Add3cells(document, a, a1, a2, a3);
+
+                if ("1".equals(EndYr) && "1".equals(EndSem)) {
+                    do11(CourseCode, Database, RegNo, document, rsDB, bold);
+                    String sqlcmt11 = "SELECT * FROM " + (Database + "_1_1") + " WHERE RegNo='" + RegNo + "'";
+                    PreparedStatement pscmt11 = conn.prepareStatement(sqlcmt11);
+                    ResultSet cmt11 = pscmt11.executeQuery();
+                    cmt11.next();
+                    Phrase Remark = new Phrase();
+                    Remark.add(new Chunk("\nHe/She is on "));
+                    Remark.add(new Chunk((Comment(cmt11.getString("REMARKS"))), bold));
+                    Remark.add(new Chunk("These are the provisional Results."));
+                    document.add(new Paragraph(Remark));
+                } else if ("1".equals(EndYr) && "2".equals(EndSem)) {
+                    do11(CourseCode, Database, RegNo, document, rsDB, bold);
+                    do12(CourseCode, Database, RegNo, document, rsDB, bold);
+                    String sqlcmt12 = "SELECT * FROM " + (Database + "_1_2") + " WHERE RegNo='" + RegNo + "'";
+                    PreparedStatement pscmt12 = conn.prepareStatement(sqlcmt12);
+                    ResultSet cmt12 = pscmt12.executeQuery();
+                    cmt12.next();
+                    Phrase Remark = new Phrase();
+                    Remark.add(new Chunk("\nHe/She is on "));
+                    Remark.add(new Chunk((Comment(cmt12.getString("REMARKS"))), bold));
+                    Remark.add(new Chunk("These are the provisional Results."));
+                    document.add(new Paragraph(Remark));
+                } else if ("2".equals(EndYr) && "1".equals(EndSem)) {
+                    do11(CourseCode, Database, RegNo, document, rsDB, bold);
+                    do12(CourseCode, Database, RegNo, document, rsDB, bold);
+                    do21(CourseCode, Database, RegNo, document, rsDB, bold);
+                    String sqlcmt21 = "SELECT * FROM " + (Database + "_2_1") + " WHERE RegNo='" + RegNo + "'";
+                    PreparedStatement pscmt21 = conn.prepareStatement(sqlcmt21);
+                    ResultSet cmt21 = pscmt21.executeQuery();
+                    cmt21.next();
+                    Phrase Remark = new Phrase();
+                    Remark.add(new Chunk("\nHe/She is on "));
+                    Remark.add(new Chunk((Comment(cmt21.getString("REMARKS"))), bold));
+                    Remark.add(new Chunk("These are the provisional Results."));
+                    document.add(new Paragraph(Remark));
+                } else if ("2".equals(EndYr) && "2".equals(EndSem)) {
+                    do11(CourseCode, Database, RegNo, document, rsDB, bold);
+                    do12(CourseCode, Database, RegNo, document, rsDB, bold);
+                    do21(CourseCode, Database, RegNo, document, rsDB, bold);
+                    do22(CourseCode, Database, RegNo, document, rsDB, bold);
+                    String sqlcmt22 = "SELECT * FROM " + (Database + "_2_2") + " WHERE RegNo='" + RegNo + "'";
+                    PreparedStatement pscmt22 = conn.prepareStatement(sqlcmt22);
+                    ResultSet cmt22 = pscmt22.executeQuery();
+                    cmt22.next();
+                    Phrase Remark = new Phrase();
+                    Remark.add(new Chunk("\nHe/She is on "));
+                    Remark.add(new Chunk((Comment(cmt22.getString("REMARKS"))), bold));
+                    Remark.add(new Chunk("These are the provisional Results."));
+                    document.add(new Paragraph(Remark));
+                } else if ("3".equals(EndYr) && "1".equals(EndSem)) {
+                    do11(CourseCode, Database, RegNo, document, rsDB, bold);
+                    do12(CourseCode, Database, RegNo, document, rsDB, bold);
+                    do21(CourseCode, Database, RegNo, document, rsDB, bold);
+                    do22(CourseCode, Database, RegNo, document, rsDB, bold);
+                    do31(CourseCode, Database, RegNo, document, rsDB, bold);
+                    String sqlcmt31 = "SELECT * FROM " + (Database + "_3_1") + " WHERE RegNo='" + RegNo + "'";
+                    PreparedStatement pscmt31 = conn.prepareStatement(sqlcmt31);
+                    ResultSet cmt31 = pscmt31.executeQuery();
+                    cmt31.next();
+                    Phrase Remark = new Phrase();
+                    Remark.add(new Chunk("\nHe/She is on "));
+                    Remark.add(new Chunk((Comment(cmt31.getString("REMARKS"))), bold));
+                    Remark.add(new Chunk("These are the provisional Results."));
+                    document.add(new Paragraph(Remark));
+                } else if ("3".equals(EndYr) && "2".equals(EndSem)) {
+                    do11(CourseCode, Database, RegNo, document, rsDB, bold);
+                    do12(CourseCode, Database, RegNo, document, rsDB, bold);
+                    do21(CourseCode, Database, RegNo, document, rsDB, bold);
+                    do22(CourseCode, Database, RegNo, document, rsDB, bold);
+                    do31(CourseCode, Database, RegNo, document, rsDB, bold);
+                    do32(CourseCode, Database, RegNo, document, rsDB, bold);
+                    String sqlcmt32 = "SELECT * FROM " + (Database + "_3_2") + " WHERE RegNo='" + RegNo + "'";
+                    PreparedStatement pscmt32 = conn.prepareStatement(sqlcmt32);
+                    ResultSet cmt32 = pscmt32.executeQuery();
+                    cmt32.next();
+                    Phrase Remark = new Phrase();
+                    Remark.add(new Chunk("\nHe/She is on "));
+                    Remark.add(new Chunk((Comment(cmt32.getString("REMARKS"))), bold));
+                    document.add(new Paragraph(Remark));
+                }
+
+                document.add(new Paragraph("Any assistance rendered to him/her will be highly appreciated."
+                        + "\n\n\n\n\n\n\nAssoc. Prof. G. W. Byarugaba-Bazirake                         "
+                        + "Date...................................................."));
+                document.add(new Paragraph("DEAN", bold));
+                document.close();
             }
-
-            document.add(new Paragraph("Any assistance rendered to him/her will be highly appreciated."
-                    + "\n\n\n\n\n\n\nAssoc. Prof. G. W. Byarugaba-Bazirake                         "
-                    + "Date...................................................."));
-            document.add(new Paragraph("DEAN", bold));
-            document.close();
-            file.close();
-            Runtime.getRuntime().exec("rundll32 url.dll, FileProtocolHandler "
-                    + "D:\\TGS results\\" + Database + "\\"
-                    + (rsDB.getString(1) + "_" + rsDB.getString(2)
-                    + "_" + rsDB.getString(3)) + ".pdf");
-            //Pops the generated pdf
-        } catch (Exception e) {
+            
+            // Pop pdf on screen
+            try {
+                Desktop desktop = Desktop.getDesktop();
+                if (desktop.isSupported(Desktop.Action.OPEN)) {
+                    desktop.open(fileLocation);
+                } else {
+                    System.out.println("Open is not supported");
+                }
+            } catch (IOException e) {
+                //
+            }
+            
+        } catch (DocumentException | IOException | SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_btnGenerateTestimonialActionPerformed
@@ -562,16 +559,18 @@ public class Processing extends javax.swing.JFrame {
 
         if (null == CourseCode) {
             JOptionPane.showMessageDialog(null, "Invalid Details!");
-        } else switch (CourseCode) {
-            case "BITC":
-                BITC32(document, rsDB32, bold);
-                break;
-            case "BIS":
-                BIS32(document, rsDB32, bold);
-                break;
-            default:
-                JOptionPane.showMessageDialog(null, "Invalid Details!");
-                break;
+        } else {
+            switch (CourseCode) {
+                case "BITC":
+                    BITC32(document, rsDB32, bold);
+                    break;
+                case "BIS":
+                    BIS32(document, rsDB32, bold);
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Invalid Details!");
+                    break;
+            }
         }
 
         PdfPTable e = new PdfPTable(1);
