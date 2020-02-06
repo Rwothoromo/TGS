@@ -9,6 +9,7 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
+import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
@@ -238,8 +239,24 @@ public class Processing extends javax.swing.JFrame {
                 table.setWidthPercentage(100);
                 float[] columnWidths = {3f, 1f, 3f};
                 table.setWidths(columnWidths);
-
-                Image logo = Image.getInstance("src/images/kyuLogo.png");
+                
+                // This block could be replaced by... Image logo = Image.getInstance("src/images/kyuLogo.png");
+                Paragraph KY = new Paragraph("KYAMBOGO", bold28);
+                PdfPCell KYU1 = new PdfPCell(KY);
+                Image image = Image.getInstance("src/images/kyuIcon.png");
+                PdfPCell img = new PdfPCell(image, true);
+                Paragraph U = new Paragraph("UNIVERSITY", bold28);
+                PdfPCell KYU2 = new PdfPCell(U);
+                KYU1.setVerticalAlignment(Element.ALIGN_BOTTOM);
+                img.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                KYU2.setVerticalAlignment(Element.ALIGN_BOTTOM);
+                KYU1.setHorizontalAlignment(Element.ALIGN_RIGHT);
+                img.setHorizontalAlignment(Element.ALIGN_CENTER);
+                KYU2.setHorizontalAlignment(Element.ALIGN_LEFT);
+                KYU1.setBorder(Rectangle.NO_BORDER);
+                img.setBorder(Rectangle.NO_BORDER);
+                KYU2.setBorder(Rectangle.NO_BORDER);
+                // End replaceable block
 
                 Paragraph Contacts = new Paragraph("P.O. BOX 1 KYAMBOGO\n"
                         + "Tel: 256-414-287347, 285001/2, Fax: 256-414-288492\n"
@@ -256,7 +273,8 @@ public class Processing extends javax.swing.JFrame {
 
                 document.open();
                 document.add(table);
-                document.add(logo);
+                Add3cells(document, table, KYU1, img, KYU2); // could be replaced by the next line
+//                document.add(logo);
                 document.add(Contacts);
                 document.add(DEAN);
                 document.add(new Paragraph("______________________________________________________________________________\n\n\n", bold));
