@@ -171,7 +171,7 @@ public class Login extends javax.swing.JFrame {
     private void btnLoginAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginAdminActionPerformed
         String Id = txtId.getText().trim().toUpperCase();
         String Password = txtPassword.getText().trim();
-        String sqlQuery = "SELECT * FROM super_user WHERE 'Id'=? AND 'Password'=?";
+        String sqlQuery = "SELECT * FROM super_user WHERE Id=? AND Password=?";
         try {
             PreparedStatement ps = conn.prepareStatement(sqlQuery);
             ps.setString(1, Id);

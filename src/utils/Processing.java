@@ -123,35 +123,33 @@ public class Processing extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelSystemName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 755, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelYrsTitle)
-                    .addComponent(jLabelInstructions)
-                    .addComponent(jLabelRegno)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabelCourseCode, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabelYrOfEntry, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(jLabelYrStart))
-                        .addGap(50, 50, 50)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtYrStart, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtYrOfEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtRegNo, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCourseCode, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(btnGenerateTestimonial)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addComponent(txtSemEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jLabelSemEnd))
-                .addContainerGap(50, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabelSystemName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 755, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelYrsTitle)
+                        .addComponent(jLabelInstructions)
+                        .addComponent(jLabelRegno)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabelCourseCode, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabelYrOfEntry, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addComponent(jLabelYrStart))
+                            .addGap(50, 50, 50)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtYrStart, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtYrOfEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtRegNo, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtCourseCode, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(btnGenerateTestimonial)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(txtSemEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jLabelSemEnd))
+                    .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -228,9 +226,14 @@ public class Processing extends javax.swing.JFrame {
             rsCSD.next();
             rsDB.next();
 
-            File fileLocation = new File("results\\" + Database + "\\"
-                    + (rsDB.getString(1) + "_" + rsDB.getString(2) + "_" + rsDB.getString(3))
-                    + ".pdf");
+            String userHomeFolder = System.getProperty("user.home");
+            String dirName = "/Desktop/TGS Results/" + Database + "/";
+            String fileName = (rsDB.getString(1) + "_" + rsDB.getString(2) + "_" + rsDB.getString(3)) + ".pdf";
+
+            // Create the directory and file
+            File fileLocation = new File(userHomeFolder + dirName + fileName);
+            fileLocation.getParentFile().mkdirs();
+
             try (OutputStream file = new FileOutputStream(fileLocation)) {
                 Document document = new Document();
                 PdfWriter.getInstance(document, file);
@@ -239,7 +242,7 @@ public class Processing extends javax.swing.JFrame {
                 table.setWidthPercentage(100);
                 float[] columnWidths = {3f, 1f, 3f};
                 table.setWidths(columnWidths);
-                
+
                 // This block could be replaced by... Image logo = Image.getInstance("src/images/kyuLogo.png");
                 Paragraph KY = new Paragraph("KYAMBOGO", bold28);
                 PdfPCell KYU1 = new PdfPCell(KY);
@@ -384,7 +387,7 @@ public class Processing extends javax.swing.JFrame {
                 document.add(new Paragraph("DEAN", bold));
                 document.close();
             }
-            
+
             // Pop pdf on screen
             try {
                 Desktop desktop = Desktop.getDesktop();
@@ -396,7 +399,7 @@ public class Processing extends javax.swing.JFrame {
             } catch (IOException e) {
                 //
             }
-            
+
         } catch (DocumentException | IOException | SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
@@ -422,14 +425,23 @@ public class Processing extends javax.swing.JFrame {
         b.addCell(b1);
         document.add(b);
 
-        if ("BITC".equals(CourseCode)) {
-            BITC11(document, rsDB11, bold);
-        } else if ("BIS".equals(CourseCode)) {
-            BIS11(document, rsDB11, bold);
-        } else if ("DCS".equals(CourseCode)) {
-            DCS11(document, rsDB11, bold);
-        } else {
+        if (null == CourseCode) {
             JOptionPane.showMessageDialog(null, "Invalid details!");
+        } else {
+            switch (CourseCode) {
+                case "BITC":
+                    BITC11(document, rsDB11, bold);
+                    break;
+                case "BIS":
+                    BIS11(document, rsDB11, bold);
+                    break;
+                case "DCS":
+                    DCS11(document, rsDB11, bold);
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Invalid details!");
+                    break;
+            }
         }
 
         PdfPTable c = new PdfPTable(1);
@@ -453,14 +465,23 @@ public class Processing extends javax.swing.JFrame {
         d.addCell(d1);
         document.add(d);
 
-        if ("BITC".equals(CourseCode)) {
-            BITC12(document, rsDB12, bold);
-        } else if ("BIS".equals(CourseCode)) {
-            BIS12(document, rsDB12, bold);
-        } else if ("DCS".equals(CourseCode)) {
-            DCS12(document, rsDB12, bold);
-        } else {
+        if (null == CourseCode) {
             JOptionPane.showMessageDialog(null, "Invalid Details!");
+        } else {
+            switch (CourseCode) {
+                case "BITC":
+                    BITC12(document, rsDB12, bold);
+                    break;
+                case "BIS":
+                    BIS12(document, rsDB12, bold);
+                    break;
+                case "DCS":
+                    DCS12(document, rsDB12, bold);
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Invalid Details!");
+                    break;
+            }
         }
 
         PdfPTable e = new PdfPTable(1);
@@ -478,20 +499,29 @@ public class Processing extends javax.swing.JFrame {
 
         PdfPTable f = new PdfPTable(1);
         f.setWidthPercentage(100);
-        PdfPCell f1 = new PdfPCell(new Paragraph(rsDB.getString(7)
-                + "/" + (Integer.parseInt(rsDB.getString(7)) + 1)
+        PdfPCell f1 = new PdfPCell(new Paragraph(Integer.parseInt(rsDB.getString(7)) + 1
+                + "/" + (Integer.parseInt(rsDB.getString(7)) + 2)
                 + " Year Two Semester One\n", bold));
         f.addCell(f1);
         document.add(f);
 
-        if ("BITC".equals(CourseCode)) {
-            BITC21(document, rsDB21, bold);
-        } else if ("BIS".equals(CourseCode)) {
-            BIS21(document, rsDB21, bold);
-        } else if ("DCS".equals(CourseCode)) {
-            DCS21(document, rsDB21, bold);
-        } else {
+        if (null == CourseCode) {
             JOptionPane.showMessageDialog(null, "Invalid Details!");
+        } else {
+            switch (CourseCode) {
+                case "BITC":
+                    BITC21(document, rsDB21, bold);
+                    break;
+                case "BIS":
+                    BIS21(document, rsDB21, bold);
+                    break;
+                case "DCS":
+                    DCS21(document, rsDB21, bold);
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Invalid Details!");
+                    break;
+            }
         }
 
         PdfPTable g = new PdfPTable(1);
@@ -509,20 +539,29 @@ public class Processing extends javax.swing.JFrame {
 
         PdfPTable d = new PdfPTable(1);
         d.setWidthPercentage(100);
-        PdfPCell d1 = new PdfPCell(new Paragraph(rsDB.getString(7)
-                + "/" + (Integer.parseInt(rsDB.getString(7)) + 1)
-                + " Year One Semester Two\n", bold));
+        PdfPCell d1 = new PdfPCell(new Paragraph(Integer.parseInt(rsDB.getString(7)) + 1
+                + "/" + (Integer.parseInt(rsDB.getString(7)) + 2)
+                + " Year Two Semester Two\n", bold));
         d.addCell(d1);
         document.add(d);
 
-        if ("BITC".equals(CourseCode)) {
-            BITC22(document, rsDB22, bold);
-        } else if ("BIS".equals(CourseCode)) {
-            BIS22(document, rsDB22, bold);
-        } else if ("DCS".equals(CourseCode)) {
-            DCS22(document, rsDB22, bold);
-        } else {
+        if (null == CourseCode) {
             JOptionPane.showMessageDialog(null, "Invalid Details!");
+        } else {
+            switch (CourseCode) {
+                case "BITC":
+                    BITC22(document, rsDB22, bold);
+                    break;
+                case "BIS":
+                    BIS22(document, rsDB22, bold);
+                    break;
+                case "DCS":
+                    DCS22(document, rsDB22, bold);
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Invalid Details!");
+                    break;
+            }
         }
 
         PdfPTable e = new PdfPTable(1);
@@ -540,18 +579,26 @@ public class Processing extends javax.swing.JFrame {
 
         PdfPTable f = new PdfPTable(1);
         f.setWidthPercentage(100);
-        PdfPCell f1 = new PdfPCell(new Paragraph(rsDB.getString(7)
-                + "/" + (Integer.parseInt(rsDB.getString(7)) + 1)
-                + " Year Two Semester One\n", bold));
+        PdfPCell f1 = new PdfPCell(new Paragraph(Integer.parseInt(rsDB.getString(7)) + 2
+                + "/" + (Integer.parseInt(rsDB.getString(7)) + 3)
+                + " Year Three Semester One\n", bold));
         f.addCell(f1);
         document.add(f);
 
-        if ("BITC".equals(CourseCode)) {
-            BITC31(document, rsDB31, bold);
-        } else if ("BIS".equals(CourseCode)) {
-            BIS31(document, rsDB31, bold);
-        } else {
+        if (null == CourseCode) {
             JOptionPane.showMessageDialog(null, "Invalid Details!");
+        } else {
+            switch (CourseCode) {
+                case "BITC":
+                    BITC31(document, rsDB31, bold);
+                    break;
+                case "BIS":
+                    BIS31(document, rsDB31, bold);
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Invalid Details!");
+                    break;
+            }
         }
 
         PdfPTable g = new PdfPTable(1);
@@ -569,9 +616,9 @@ public class Processing extends javax.swing.JFrame {
 
         PdfPTable d = new PdfPTable(1);
         d.setWidthPercentage(100);
-        PdfPCell d1 = new PdfPCell(new Paragraph(rsDB.getString(7)
-                + "/" + (Integer.parseInt(rsDB.getString(7)) + 1)
-                + " Year One Semester Two\n", bold));
+        PdfPCell d1 = new PdfPCell(new Paragraph(Integer.parseInt(rsDB.getString(7)) + 2
+                + "/" + (Integer.parseInt(rsDB.getString(7)) + 3)
+                + " Year Three Semester Two\n", bold));
         d.addCell(d1);
         document.add(d);
 
@@ -1448,65 +1495,65 @@ public class Processing extends javax.swing.JFrame {
         document.add(GPA32);
     }
 
-    public String GPtoGrade(String conn) {
-        if ("5".equals(conn)) {
+    public String GPtoGrade(String gp) {
+        if ("5".equals(gp)) {
             return "   A";
         }
-        if ("4.5".equals(conn)) {
+        if ("4.5".equals(gp)) {
             return "   B+";
         }
-        if ("4".equals(conn)) {
+        if ("4".equals(gp)) {
             return "   B";
         }
-        if ("3.5".equals(conn)) {
+        if ("3.5".equals(gp)) {
             return "   B-";
         }
-        if ("3".equals(conn)) {
+        if ("3".equals(gp)) {
             return "   C+";
         }
-        if ("2.5".equals(conn)) {
+        if ("2.5".equals(gp)) {
             return "   C";
         }
-        if ("2".equals(conn)) {
+        if ("2".equals(gp)) {
             return "   C-";
         }
-        if ("1.5".equals(conn)) {
+        if ("1.5".equals(gp)) {
             return "   D+";
         }
-        if ("1".equals(conn)) {
+        if ("1".equals(gp)) {
             return "   D";
         }
-        if ("0.5".equals(conn)) {
+        if ("0.5".equals(gp)) {
             return "   D-";
         }
-        if ("0".equals(conn)) {
+        if ("0".equals(gp)) {
             return "   E";
         }
-        return conn;
+        return gp;
 
     }
 
-    public String Comment(String conn) {
-        if ("NP(VCL)".equals(conn) || "NP (VCL)".equals(conn) || conn.contains("VCL")) {
+    public String Comment(String code) {
+        if ("NP(VCL)".equals(code) || "NP (VCL)".equals(code) || code.contains("VCL")) {
             return "Vice Chancellor's List. ";
-        } else if ("NP(DL)".equals(conn) || "NP (DL)".equals(conn) || (conn.contains("NP") && conn.contains("DL"))) {
+        } else if ("NP(DL)".equals(code) || "NP (DL)".equals(code) || (code.contains("NP") && code.contains("DL"))) {
             return "Normal Progress (Dean's List). ";
-        } else if ("NP".equals(conn) || conn.contains("NP")) {
+        } else if ("NP".equals(code) || code.contains("NP")) {
             return "Normal Progress. ";
-        } else if ("PP".equals(conn) || conn.contains("PP") == true) {
+        } else if ("PP".equals(code) || code.contains("PP") == true) {
             return "Probationary Progress. ";
         } else {
-            return conn;
+            return code;
         }
     }
 
-    public void Add3cells(Document conn, PdfPTable row, PdfPCell cellA, PdfPCell cellB, PdfPCell cellC) throws DocumentException {
+    public void Add3cells(Document doc, PdfPTable row, PdfPCell cellA, PdfPCell cellB, PdfPCell cellC) throws DocumentException {
         row.setWidthPercentage(100);
         cellB.setHorizontalAlignment(Element.ALIGN_CENTER);
         row.addCell(cellA);
         row.addCell(cellB);
         row.addCell(cellC);
-        conn.add(row);
+        doc.add(row);
     }
 
     /**
