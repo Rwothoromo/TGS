@@ -1,6 +1,5 @@
 package admin;
 
-import admin.Dashboard;
 import database.Connect;
 import java.awt.HeadlessException;
 import java.sql.Connection;
@@ -8,10 +7,17 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
+/**
+ *
+ * @author rwothoromo
+ */
 public class AddUser extends javax.swing.JFrame {
 
     Connection conn = null;
 
+    /**
+     * Class constructor.
+     */
     public AddUser() {
         initComponents();
         conn = Connect.dbConnector();
@@ -187,7 +193,7 @@ public class AddUser extends javax.swing.JFrame {
     /**
      * Redirects to the user Dashboard
      * <p>
- This method closes the AddUser user screen and opens the above screen
+     * This method closes the AddUser user screen and opens the above screen
      *
      * @param evt an ActionEvent
      */
@@ -200,7 +206,7 @@ public class AddUser extends javax.swing.JFrame {
     /**
      * Adds a user to the user table
      * <p>
- This method closes adds a user on the AddUser user screen
+     * This method closes adds a user on the AddUser user screen
      *
      * @param evt an ActionEvent
      */

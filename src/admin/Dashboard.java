@@ -1,9 +1,6 @@
 package admin;
 
-import student.Upload;
 import utils.Processing;
-import student.AddDetails;
-import database.DeleteTable;
 import auth.Login;
 import user.EditPassword;
 
@@ -181,50 +178,50 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void btnDeleteUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteUserActionPerformed
         dispose();
-        DeleteUser DU = new DeleteUser();
-        DU.setVisible(true);
+        DeleteUser d = new DeleteUser();
+        d.setVisible(true);
     }//GEN-LAST:event_btnDeleteUserActionPerformed
 
     private void btnAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddUserActionPerformed
         dispose();
-        AddUser AU = new AddUser();
-        AU.setVisible(true);
+        AddUser a = new AddUser();
+        a.setVisible(true);
     }//GEN-LAST:event_btnAddUserActionPerformed
 
     private void btnSignOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignOutActionPerformed
         dispose();
-        Login L = new Login();
-        L.setVisible(true);
+        Login l = new Login();
+        l.setVisible(true);
     }//GEN-LAST:event_btnSignOutActionPerformed
 
     private void btnChangePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangePasswordActionPerformed
         dispose();
-        EditPassword CP = new EditPassword();
-        CP.setVisible(true);
+        EditPassword e = new EditPassword();
+        e.setVisible(true);
     }//GEN-LAST:event_btnChangePasswordActionPerformed
 
     private void btnDeleteResultsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteResultsActionPerformed
         dispose();
-        DeleteTable D = new DeleteTable();
-        D.setVisible(true);
+        DeleteTable d = new DeleteTable();
+        d.setVisible(true);
     }//GEN-LAST:event_btnDeleteResultsActionPerformed
 
     private void btnProcessTestimonialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessTestimonialActionPerformed
         dispose();
-        Processing P = new Processing();
-        P.setVisible(true);
+        Processing p = new Processing();
+        p.setVisible(true);
     }//GEN-LAST:event_btnProcessTestimonialActionPerformed
 
     private void btnAddResultsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddResultsActionPerformed
         dispose();
-        Upload U = new Upload();
-        U.setVisible(true);
+        UploadResults u = new UploadResults();
+        u.setVisible(true);
     }//GEN-LAST:event_btnAddResultsActionPerformed
 
     private void btnAddStudentDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddStudentDetailsActionPerformed
         dispose();
-        AddDetails ASD = new AddDetails();
-        ASD.setVisible(true);
+        AddStudentDetails a = new AddStudentDetails();
+        a.setVisible(true);
     }//GEN-LAST:event_btnAddStudentDetailsActionPerformed
 
     /**
@@ -262,10 +259,8 @@ public class Dashboard extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Dashboard().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Dashboard().setVisible(true);
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

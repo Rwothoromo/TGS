@@ -71,7 +71,7 @@ public class Utility {
      * @param conn a database connection object
      * @param id the user id
      * @param password the user password
-     * @return Pair<Boolean, Boolean> a key-value Pair of success and admin
+     * @return a key-value Pair of success and admin
      * status respectively
      */
     public static Pair<Boolean, Boolean> login(Connection conn, String id, String password) {

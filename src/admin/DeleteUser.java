@@ -1,6 +1,5 @@
 package admin;
 
-
 import database.Connect;
 import java.awt.HeadlessException;
 import java.sql.Connection;
@@ -9,9 +8,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
+/**
+ *
+ * @author rwothoromo
+ */
 public class DeleteUser extends javax.swing.JFrame {
+
     Connection conn = null;
 
+    /**
+     * Class constructor.
+     */
     public DeleteUser() {
         initComponents();
         conn = Connect.dbConnector();
@@ -26,32 +33,21 @@ public class DeleteUser extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jLabelId = new javax.swing.JLabel();
+        txtId = new javax.swing.JTextField();
         btnDeleteUser = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
-        txtIDNO = new javax.swing.JTextField();
-        txtOtherNames = new javax.swing.JTextField();
-        txtFName = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        jLabelInstructions = new javax.swing.JLabel();
+        jLabelLogo = new javax.swing.JLabel();
+        jLabelSystemName = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Testimonial Generating System - Delete a User");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("User's IDNO :");
+        jLabelId.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabelId.setText("User's IDNO :");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setText("User's First Name :");
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel3.setText("User's Other Name(s) :");
+        txtId.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         btnDeleteUser.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnDeleteUser.setText("Delete User");
@@ -69,100 +65,54 @@ public class DeleteUser extends javax.swing.JFrame {
             }
         });
 
-        txtIDNO.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabelInstructions.setText("Type in the User Id and delete!");
 
-        txtOtherNames.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/kyuLogo.png"))); // NOI18N
 
-        txtFName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
-        jLabel10.setPreferredSize(new java.awt.Dimension(393, 196));
-
-        jLabel8.setText("Type the details as required to match the name of the user you will delete.");
-
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
-        jLabel7.setText("Testimonial Generating System");
-
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 42)); // NOI18N
-        jLabel6.setText("KYAMBOGO ");
-
-        jLabel11.setText("jLabel9");
-
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 42)); // NOI18N
-        jLabel12.setText("UNIVERSITY");
+        jLabelSystemName.setFont(new java.awt.Font("Calibri", 1, 36)); // NOI18N
+        jLabelSystemName.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabelSystemName.setText("TESTIMONIAL GENERATING SYSTEM");
+        jLabelSystemName.setToolTipText("TGS");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addContainerGap(50, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
+                    .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelSystemName, javax.swing.GroupLayout.PREFERRED_SIZE, 755, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelInstructions)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3))
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabelId)
+                        .addGap(50, 50, 50)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel12))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(btnDeleteUser, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jLabel7)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtOtherNames, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
-                                    .addComponent(txtFName, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtIDNO, javax.swing.GroupLayout.Alignment.TRAILING))))))
+                                .addComponent(btnDeleteUser, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel12)))
-                            .addComponent(jLabel11))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel7))
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addComponent(jLabel8)
-                        .addGap(91, 139, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtIDNO, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtFName, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
-                        .addGap(18, 18, 18)))
+                .addContainerGap(50, Short.MAX_VALUE)
+                .addComponent(jLabelLogo)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelSystemName, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
+                .addComponent(jLabelInstructions)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtOtherNames, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelId))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDeleteUser, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         pack();
@@ -176,32 +126,24 @@ public class DeleteUser extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnDeleteUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteUserActionPerformed
-        String IDNO = txtIDNO.getText();
-        String FName = txtFName.getText();
-        String OName = txtOtherNames.getText();
-        String sqlDeleteUser = "DELETE FROM users WHERE IDNO='" + IDNO
-                + "' AND Fname='" + FName + "' AND OName='" + OName + "'";
-        String sqlPosition = "SELECT * FROM users"
-                + " WHERE IDNO=? AND FName=? AND OName=?";
+        String id = txtId.getText();
+        String sqlDeleteUser = "DELETE FROM users WHERE IDNO=?";
+        String sqlPosition = "SELECT * FROM users WHERE IDNO=?";
+
         try {
             PreparedStatement ps = conn.prepareStatement(sqlPosition);
-            PreparedStatement ps1 = conn.prepareStatement(sqlDeleteUser);
-            ps.setString(1, IDNO);
-            ps.setString(2, FName);
-            ps.setString(3, OName);
-            ResultSet rs = ps.executeQuery();
+            ps.setString(1, id);
 
-            if (rs.next()){
-                ps1.execute(sqlDeleteUser);
-                JOptionPane.showMessageDialog(null, "User " + FName
-                        + "\n" + rs.getString(4) + "\nSuccessfully Deleted!");
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    ps = conn.prepareStatement(sqlDeleteUser);
+                    ps.execute(sqlDeleteUser);
+                    JOptionPane.showMessageDialog(null, "User " + rs.getString(2) + " " + rs.getString(4) + "\nSuccessfully Deleted!");
+                } else {
+                    JOptionPane.showMessageDialog(null, "You have an error!");
+                }
             }
-            else {
-                JOptionPane.showMessageDialog(null, "You have an error!");
-            }
-            rs.close();
-        }
-        catch (HeadlessException | SQLException e){
+        } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_btnDeleteUserActionPerformed
@@ -237,26 +179,17 @@ public class DeleteUser extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new DeleteUser().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new DeleteUser().setVisible(true);
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnDeleteUser;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JTextField txtFName;
-    private javax.swing.JTextField txtIDNO;
-    private javax.swing.JTextField txtOtherNames;
+    private javax.swing.JLabel jLabelId;
+    private javax.swing.JLabel jLabelInstructions;
+    private javax.swing.JLabel jLabelLogo;
+    private javax.swing.JLabel jLabelSystemName;
+    private javax.swing.JTextField txtId;
     // End of variables declaration//GEN-END:variables
 }
