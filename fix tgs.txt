@@ -5,12 +5,6 @@
 
 *PP is probationary progress
 
-*Back button in processing should go to login
-
-*Fix change password bug
-
-*DCS228 is correct
-
 -Set a TGS user for localhost to access bitc database
 
 -Fix delete results not to empty but leave the default 12/u/310/itd/gv
