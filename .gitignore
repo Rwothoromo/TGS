@@ -10,7 +10,7 @@ nbdist/
 /lib/nblibraries/
 /lib/CopyLibs/
 
-/.idea/
+**/.idea/
 /out/
 TGS.iml
 
