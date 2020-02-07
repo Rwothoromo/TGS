@@ -1,10 +1,16 @@
 # auto-generated
-/.idea/
-/build/
-/dist/
+**/nbproject/private/
+**/nbproject/Makefile-*.mk
+**/nbproject/Package-*.bash
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
 /lib/nblibraries/
 /lib/CopyLibs/
-/nbproject/private/
+
+/.idea/
 /out/
 TGS.iml
 
