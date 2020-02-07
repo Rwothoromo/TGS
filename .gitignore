@@ -1,6 +1,13 @@
+# auto-generated
+/.idea/
+/build/
 /dist/
 /lib/nblibraries/
 /lib/CopyLibs/
-/nbproject/private
-/build/
+/nbproject/private/
+/out/
+TGS.iml
+
+# other
 .env
+

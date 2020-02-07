@@ -1,7 +1,6 @@
 package database;
 
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,22 +25,30 @@ public class Connect {
      * @return a Connection object when successful status respectively
      */
     public static Connection dbConnector() {
-        Map<String, String> map = fileToMap(".env");
-        map.keySet().forEach((s) -> {
-            if (null != s) switch (s) {
-                case "DB_PATH":
-                    dbPath = map.get(s);
-                    break;
-                case "DB_USER":
-                    dbUser = map.get(s);
-                    break;
-                case "DB_PASSWORD":
-                    dbPassword = map.get(s);
-                    break;
-                default:
-                    break;
+        if (System.getenv("DB_PATH") != null) {
+            dbPath = System.getenv("DB_PATH");
+            dbUser = System.getenv("DB_USER");
+            dbPassword = System.getenv("DB_PASSWORD");
+        } else {
+            Map<String, String> map = fileToMap(".env");
+            if (map != null) {
+                map.keySet().forEach((s) -> {
+                    if (null != s) switch (s) {
+                        case "DB_PATH":
+                            dbPath = map.get(s);
+                            break;
+                        case "DB_USER":
+                            dbUser = map.get(s);
+                            break;
+                        case "DB_PASSWORD":
+                            dbPassword = map.get(s);
+                            break;
+                        default:
+                            break;
+                    }
+                });
             }
-        });
+        }
 
         try {
             Class.forName("org.postgresql.Driver");
