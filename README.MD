@@ -19,12 +19,12 @@ TGS helps with generating students' testimonials on demand at a university.
 
 * Install Java, JDK and PostgreSQL.
 * Import the project on Netbeans and be sure to add the `lib` folder to the `classpath`.
-* Run on command prompt (Mac/Linux). Use `set` instead of `export` for Windows OS.
+* Run `cat > .env` and add the following: (Not that the values do not have quotes!)
 
-    ```txt
-    - export DB_PATH="jdbc:postgresql://localhost:5432/bitc"
-    - export DB_USER="<db_user>"
-    - export DB_PASSWORD="<db_password>"
+    ```.env
+    DB_PATH=jdbc:postgresql://localhost:5432/bitc
+    DB_USER=<db_user>
+    DB_PASSWORD=<db_password>
     ```
 
 * Run the app and test it out.

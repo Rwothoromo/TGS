@@ -1,15 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package utils;
 
 import java.awt.HeadlessException;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.util.Pair;
 import javax.swing.JOptionPane;
 
@@ -71,8 +73,7 @@ public class Utility {
      * @param conn a database connection object
      * @param id the user id
      * @param password the user password
-     * @return a key-value Pair of success and admin
-     * status respectively
+     * @return a key-value Pair of success and admin status respectively
      */
     public static Pair<Boolean, Boolean> login(Connection conn, String id, String password) {
         String sqlQuery = "SELECT * FROM users WHERE Id=? AND Password=?";
@@ -97,5 +98,37 @@ public class Utility {
 
         Pair<Boolean, Boolean> pair = new Pair<>(false, false);
         return pair;
+    }
+
+    /**
+     * Returns a map of items from a file
+     * <p>
+     * If nothing exists, null is returned.
+     *
+     *
+     * @param filePath the source file
+     * @return a key-value map from the file
+     */
+    public static Map<String, String> fileToMap(String filePath) {
+        Map<String, String> map = new HashMap<>();
+        File file = new File(filePath);
+        Scanner scanner;
+        try {
+            scanner = new Scanner(file);
+            while (scanner.hasNextLine()) {
+                String[] parts = scanner.nextLine().split("=");
+                String key = parts[0];
+                String value = "";
+                if (parts.length > 1) {
+                    value = parts[1];
+                }
+                map.put(key, value);
+            }
+            scanner.close();
+            return map;
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Utility.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 }

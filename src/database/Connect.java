@@ -1,28 +1,60 @@
 package database;
 
 import java.sql.*;
-import javax.swing.JOptionPane;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import static utils.Utility.fileToMap;
 
+/**
+ *
+ * @author rwothoromo
+ */
 public class Connect {
 
-    static String dbPath = System.getenv("DB_PATH");
-    static String dbUser = System.getenv("DB_USER");
-    static String dbPassword = System.getenv("DB_PASSWORD");
+    static String dbPath = null;
+    static String dbUser = null;
+    static String dbPassword = null;
 
+    /**
+     * Returns a Connection object
+     * <p>
+     * Ideally, the required values should be picked from the environment
+     * variables
+     *
+     * @return a Connection object when successful status respectively
+     */
     public static Connection dbConnector() {
+        Map<String, String> map = fileToMap(".env");
+        map.keySet().forEach((s) -> {
+            if (null != s) switch (s) {
+                case "DB_PATH":
+                    dbPath = map.get(s);
+                    break;
+                case "DB_USER":
+                    dbUser = map.get(s);
+                    break;
+                case "DB_PASSWORD":
+                    dbPassword = map.get(s);
+                    break;
+                default:
+                    break;
+            }
+        });
+
         try {
-            System.out.println(dbPath + ": path, " + dbUser + ": user, " + dbPassword + ": password");
-//            Class.forName("com.mysql.jdbc.Driver");     //Load db drivers
             Class.forName("org.postgresql.Driver");
-//            Connection conn = DriverManager.getConnection(dbPath, dbUser, dbPassword);
-            Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/bitc", "rwothoromo", "");
-            //("jdbc:mysql://localhost/bitc","root","root@1");
-            //establish connection to db, (host location/comp ip address/db path, user, password
-            return conn;
-        } catch (ClassNotFoundException | SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
-            System.exit(1);
-            return null;
+            try {
+                Connection conn = DriverManager.getConnection(dbPath, dbUser, dbPassword);
+                return conn;
+            } catch (SQLException ex) {
+                Logger.getLogger(Connect.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Connect.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        return null;
     }
 }

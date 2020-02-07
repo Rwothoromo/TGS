@@ -25,7 +25,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace pref="50" max="32767" attributes="0"/>
+              <EmptySpace pref="100" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabelSystemName" alignment="0" min="-2" pref="755" max="-2" attributes="0"/>
                   <Component id="jLabelLogo" alignment="0" min="-2" pref="660" max="-2" attributes="0"/>
@@ -114,7 +114,7 @@
                   <Component id="btnBack" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
                   <Component id="btnAddUser" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="50" max="32767" attributes="0"/>
+              <EmptySpace pref="100" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -132,7 +132,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Calibri" size="36" style="1"/>
         </Property>
-        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="horizontalAlignment" type="int" value="2"/>
         <Property name="text" type="java.lang.String" value="TESTIMONIAL GENERATING SYSTEM"/>
         <Property name="toolTipText" type="java.lang.String" value="TGS"/>
       </Properties>

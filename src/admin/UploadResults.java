@@ -1,9 +1,11 @@
 package admin;
 
 import database.Connect;
+import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -31,54 +33,55 @@ public class UploadResults extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jLabelLogo = new javax.swing.JLabel();
+        jLabelSystemName = new javax.swing.JLabel();
+        jLabelInstructions = new javax.swing.JLabel();
+        jLabelCourseCode = new javax.swing.JLabel();
         txtCoursecode = new javax.swing.JTextField();
-        txtEntryYr = new javax.swing.JTextField();
+        jLabelYrOfEntry = new javax.swing.JLabel();
+        txtYrOfEntry = new javax.swing.JTextField();
+        jLabelSubInstruction = new javax.swing.JLabel();
+        jLabelYear = new javax.swing.JLabel();
         txtCurrentYr = new javax.swing.JTextField();
-        txtCurrentSem = new javax.swing.JTextField();
-        btnBack = new javax.swing.JButton();
+        jLabelSemester = new javax.swing.JLabel();
+        txtSemester = new javax.swing.JTextField();
         btnUploadNow = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Testimonial Generating System - Upload Results");
         setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Course Code :");
+        jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/kyuLogo.png"))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setText("Year of Entry :");
+        jLabelSystemName.setFont(new java.awt.Font("Calibri", 1, 36)); // NOI18N
+        jLabelSystemName.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabelSystemName.setText("TESTIMONIAL GENERATING SYSTEM");
+        jLabelSystemName.setToolTipText("TGS");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel3.setText("Current Year (1, 2 or 3) :");
+        jLabelInstructions.setText("Type the details as required to match the name of the file you will upload.");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel4.setText("Current Semester (1 or 2) :");
+        jLabelCourseCode.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabelCourseCode.setText("Course Code :");
 
         txtCoursecode.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        txtEntryYr.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabelYrOfEntry.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabelYrOfEntry.setText("Year of Entry :");
+
+        txtYrOfEntry.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+
+        jLabelSubInstruction.setText("State the Year and Semester for which to upload results:");
+
+        jLabelYear.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabelYear.setText("Year (1, 2 or 3) :");
 
         txtCurrentYr.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        txtCurrentSem.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabelSemester.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabelSemester.setText("Semester (1 or 2) :");
 
-        btnBack.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnBack.setText("Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
+        txtSemester.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         btnUploadNow.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnUploadNow.setText("Upload Now!!!");
@@ -88,101 +91,80 @@ public class UploadResults extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setPreferredSize(new java.awt.Dimension(393, 196));
-
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 42)); // NOI18N
-        jLabel6.setText("KYAMBOGO ");
-
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
-        jLabel7.setText("Testimonial Generating System");
-
-        jLabel8.setText("Type the details as required to match the name of the file you will upload.");
-
-        jLabel9.setText("jLabel9");
-
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 42)); // NOI18N
-        jLabel10.setText("UNIVERSITY");
+        btnBack.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addContainerGap(100, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelInstructions)
+                        .addContainerGap(385, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelSemester)
+                            .addComponent(jLabelYear)
+                            .addComponent(jLabelSubInstruction)
+                            .addComponent(jLabelSystemName, javax.swing.GroupLayout.PREFERRED_SIZE, 755, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel6)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jLabel10))
-                                .addComponent(jLabel7))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtCurrentYr, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(txtCurrentSem, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(147, 147, 147))
-                                .addComponent(txtEntryYr, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtCoursecode, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(btnUploadNow, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(35, Short.MAX_VALUE))
+                                    .addComponent(btnUploadNow, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabelCourseCode)
+                                        .addComponent(jLabelYrOfEntry))
+                                    .addGap(50, 50, 50)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtSemester, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(txtCurrentYr, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(txtYrOfEntry, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(txtCoursecode, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(0, 95, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel10)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel9)))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel7))
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
-                .addComponent(jLabel8)
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(27, 27, 27)
-                        .addComponent(jLabel2)
-                        .addGap(35, 35, 35)
-                        .addComponent(jLabel3)
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel4))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtCoursecode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(21, 21, 21)
-                        .addComponent(txtEntryYr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(txtCurrentYr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(txtCurrentSem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(40, 40, 40)
+                .addContainerGap(50, Short.MAX_VALUE)
+                .addComponent(jLabelLogo)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelSystemName, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelInstructions)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCoursecode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelCourseCode))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtYrOfEntry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelYrOfEntry))
+                .addGap(18, 18, 18)
+                .addComponent(jLabelSubInstruction)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelYear)
+                    .addComponent(txtCurrentYr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelSemester)
+                    .addComponent(txtSemester, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnUploadNow, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(59, 59, 59))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
 
         pack();
@@ -191,15 +173,15 @@ public class UploadResults extends javax.swing.JFrame {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         dispose();
-        Dashboard SU = new Dashboard();
-        SU.setVisible(true);
+        Dashboard d = new Dashboard();
+        d.setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnUploadNowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadNowActionPerformed
         String Coursecode = txtCoursecode.getText();
-        String EntryYr = txtEntryYr.getText();
+        String EntryYr = txtYrOfEntry.getText();
         String CurrentYr = txtCurrentYr.getText();
-        String CurrentSem = txtCurrentSem.getText();
+        String CurrentSem = txtSemester.getText();
         String db = Coursecode + EntryYr + "_" + CurrentYr + "_" + CurrentSem;
         String sqlUpload = "LOAD DATA INFILE 'd:/TGS datafiles/" + db + ".csv'"
                 + "INTO TABLE " + db + " FIELDS TERMINATED BY ','"
@@ -214,7 +196,7 @@ public class UploadResults extends javax.swing.JFrame {
                 ps1.executeQuery(sqlUpload);
                 JOptionPane.showMessageDialog(null, db + ".csv has been uploaded!");
             }
-        } catch (Exception e) {
+        } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_btnUploadNowActionPerformed
@@ -252,22 +234,21 @@ public class UploadResults extends javax.swing.JFrame {
             new UploadResults().setVisible(true);
         });
     }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnUploadNow;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelCourseCode;
+    private javax.swing.JLabel jLabelInstructions;
+    private javax.swing.JLabel jLabelLogo;
+    private javax.swing.JLabel jLabelSemester;
+    private javax.swing.JLabel jLabelSubInstruction;
+    private javax.swing.JLabel jLabelSystemName;
+    private javax.swing.JLabel jLabelYear;
+    private javax.swing.JLabel jLabelYrOfEntry;
     private javax.swing.JTextField txtCoursecode;
-    private javax.swing.JTextField txtCurrentSem;
     private javax.swing.JTextField txtCurrentYr;
-    private javax.swing.JTextField txtEntryYr;
+    private javax.swing.JTextField txtSemester;
+    private javax.swing.JTextField txtYrOfEntry;
     // End of variables declaration//GEN-END:variables
 }

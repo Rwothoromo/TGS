@@ -3,3 +3,4 @@
 /lib/CopyLibs/
 /nbproject/private
 /build/
+.env
