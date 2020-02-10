@@ -182,7 +182,7 @@ public class DeleteResults extends javax.swing.JFrame {
             ResultSet rs1 = ps1.executeQuery();
 
             if (rs1.next()) {
-                ps.execute(sqlDelete);
+                ps.executeQuery();
                 //ps2.execute(fillEmptyDB);
                 JOptionPane.showMessageDialog(null, "Done");
             }
@@ -234,10 +234,8 @@ public class DeleteResults extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new DeleteResults().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new DeleteResults().setVisible(true);
         });
     }
 

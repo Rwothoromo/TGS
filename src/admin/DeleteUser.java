@@ -137,7 +137,7 @@ public class DeleteUser extends javax.swing.JFrame {
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     ps = conn.prepareStatement(sqlDeleteUser);
-                    ps.execute(sqlDeleteUser);
+                    ps.executeQuery();
                     JOptionPane.showMessageDialog(null, "User " + rs.getString(2) + " " + rs.getString(4) + "\nSuccessfully Deleted!");
                 } else {
                     JOptionPane.showMessageDialog(null, "You have an error!");

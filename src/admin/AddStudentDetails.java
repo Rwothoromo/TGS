@@ -153,7 +153,7 @@ public class AddStudentDetails extends javax.swing.JFrame {
             PreparedStatement ps1 = conn.prepareStatement(sqlUpload);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                ps1.executeQuery(sqlUpload);
+                ps1.executeQuery();
                 JOptionPane.showMessageDialog(null, db + ".csv has been uploaded!");
             }
         } catch (HeadlessException | SQLException e) {

@@ -1,11 +1,13 @@
 package admin;
 
 import database.Connect;
-import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import utils.SecurePassword;
 
 /**
  *
@@ -43,6 +45,7 @@ public class AddUser extends javax.swing.JFrame {
         txtONames = new javax.swing.JTextField();
         jLabelPostion = new javax.swing.JLabel();
         txtPosition = new javax.swing.JTextField();
+        jCheckBoxAdmin = new javax.swing.JCheckBox();
         jLabelPassword = new javax.swing.JLabel();
         txtPassword = new javax.swing.JTextField();
         jLabelConfirmPassword = new javax.swing.JLabel();
@@ -82,6 +85,8 @@ public class AddUser extends javax.swing.JFrame {
 
         txtPosition.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
+        jCheckBoxAdmin.setText("Admin User");
+
         jLabelPassword.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabelPassword.setText("Give Password :");
 
@@ -118,32 +123,35 @@ public class AddUser extends javax.swing.JFrame {
                     .addComponent(jLabelSystemName, javax.swing.GroupLayout.PREFERRED_SIZE, 755, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelInstructions)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabelConfirmPassword)
-                                .addComponent(jLabelPassword)
-                                .addComponent(jLabelPostion))
-                            .addGap(50, 50, 50)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtPosition, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(txtConfirmPassword, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(btnAddUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabelONames)
-                                .addComponent(jLabelFName)
-                                .addComponent(jLabelId))
-                            .addGap(76, 76, 76)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtFName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE)
-                                .addComponent(txtONames, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE)
-                                .addComponent(txtId, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelConfirmPassword)
+                                    .addComponent(jLabelPassword)
+                                    .addComponent(jLabelPostion))
+                                .addGap(50, 50, 50)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtPosition, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtConfirmPassword, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(btnAddUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelONames)
+                                    .addComponent(jLabelFName)
+                                    .addComponent(jLabelId))
+                                .addGap(76, 76, 76)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtFName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE)
+                                    .addComponent(txtONames, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE)
+                                    .addComponent(txtId, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCheckBoxAdmin)))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -170,7 +178,8 @@ public class AddUser extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelPostion))
+                    .addComponent(jLabelPostion)
+                    .addComponent(jCheckBoxAdmin))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -217,20 +226,35 @@ public class AddUser extends javax.swing.JFrame {
         String position = txtPosition.getText();
         String password = txtPassword.getText();
         String confirmPassword = txtConfirmPassword.getText();
-        String sqlAddUser = "insert into users"
-                + " (Id, FName, OName, Position, Password)"
-                + " values ('" + id + "', '" + fName + "', '"
-                + oName + "', '" + position + "', '" + password + "');";
-        try {
-            PreparedStatement ps = conn.prepareStatement(sqlAddUser);
-            if (password.equals(confirmPassword)) {
-                ps.execute(sqlAddUser);
-                JOptionPane.showMessageDialog(null, "User " + fName + " " + position + " successfully Added!");
-            } else {
-                JOptionPane.showMessageDialog(null, "You have an error!");
+        Boolean admin = jCheckBoxAdmin.isSelected();
+
+        if (!password.equals(confirmPassword)) {
+            JOptionPane.showMessageDialog(null, "Passwords do not match!");
+        } else {
+            try {
+                // Secure password
+                String salt = SecurePassword.getSalt(30);
+                password = SecurePassword.generateSecurePassword(password, salt);
+
+                String sqlAddUser = "INSERT INTO users (Id, FName, OName, Position, Password, Salt, Admin) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                PreparedStatement ps = conn.prepareStatement(sqlAddUser);
+                ps.setString(1, id);
+                ps.setString(2, fName);
+                ps.setString(3, oName);
+                ps.setString(4, position);
+                ps.setString(5, password);
+                ps.setString(6, salt);
+                ps.setBoolean(7, admin);
+
+                if (ps.executeUpdate() == 1) { // 1 row affected
+                    JOptionPane.showMessageDialog(null, "User: " + fName + " of Position: " + position + " successfully Added!");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Try again!");
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Try a different Id!");
+                Logger.getLogger(AddUser.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (HeadlessException | SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_btnAddUserActionPerformed
 
@@ -263,9 +287,11 @@ public class AddUser extends javax.swing.JFrame {
             new DeleteUser().setVisible(true);
         });
     }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddUser;
     private javax.swing.JButton btnBack;
+    private javax.swing.JCheckBox jCheckBoxAdmin;
     private javax.swing.JLabel jLabelConfirmPassword;
     private javax.swing.JLabel jLabelFName;
     private javax.swing.JLabel jLabelId;

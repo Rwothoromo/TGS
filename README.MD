@@ -27,4 +27,10 @@ TGS helps with generating students' testimonials on demand at a university.
     DB_PASSWORD=<db_password>
     ```
 
-* Run the app and test it out.
+* Run the app and test it out with these credentials:
+
+| Id | Password |
+| ----- | ---------- |
+| CS1 | admin |
+| CS2 | ironman |
+| FS1 | admin |
