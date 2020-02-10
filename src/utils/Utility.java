@@ -35,28 +35,41 @@ public class Utility {
      * @return Boolean the indicator of success
      */
     public static boolean changePassword(Connection conn, String id, String oldPassword, String newPassword, String confirmPassword) {
-        String sqlQuery = "SELECT Password FROM users WHERE Id=? AND Password=?";
-
+        String sqlQuery = "SELECT * FROM users WHERE Id=?";
         try {
             PreparedStatement ps = conn.prepareStatement(sqlQuery);
             ps.setString(1, id);
-            ps.setString(2, oldPassword);
 
-            try (ResultSet rs = ps.executeQuery()) {
-                if (rs.next() && newPassword.equals(confirmPassword)) {
-                    sqlQuery = "UPDATE users SET Password=? WHERE Id=?";
-                    ps = conn.prepareStatement(sqlQuery);
-                    ps.setString(1, newPassword);
-                    ps.setString(2, id);
-                    if (ps.executeUpdate() == 1) { // 1 row affected
-                        JOptionPane.showMessageDialog(null, "Password successfully changed!");
-                        return true;
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                String salt = rs.getString(5);
+                String securePassword = rs.getString(6);
+        
+                if (SecurePassword.verify(oldPassword, securePassword, salt)) {
+                    if (newPassword.equals(confirmPassword)) {
+                        // Secure password
+                        salt = SecurePassword.getSalt(30);
+                        newPassword = SecurePassword.generateSecurePassword(newPassword, salt);
+
+                        sqlQuery = "UPDATE users SET Password=?, Salt=? WHERE Id=?";
+                        ps = conn.prepareStatement(sqlQuery);
+                        ps.setString(1, newPassword);
+                        ps.setString(2, salt);
+                        ps.setString(3, id);
+                        if (ps.executeUpdate() == 1) { // 1 row affected
+                            JOptionPane.showMessageDialog(null, "Password successfully changed!");
+                            return true;
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Try again!");
+                        }
                     } else {
-                        JOptionPane.showMessageDialog(null, "Try again!");
+                        JOptionPane.showMessageDialog(null, "New Password does not match the Confirm Password!");
                     }
                 } else {
-                    JOptionPane.showMessageDialog(null, "Invalid! Cross check!");
+                    JOptionPane.showMessageDialog(null, "Password: " + oldPassword + " is wrong!");
                 }
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid Details!");
             }
         } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(null, e);
@@ -76,19 +89,23 @@ public class Utility {
      * @return a key-value Pair of success and admin status respectively
      */
     public static Pair<Boolean, Boolean> login(Connection conn, String id, String password) {
-        String sqlQuery = "SELECT * FROM users WHERE Id=? AND Password=?";
-
+        String sqlQuery = "SELECT * FROM users WHERE Id=?";
         try {
-            // For alternative way, see ChangePassword.java
             PreparedStatement ps = conn.prepareStatement(sqlQuery);
-            ps.setString(1, id); //Id is the 1st argument in our query hence use 1
-            ps.setString(2, password);
+            ps.setString(1, id);
 
             ResultSet rs = ps.executeQuery();
-            if (rs.next()) { //if successful login
-                Boolean admin = rs.getBoolean(6);
-                Pair<Boolean, Boolean> pair = new Pair<>(true, admin);
-                return pair;
+            if (rs.next()) {
+                String salt = rs.getString(5);
+                String securePassword = rs.getString(6);
+        
+                if (SecurePassword.verify(password, securePassword, salt)) {
+                    Boolean admin = rs.getBoolean(7);
+                    Pair<Boolean, Boolean> pair = new Pair<>(true, admin);
+                    return pair;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Password: " + password + " is wrong!");
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "Invalid Details!");
             }
